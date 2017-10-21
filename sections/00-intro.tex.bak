@@ -1,0 +1,212 @@
+\section*{Introduction}
+%\subsection*{An introduction to §1-2.}
+Factorization systems surely form a conspicuous part of modern category theory; this is especially because they provide the category where they live with a rather rich structure, and they are commonly found (although very few of them can be easily built): for example, a trace of what we would today call a factorization system on the category of groups appears in the pioneering \cite{maclane1948groups}, published in 1948; as acknowledged by \cite{whitehead61elements}, any ``synthetic'' approach to homotopy theory inevitably relies on the notion of a --weak-- factorization system.
+
+Soon after having reached a consensus on the definition for these gadgets \cite{FK}, category theorists wanted to make explicit the evident tight relation between (weak) factorization systems and (weakly) reflective subcategories on a same ambient category $\C$: this culminated with the proof, given in \cite{CHK}, that under mild assumptions the reflective subcategories of $\C$ are in bijection with the so-called \emph{reflective pre-factorization systems} on $\C$. 
+
+Let us briefly recall this notion: a morphism $f$ in $\C$ is \emph{left orthogonal} to another morphism $g$ (or $g$ is \emph{right orthogonal} to $f$), in symbols $f\perp g$, if for any commutative square
+\[
+\xymatrix{
+\cdot\ar[r]\ar[d]_f&\cdot\ar[d]^g\\
+\cdot\ar[r]\ar@{.>}[ur]|{\ d\ }&\cdot
+}
+\]
+there is a unique morphism $d$ that makes the two above triangles commute. Then,
+\begin{itemize}%[label=--]
+\item for a class $\mathcal X\subseteq \C^\due$ (where $\C^\due$ is the arrow category) we let ${}^{\perp}\mathcal X$ (resp., $\mathcal X^{\perp}$) be the class of morphisms which are left (resp., right) orthogonal to any element in $\mathcal X$;
+\item a \emph{pre-factorization system} (\textsc{pfs} for short) on $\C$ is a pair $(\E,\M)$ of subclasses of $\C$ such that $\E={}^{\perp}\M$ and $\E^{\perp}=\M$;  
+\item a pre-factorization system $\F=(\E,\M)$ on $\C$ such that every map $f\in \C^\due$ can be factored as a composition $f=m_f\circ e_f$, for $m_f\in \M$ and $e_f\in \E$ is called a \emph{factorization system} (\textsc{fs} for short; we informally call a morphism that can be factored by a \textsc{pfs} an $\F$-\emph{crumbled} arrow: then, a factorization system is such that every arrow is $\F$-crumbled);
+\item a class $\mathcal X$ of morphisms of $\C$ is said to have the \emph{3-for-2 property} if, given two composable morphisms $\cdot\xto{\quad f\quad }\cdot\xto{\quad g\quad }\cdot$ in $\mathcal X$, if two elements of the set $\{f,g,g\circ f\}$ belong to $\mathcal X$, so does the third.
+\end{itemize}
+A \textsc{pfs} $\F=(\E,\M)$ is said to be \emph{reflective} if $\M$ has the 3-for-2 property and if any map of the form $\var{X}{0}$ is $\F$-crumbled. For such a \textsc{pfs}, the associated reflective subcategory of $\C$ is
+\[
+\M/0 \coloneqq \left\{X\in \C \mid \var{X}{0}\in \M\right\}\subseteq \C
+\]
+(working with \emph{orthogonal} factorization systems ensures that there is a functorial choice of an objet in $\M/0$ for each $X\in \C$, precisely the object such that $X \xto{e_X} RX \xto{m_X} 0$). It is a remarkable result that \emph{all} the reflective subcategories of $\C$ arise in fact in this way: given such a subcategory $\cate{S}$, there is a terminal\hyp{}crumbled prefactorization system \emph{generated} (in a specific technical sense) by all morphisms of $\cate{S}$.
+
+The authors of \cite{CHK} then specialize this result attempting to describe the tight relation between factorization systems and \emph{torsion theories}, under similarly mild assumptions on $\C$. This approach has been extended sensibly in \cite{rosicky2007factorization}.
+
+A factorization system $\F=(\E,\M)$ on $\C$ is said to be a \emph{torsion theory} (\textsc{tth} for short) if \emph{both} $\E$ and $\M$ have the 3-for-2 property. This gives (thanks to the above result and its dual) a \emph{pair} of subcategories $\M/0$ and $0/\E$ whose inclusions in $\C$ admit respectively a left and a right adjoint: these two subcategories form the classes of so\hyp{}called \emph{torsion} and \emph{torsion\hyp{}free} objects respectively, and relate to the classical notion of a \emph{torsion theory} given in \cite{dickson1966torsion}.
+
+Suppose indeed that $\C$ is an abelian category. A \textsc{tth} $\F=(\E,\M)$ on $\C$ is said to be \emph{normal} if taking the $\F$-factorization
+\[
+X\xto{e}F\xto{m}0
+\]
+of the final map $X\to 0$ for a given object $X\in \C$, and then taking the pullback
+\begin{equation}\label{pb_diagram}
+\begin{matrix}\xymatrix{
+T\ar[r]\ar[d]\ar@{}[dr]|(.25)\lrcorner&X\ar[d]^{e}\\
+0\ar[r]&F
+}\end{matrix}
+\end{equation}
+we have $\var{T}{0}\in \E$.
+
+It is now an exercise on the definitions to show that the pair $(0/\E,\M/0)$ is a \emph{classical} torsion theory (\ie a torsion theory as defined in \cite{dickson1966torsion}). In fact, it is also true that \emph{every} torsion theory arises this way (see \cite{rosicky2007factorization}); this gives a bijection between torsion theories and normal \textsc{tth}s. 
+
+Switching to the triangulated context, the r\^ole played by classical \textsc{tth}s in abelian categories is now played by $t$-structures (\cite{BBD,keller2007derived}). The analogy between these two concepts was made completely formal by Beligiannis and Reiten \cite{beligiannis-reiten} where they introduced \emph{torsion pairs} in pre-triangulated categories. In fact, if the pre-triangulated structure is inherited from the abelian-ness of the ambient category, then torsion pairs correspond bijectively to classical \textsc{tth}s, while if the pre-triangulated structure is triangulated, then torsion pairs correspond bijectively to $t$-structures. The genuinely homotopical content of this situation is testified by the relation (outlined, for example, in \cite{hovey:cotorsion,hovey:cotorsion2}) between \emph{abelian model category} structures and \emph{cotorsion pairs}.
+
+This series of strong analogies between classical \textsc{tth}s and $t$-structures suggests that there should be a way to describe them in terms of some kind of factorization systems, just like for \textsc{tth}s in abelian categories. In fact, the relation between $t$-structures and normal torsion theories is acknowledged in \cite{rosicky2007factorization} as one of the most natural applications of this formalism in a purely additive, non-abelian setting.
+
+On the other hand, such a statement was not available in the literature for a long time, as it has been somehow prevented by the rather poorly\hyp{}behaved universality properties of triangulated categories. In this respect, it is remarkable that such a theorem can be stated and proved quite naturally by getting rid of all the unwieldy features of triangulated categories, ascending to the realm of stable $(\infty,1)$\hyp{}categories: the proof that $t$-structures on (the homotopy category of) a stable quasicategory correspond bijectively to normal torsion theories, regarded as particular $\infty$\hyp{}categorical factorization systems, has been the central result of the first author's PhD thesis \cite{tstructures}.\footnote{The fact that few triangulated categories generate an interesting poset of factorization systems is probably due to the fact that a nice factorization system on a category $\cate{A}$ interacts with co/limits on $\cate{A}$, and it is somehow generated by them: few triangulated categories have interesting co/limits, hence the fact that (for example) every \emph{proper} factorization system, where the left class is contained in the class of epimorphisms, although really natural in a generic category must be trivial in a triangulated one.}
+
+Our first point in this paper is that the reason for the absence of this theorem from the setting of triangulated categories $\cD$ is that there is no notion of triangulated orthogonality $\horth$ for a pair of morphisms in $\cD$, with formal properties comparable to those of the orthogonality relation $\perp$ but \emph{mindful of the triangulated structure}.
+
+The present work aims to fill this gap and solve the problem of finding a class of suitably defined \emph{triangulated factorization systems} on $\cD$ in bijection with the class of $t$-structures on $\cD$.
+
+We start §\refbf{section_homo_FS} describing the homotopy orthogonality relation $f\horth g$ for two morphisms in a triangulated category $\cD$ (see \adef\refbf{wobbly}). After proving some natural properties, we mimick the classical theory showing that this definition is sound, in that it recovers basically all the formal properties enjoyed by the $\perp$-orthogonality relation (see \refbf{horth_coprod}--\refbf{closure_homo_ho2}). We introduce triangulated \textsc{pfs}s via triangulated orthogonality, triangulated \textsc{fs}s, triangulated \textsc{tth}s and, finally, normal triangulated \textsc{tth}s as the corresponding of each of the classical definitions.
+
+We believe that this is the correct path to follow, as \adef\refbf{wobbly} is exactly an orthogonality condition that keeps track of the triangulated structure of $\cD$: as an example of this flexiblity, normality for a triangulated \textsc{tth} can be introduced exactly as normality for a \textsc{tth} but taking a \emph{homotopy} cartesian square (see \refbf{recall_hocart} for the definition) in \eqref{pb_diagram} instead of a pullback square. So apparently the definition really captures the best of both worlds.
+
+With the theory of triangulated \textsc{fs}s at hand, in \refbf{triang-rosetta} we prove the following
+\begin{quote}
+\textbf{Theorem I:} For a triangulated category $\cD$, the following map is bijective:
+\[
+\xymatrix@R=0pt{
+\left\{
+{\begin{smallmatrix}
+\text{normal triangulated}\\
+\text{\textsc{tth}s on }\cD
+\end{smallmatrix}}
+\right\}
+\ar[rr]&&
+\left\{
+{\begin{smallmatrix}
+\text{$t$-structures}\\
+\text{ on }\cD
+\end{smallmatrix}}
+\right\}\\
+(\E,\M) \ar@{|->}[rr]&& \Big(0/\E, \Sigma(\M/0)\Big) 
+}
+\]
+\end{quote}
+As mentioned above, Fiorenza and the first-named author \cite{Fiorenza2014} proved a $\infty$\hyp{}categorical version of \athm\textbf{I} in the setting of stable quasicategories. In fact, quasicategories support a fairly natural theory of \textsc{fs}s, as rich as the classical one; we refer to \cite{joyal2008notes} and \cite{HTT} (we briefly recall the relevant definitions in our §\refbf{infty_cat_fs} though). 
+
+Once quasicategorical \textsc{fs}s are defined, one can mimick the definition of normal \textsc{tth} in this setting. The main result of \cite{Fiorenza2014} tells us that, for a stable quasicategory $\C$, the normal \textsc{tth}s on $\C$ are in bijection with $t$-structures on the triangulated category $\ho(\C)$ (we refer the reader to \cite{tstructures} for a detailed version of these results). 
+
+Now, an exercise in translation between models shows how the same result remains true
+\begin{itemize}
+\item in the setting of stable model categories, where one can speak about \emph{homotopy factorization systems} following \cite{bousfield1977constructions,Joy}; this leads to the definition of  \emph{homotopy $t$\hyp{}structures} on stable model categories $\cate{M}$ as suitable analogues of normal torsion theories in the set $\textsc{hfs}(\cate{M})$ of homotopy factorization systems on a model category $\cate{M}$;
+\item in the setting of \textsc{dg}\hyp{}categories, where we speak about ($\textsf{Ch}(\mathbf{k})$-enriched) factorization systems (see \cite{Day1974,enrichFS}); this leads to the definition of \emph{\textsc{dg}\hyp{}$t$\hyp{}structures} as enriched analogues of normal torsion theories in the set of enriched factorization systems on a \textsc{dg}\hyp{}category $\mathcal D$.
+\end{itemize}
+In both these settings, it is possible to recover a theorem that characterizes what, from time to time, you would like to call $t$-structures as a class in bijection with normal torsion theories defined in that specific model.
+
+The second major result of the present paper is having established a similar result for again a different model of a stable homotopy theory, namely \emph{stable derivators}: this has to be regarded as the nontrivial step towards a model\hyp{}independence proof saying that $t$-structures are normal torsion theories in \emph{all} known models for stable $(\infty,1)$-categories, and then that $t$-structures \emph{are} indeed normal torsion theories whatever the setting we live within is. 
+
+The fact that the present claims are the less easy part of this plan is especially true because  it was the very definition of a factorization system on a derivator that had to be designed to perform this task, as this notion was absent from the general theory of this specific 2\hyp{}category. Building a flexible and expressive calculus of factorization systems on a (pre)derivator is then an important conceptual step \emph{per se}, in view of a deeper understanding of the 2\hyp{}categorical features of $\PDer$.
+% It is worth to mention that our \athm\refbf{} \emph{holds unstably}, \ie it is a general theorem about the 2-category of derivators, and not about its sub-2-category of stable ones.
+  A thorough, systematic approach to the subject of factorization systems in $\PDer$ will probably be the subject of subsequent investigations.
+  
+  
+\smallskip
+%\subsection*{An introduction to §3-6.}
+The theory of derivators was introduced by A\@. Grothendieck in an extremely long and famous manuscript \cite{tendieckderiv}, as an attempt to correct the above\hyp{}mentioned unwieldy features of triangulated categories, and more generally to provide an algebraic, purely 2-categorical model for the homotopy theory of (what we call today) $(\infty,1)$\hyp{}categories.
+
+In modern terms, a pre-derivator $\D\colon \Dia^\opp\to\Cat$ is nothing more than a (strict) 2-functor, where $\Dia$ is a suitable sub\hyp{}2\hyp{}category of the 2-category $\cat$ of small categories, while $\Cat$ is the ``2-category'' of categories (see the introduction to \cite{Moritz} for all that regards set-theoretical issues in the basic theory of derivators).
+
+We devote §\refbf{sec:squaring} to introduce and study the notion of \emph{derivator factorization system} (\textsc{dfs} for short) on a pre-derivator $\D$. Mimicking the classical theory, such a thing will be a pair of subfunctors $\mathbb E$ and $\mathbb M\colon \Dia^\opp\to\Cat$ of $\D^\due$ that are mutually ``orthogonal'' and that ``crumble all the morphisms in $\D$'' in a suitable sense (see \adef\refbf{def_c_ort}, \refbf{def_phfs} and \refbf{def_hfs}).
+
+The precise definition of a \textsc{dfs} is fairly technical; let us just remark here that:
+\begin{itemize}
+\item if the pre-derivator $\D$ is \emph{representable}, that is $\D(I)=\Cat(I,\D(\uno))$ for any $I\in \Dia$, then a pair of sub pre-derivators $\F=(\mathbb E,\mathbb M)$ is a \textsc{dfs} if and only if $\F_I=(\mathbb E(I),\mathbb M(I))$ is a classical \textsc{fs} in the category $\D(I)$; this shows how the definition really generalizes the classical setting;
+\item if $\D$ is a \emph{stable derivator} (which ensures that each $\D(I)$ is, canonically, a triangulated category), then a pair of sub pre-derivators $\F=(\mathbb E,\mathbb M)$ is a \textsc{dfs} if and only if $\F_I=(\mathbb E(I),\mathbb M(I))$ is a triangulated \textsc{fs} in $\D(I)$. This shows how the definition of a triangulated factorization system is nothing more than the ``shadow'' left by a derivator factorization system on the unerlying category $\D(\uno)$ of $\D$.
+\end{itemize}
+Of course, it would be possible to make a general statement out of this remark: a triangulated factorization system as defined in \refbf{the_def_of_hfs} is the shadow left by the $(\infty,1)$\hyp{}categorical definition by passing to the triangulated homotopy category of whatever model for our stable homotopy theory: it is worth to remark that the factorization systems arising in this way are seldom orthogonal (\ie there is no unique solution to lifting problems), even though they come from orthogonal ones (where uniqueness is specified up to a suitable notion of homotopy specific to the model in study).%: far from being a drawback, this is an unavoidable feature of $(\infty,1)$-category theory.
+
+In §\refbf{higher_rosetta_subs} we introduce the notion of \emph{normal} derivator \textsc{tth}. For a stable derivator $\D$, this corresponds to a \textsc{dfs} $\F=(\mathbb E,\mathbb M)$ for which each $\F_I=(\mathbb E(I),\mathbb M(I))$ is a normal triangulated \textsc{tth} in $\D(I)$. We then prove the following theorem, that summarizes all we said:
+\begin{quote}
+\textbf{Theorem II:} For a stable derivator $\D\colon \fincat^\opp\to \Cat$, the following map is bijective:
+\[
+\xymatrix@R=0pt{
+\left\{
+{\begin{smallmatrix}
+\text{normal derivator}\\
+\text{\textsc{tth}s on }\D
+\end{smallmatrix}}
+\right\}
+\ar[rr] &&
+\left\{
+{\begin{smallmatrix}
+\text{$t$-structures}\\
+\text{on }\D(\uno)
+\end{smallmatrix}}
+\right\}\\
+(\mathbb E,\mathbb M) \ar@{|->}[rr]&& \Big(0/\mathbb E(\uno), \Sigma(\mathbb M(\uno)/0)\Big) 
+}
+\]
+\end{quote}
+Notably, as a consequence of the above theorem we can recover the main result of \cite{Fiorenza2014} as a corollary.
+
+In the last two sections of the paper we study some formal properties of \textsc{dfs}s. For this, we extend to our setting the two main results of \cite{Korostenski199357}. There, the authors start from the observation that any factorization systems is given by a so-called \emph{factorization pre-algebra}, that is, a functor $F_\F\colon \C^\due \to \C$ (defined as a section of the composition map $c\colon \C^\tre \to \C^\due\colon (g,f)\mapsto g\circ f$) such that $F_\F(\id_X)=X$ for any $X\in \C$. To any such functor, one associates two functors
+\[
+e_{-},\, m_{-}\colon \C^\due\to \C^\due
+\]
+that give us a functorial factorization of any given morphism $f\colon X\to Y$ in $\C$,  
+\[
+X\xto{e_f}F_\F(f)\xto{m_f}Y
+\] 
+with $e_f\in \E$ and $m_f\in \M$. On the other hand, given a factorization pre-algebra $F\colon \C^\due \to \C$, one defines
+\[
+\E_F \coloneqq \{h\in \C^\due \mid m_h\text{ is an iso}\}\qquad\text{and}\qquad
+\M_F \coloneqq \{k\in \C^\due \mid e_k\text{ is an iso}\},
+\]
+and says that $F$ is an \emph{Eilenberg\hyp{}Moore factorization} provided $e_f\in \E_F$ and $m_f\in \M_F$ for any $f\in \C^\due$. The major result of \cite[\athm\textbf{A}]{Korostenski199357} is that, for an Eilenberg\hyp{}Moore factorization $F$, the pair $(\E_F,\M_F)$ is a \textsc{fs}. This beautiful piece of formal category theory  ignited a certain amount of research: related topics led to what we call today \emph{algebraic factorization systems} (see \cite{Gar,grandis2006natural}, also in connection with the definition of model category in \cite{riehl2011algebraic}).
+
+For a pre-derivator $\D$, a \emph{factorization pre-algebra}  becomes a morphism  $F\colon \D^\due\to \D$ such that $F\circ \pt^\circledast=\id_\D$ (see \adef\refbf{def_factorization_alg}). To such an $F$ one associates two endo-1-cells 
+\[
+F_l,\, F_r\colon \D^\due\to \D^\due
+\]
+playing the same r\^ole of $e_{-}$ and $m_{-}$ above. Then one defines two sub pre-derivators $\mathbb E$ and $\mathbb M$ of $\D^\due$, where
+\begin{gather*}
+\mathbb E_F(I) \coloneqq \{X\in \D^\due(I) \mid F_lX\text{ is an iso}\}\\
+\mathbb M_F(I) \coloneqq \{Y\in \D^\due(I) \mid F_rY\text{ is an iso}\}
+\end{gather*}
+for any $I\in \Dia$, and says that $F$ is an \emph{Eilenberg\hyp{}Moore factorization} provided $F_rX\in \mathbb E_F(I)$ and $F_lX\in \mathbb M_F(I)$ for any $X\in \D^\due(I)$. We are able to rephrase \cite[\athm\textbf{A}]{Korostenski199357} as follows:
+\begin{quote}
+\textbf{Theorem III:}
+Let $\D$ be a pre-derivator and  $F\colon \D^\due\to \D$ an Eilenberg\hyp{}Moore factorization  (see \adef\refbf{def_EM_algebra}). Under very mild assumptions on $\D$ (see Setting \refbf{setting_sec_3})  the pair $(\mathbb E_F,\mathbb M_F)$ is a \textsc{dfs}. If $\D$ is represented or if it is a stable derivator, then any \textsc{dfs} on $\D$ arises this way from an Eilenberg\hyp{}Moore factorization.
+\end{quote}
+The inherently 2-categorical content of \cite{Korostenski199357} becomes clear as the authors move to the second main statement: \cite[\athm\textbf{B}]{Korostenski199357}
+\begin{quote}
+Orthogonal factorization systems can described as Eilenberg\hyp{}Moore algebras for the \emph{squaring monad} on $\Cat$, that sends a category $\A$ into its functor category $\Cat(\due,\A)$.
+\end{quote}
+The authors explicitly suggest how the reason why this second statement holds relies on purely formal computations that can in principle be carried on in a sufficiently well\hyp{}behaved 2-category other than $\Cat$.
+
+Our aim here is to catch this hint and follow these steps quite faithfully, exploiting the intimate connection between $\Cat$ and $\PDer$; this allows us to reformulate quite easily those parts of \cite{Korostenski199357} that depend on the features of $\Cat$ only on the surface.
+
+Spelled out more explicitly, \cite[\athm\textbf{B}]{Korostenski199357} regards orthogonal factorization systems as \emph{normal pseudo-algebras} for the squaring monad: this is the monad $T=((-)^\due,\mu,\eta)$, consisting of the strict $2$-functor 
+\[
+(\firstblank)^\due\colon \Cat\to \Cat
+\]
+such that $\C\mapsto \C^\due$, endowed with the natural transformations $\mu$ and $\eta$ (multiplication and unit, respectively), where $\mu_\C\colon \C^{\due\times \due}\to \C^\due$ is induced by the precomposition with the diagonal map $\Delta$ that we define in \refbf{comonoid_due_subs}: an object of $\C^{\due\times\due}$, \ie a commutative square $\left[\begin{smallmatrix} X_{00} &\to& X_{10} \\ \downarrow && \downarrow \\ X_{01} &\to& X_{11}\end{smallmatrix}\right]$, goes to its diagonal $\var{X_{00}}{X_{11}}$, while $\eta_\C\colon \C\to \C^\due$ maps an object to its identity morphism. An important property for us (see \cite{Korostenski199357,RW}) is that a factorization pre-algebra $F\colon \C^\due\to \C$ is forced to be an algebra by whichever isomorphism $FF^\due\cong F\mu_\C$, that is then forced to be an \emph{extended associator} interacting with the monad multiplication in the well-known way.
+
+This can be regarded as a coherence result which is utterly specific to this particular monad, showing how the entire $(\firstblank)^\due$-algebra structure for $F$ is a little bit redundant: in this specific case, the unit alone is enough to uniquely determine an extended associator $\alpha_m$ (see \adef\refbf{two-monad}).
+
+We reformulate these results in the setting of pre-derivators as follows, and prove it as the last statement in §\refbf{higher_coherence_sub}:
+\begin{quote}
+\textbf{Theorem \textbf{IV}:} Let $\D$ be either a represented pre-derivator or a stable derivator. The following are equivalent for a normal factorization pre-algebra $F\colon \D^\due\to \D$:
+\begin{enumerate}
+\item $F$ can be endowed  with the structure of an algebra over the squaring monad;
+\item there exists an isomorphism $\alpha\colon FF^\due \xto{\sim} F\Delta^\circledast$;
+\item $F$ is a \textsc{em} factorization (so that $(\mathbb E_F,\mathbb M_F)$ is a \textsc{dfs}).
+\end{enumerate}
+\end{quote}
+%
+\medskip
+\paragraph{\bf Acknowledgements.} The first author thanks prof\@. J\@. Rosick\'y, because it was possible to finish the hardest part of the present paper mainly thanks to the pleasant environment of Masaryk University. 
+Both authors would like to express their gratitude to F\@. Mattiello, because he surely is a moral third author, and A\@. Gagna, for his careful reading of §\textbf{3} and for having spotted an error in our initial argument linking derivator- and quasicategorical factorization systems.
+
+\medskip
+\paragraph*{\bf Notation and terminology.}
+Among different foundational convention that one may adopt throughout the paper we assume that every set lies in a suitable Grothendieck universe. Throughout §\textbf{1-4} this choice can be safely replaced by the more popular foundation using sets and classes. In §\textbf{5-6} the need to consider the ``category'' of 2-functors $\PDer \to \PDer$ forces us to fix such a (hierarchy of) universe(s).
+
+More in detail we implicitly fix an universe $\mho$, whose elements are termed \emph{sets}; \emph{small categories} have a \emph{set} of morphisms; \emph{locally small} categories are always considered to be small with respect to \emph{some} universe: in particular we choose to adopt, whenever necessary, the so\hyp{}called \emph{two\hyp{}universe convention}, where we postulate the existence of a universe $\mho^+\ni \mho$ in which all the classes of objects of non\hyp{}$\mho$\hyp{}small, locally small categories live. 
+
+We denote $\cat = \mho\text{-}\Cat$ and $\CAT = \mho^+\text{-}\Cat$ for short, and we extend this notation somewhen without further mention: this means that, for example, $\cate{sSet} = [\bDelta^\opp,\mho]$ and $\cate{sSET} = [\bDelta^\opp, \mho^+]$.
+
+Possibly large categories and higher categories will be usually denoted as boldface letters $\A,\cate{B},\dots$; generic classes of morphisms in a category are denoted as calligraphic letters $\E, \M, \mathcal{X},\mathcal{Y},\dots$; when they are considered as objects of the category $\cat$, small categories are usually denoted as capital latin leters like $I,J,K,\dots$, but so is an object of a possibly large category $\C$; it is always possible to solve this slight abuse of notation.
+
+Functors between \emph{small} categories are denoted as lowecase Latin letters like $u,v,w,\dots$ and suchlike (there are of course numerous deviations to this rule); the category of functors $\A\to \cate{B}$ between two categories is invariably denoted as $\Cat(\A,\cate{B})$, $\cate{B}^{\A}$, $[\A,\cate{B}]$ and suchlike; the canonical $\hom$\hyp{}bifunctor of a category $\A$ sending $(c,c')$ to the set of all arrows $\hom(c,c')\subseteq\hom(\A)$ is almost always denoted as $\A(\firstblank,\secondblank)\colon \A^\opp\times\A\to\cate{Sets}$, and the symbols $\firstblank$, $\secondblank$ are used as placeholders for the ``generic argument'' of a functor or bifunctor; morphisms in the category $\Cat(\A,\cate{B})$ (\ie natural transformations between functors) are often written in Greek, or Latin lowercase alphabet, and collected in the set $\Nat(F,G) = \cate{B}^{\A}(F,G)$. 
+
+The simplex category $\bDelta$ is the \emph{topologist's delta} (opposed to the \emph{algebraist's delta} $\bDelta_+$ which has an additional initial object $[-1]$), having objects \emph{nonempty} finite ordinals $[n]=\{0<1\dots<n\}$; we denote $\Delta^n$ the representable presheaf on $[n]\in\bDelta$, \ie the image of $[n]$ under the Yoneda embedding of $\bDelta$ in the category $\cate{sSet}$ of simplicial sets; the notation $\Delta^J$ for $J\subseteq \{0,\dots,n\}$ denotes the sub\hyp{}simplex generated by the vertices in $J$ (so, for example, $\Delta^{\{0,2\}} \subseteq \Delta^2$ is the copy of $\Delta^1$ that sends $0$ to $0$ and $1$ to $2$). The notation $\Lambda^k[n]\subset \Delta^n$ denotes the \emph{$k^\text{th}$ horn inclusion}, \ie the sub\hyp{}simplicial set of $\Delta^n$ resulting from the union of all the images of the face maps $d_i$, for $i\neq k$ in $\{0,\dots,n\}$. More often the objects of $\Delta$ are considered as categories via the obvious embedding $\bDelta\subset\cat$: in this case, the object $[n-1]\in\bDelta$ is denoted $\cate{n}\in\cat$ (so for example all along §\refbf{sec:thmA} we write $\due = \{0 < 1\}$, and similarly $\tre = \{0<1<2\}$).
+
+Apart from this, we indicate the Yoneda embedding of a category $\A$ into its presheaf category with $\yon_\A$ --or simply $\yon$--, i.e\@. with the hiragana symbol for ``yo''; this choice comes from \cite{Libland2015}. Whenever there is an adjunction $F\dashv G$ between functors, the arrow $Fa\to b$ in the codomain of $F$ and the corresponding arrow $a\to Gb$ in its domain are called \emph{mates} or \emph{adjuncts}; so, the notation ``the mate/adjunct of $f\colon Fa\to b$'' means ``the unique arrow $g\colon a\to Gb$ determined by $f$''. When there is an adjunction between two functors $F,G$ we adopt $F\adjunct{\eta}{\epsilon}G$ as a compact notation to denote at the same time that $F$ is left adjoint to $G$, with unit $\eta \colon 1 \to GF$ and counit $\epsilon\colon FG\to 1$. The \emph{whiskering} between a 1-cell $F$ and a 2-cell $\alpha$ is denoted $F * \alpha$ or $\alpha * F$.

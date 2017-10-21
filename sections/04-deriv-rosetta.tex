@@ -1,0 +1,95 @@
+\section{The Rosetta stone for derivators}
+We have seen in Theorem \refbf{triang-rosetta} that, given a triangulated category $\cD$, there is a bijection between $t$-structures and normal {\htth}s on $\cD$. In this section we are going to prove a similar bijection for derivators. More precisely, we fix a stable derivator 
+$$\D\colon \fincat^\opp\longrightarrow \Cat$$
+of type $\fincat$ and we show a bijection between $t$-structures on the triangulated category $\D(\uno)$ and normal derivator torsion theories on $\D$. For this, we need to recall in Subsection \refbf{recall_fincat} some results about stable derivators of type $\fincat$ from \cite{Groth_Virili}. The above bijection is then proved in Subsection \refbf{higher_rosetta_subs}. As a consequence we recover one of the main results of \cite{Fiorenza2014} (see Corollary \refbf{infinity_rosetta}). 
+
+\subsection{Stable derivators of type $\fincat$}\label{recall_fincat}
+
+Given a finite directed category $I$, define its \emph{length} $\ell(I)\in \N$ as the maximal length of a path of non-identity arrows in $I$. An object $i$ in $I$ is \emph{maximal}, if there is no non-identity morphism starting in $i$. The inclusion $u\colon J\to I$ of the full subcategory $J$ of $I$ spanned by the non-maximal objects is a sieve.
+
+\begin{lemma}{\rm \cite{Groth_Virili}}
+Given $I\in\fincat$, let $u\colon J\to I$ be the inclusion of the full subcategory $J$ spanned by the non-maximal objects. Then, for any maximal object $i\in \mathrm{Ob}(I)$, $\ell(I)>\ell(J)\geq \ell(u/i)$.
+\end{lemma}
+
+
+\begin{proposition}{\rm \cite{Groth_Virili}}
+Given a stable derivator $\D\colon \fincat^\opp\to \Cat$, the following statements hold true for any $I\in \fincat$:
+\begin{enumerate}
+\item let  $u\colon J\to I$ be the inclusion of non-maximal objects. For $X\in \D(I)$, there is a distinguished triangle of the form
+\[
+\bigoplus_{I\setminus J}i_!i^*u_!u^*X\to \bigoplus_{I\setminus J}i_!X_i\oplus u_!u^*X\to X\to \Sigma \bigoplus_{I\setminus J}i_!i^*u_!u^*X;
+\]
+\item the functor $\dia_I\colon \D(I)\to \D(\uno)^I$ is full and essentially surjective.
+\end{enumerate}
+\end{proposition}
+Let us register the following consequence of the above proposition and lemma:
+\begin{corollary}\label{everything_is_maximal}
+The following statements hold true for a stable derivator $\D\colon \fincat^\opp\to \Cat$:
+\begin{enumerate}
+\item given a {\hfs} $\F=(\E, \M)$ in the triangulated category $\D(\uno)$, there is a \dfs $\widetilde \F=(\mathbb E,\mathbb M)$ on $\D$, such that $\mathbb E(\uno)=\E$ and $\mathbb M(\uno)=\M$;
+\item any \dfs on $\D$ is maximal.
+\end{enumerate}
+In particular, there is a bijection between {\hfs}s on $\D(\uno)$ and {\dfs}s on $\D$. 
+\end{corollary}
+\begin{proof}
+(1) Given $I\in \fincat$, define $\mathbb E(I) \coloneqq \{X\in \D^{\due}(I):X_i\in \E, \, \forall i\in I\}$ and $\mathbb M(I) \coloneqq \{Y\in \D^{\due}(I):Y_i\in \M, \, \forall i\in I\}$. It is not difficult to prove that this defines a pair of sub-$2$-functors $\widetilde \F \coloneqq (\mathbb E,\mathbb M)$ of $\D^\due$. Using the fact that $\dia_{J}$ is full and essentially surjective for any $J\in\fincat$ one can show that $\Psi_{\widetilde\F}(I)\colon \D_{\widetilde \F}(I)\to \D^{\due}(I)$ is essentially surjective for any $I\in\fincat$. To conclude we should verify that, given $I\in\fincat$, if $X\in \mathbb E(I)$ and $Y\in \mathbb M(I)$, then $X\corth Y$. For this we proceed by induction on $\ell(I)$. The case $\ell(I)=0$ being trivial (in that case $\D(I)$ is a finite product of copies of $\D(\uno)$), let us suppose $\ell (I)\geq 1$ and that our statement is verified for any finite directed category of shorter length. By the above proposition we have a morphism of triangles as follows:
+$$
+\xymatrix@C=15pt{
+\bigoplus_{I\setminus J}i_!i^*u_!u^*X\ar[r]\ar[d]& \bigoplus_{I\setminus J}i_!X_i\oplus u_!u^*X\ar[r]\ar[d]& X\ar[r]\ar[d]& +\\
+\pt^*\pt_!\bigoplus_{I\setminus J}i_!i^*u_!u^*X\ar[r]& \pt^*\pt_!\left(\bigoplus_{I\setminus J}i_!X_i\oplus u_!u^*X\right)\ar[r]& \pt^*\pt_!X\ar[r]& +
+}
+$$
+Applying the contravariant functor $\D^{\due}(I)(-,Y)$ to the above diagram we obtain
+% \begin{center}
+% \includegraphics[width=\textwidth]{disegno/bigdiag.pdf}
+% \end{center}
+{\footnotesize \[
+\xymatrix{
+\underset{I\smallsetminus J}\prod \D(\due)((u_!u^*X)_i, Y_i) & \underset{I\smallsetminus J}\prod\D(\uno)(\pt_!(u_!u^*X)_i, \pt_*Y_i)\ar[l]_\cong\\
+\ar[u]\underset{I\smallsetminus J}\prod\D(\due)(X_i, Y_i)\times \D^\due(I\smallsetminus J)(u^*X, u^*Y) & \underset{I\smallsetminus J}\prod\D(\due)((X_i)_1, (Y_i)_0)\times \D^\due(I\smallsetminus J)((u^*X)_1, (u^*Y)_0)\ar[u]\ar[l]_(.55)\cong\\
+\ar[u]\D^\due(I)(X,Y) & \D^\due(I)(X_1, Y_0)\ar[u]\ar[l]_\cong\\
+\ar[u]\underset{I\smallsetminus J}\prod\D(\due)((\Sigma u_!u^*X)_i, Y_i) & \underset{I\smallsetminus J}\prod\D(\uno)(\pt_!(\Sigma u_!u^*X)_i, \pt_* Y_i)\ar[u]\ar[l]_\cong\\
+\vdots \ar[u]& \vdots\ar[u] 
+}
+\]}
+(we used that left Kan extensions commute with left Kan extensions and that functors of the form $v^*$ commute with both left and right Kan extensions). The isomorphisms in the above diagram come from our inductive hypothesis and so, by the 5-lemma, we can conclude that $\D^{\due}(I)(X_1,Y_0)\cong \D^{\due}(I)(X,Y)$, which means that $X\corth Y$.
+
+(2) Let $\F=(\mathbb E,\mathbb M)$ be a \dfs on $\D$ and let us show that it is maximal. Indeed, let $X\in \D^{\due}(I)$ be such that $X_i\in \mathbb E(\uno)$ for all $i\in I$ and let us show that $X\in \mathbb E(I)$. For this one can proceed by induction on $\ell(I)$ and, using the same diagrams as in the proof of part (1), show that $X\corth Y$ for any $Y\in \mathbb M(I)$.
+\end{proof}
+
+
+\subsection{The Rosetta stone theorem}\label{higher_rosetta_subs}
+To prove that $t$-structures on $\D(\uno)$ correspond bijectively to normal derivator torsion theories on $\D$,  we should say what it means for a \dfs $\F=(\mathbb E,\mathbb M)$ on $\D$ to be a normal derivator torsion theory. One easy way to say this is to ask that, for any $I\in \fincat$, the {\hfs} $\overline\F_I=(\overline{\mathbb E(I)},\overline{\mathbb M(I)})$ is a normal \htth. In the following definition we give a different (but equivalent) formulation that better fits into the language of derivators. Notice that the following definition makes sense in any pointed derivator $\D$, not just for stable ones.
+
+\begin{definition}[normal derivator torsion theories]
+A sub pre-derivator $\mathbb X$ of $\D$ is said to have the $3$-for-$2$ property if, for any $I\in \fincat$, given $X\in \D^\tre(I)$ such that $2$ objects in the set $\{X_{(0,1)},X_{0,2},X_{1,2}\}$ belong to $\mathbb X^{\due}(I)$, so does the third. A \dfs $\F=(\mathbb E,\mathbb M)$ on $\D$ is said to be
+\begin{enumerate}
+\item a \emph{derivator torsion theory} (for short, \textsc{dtth}) provided $\mathbb E$ and $\mathbb M$ have the $3$-for-$2$ property;
+\item \emph{left normal} if, given $I\in \fincat$, $X\in \D(I)$ and $F\in \D^\tre({I})$ such that $F_{(0,2)}\cong 0_*X$, then $0_*0^!F_{(0,1)}\in \mathbb E(I)$;
+\item \emph{right normal} if, given $I\in \fincat$, $X\in \D(I)$ and $F\in \D^\tre({I})$ such that $F_{(0,2)}\cong 1_!X$, then $1_!1^?F_{(1,2)}\in \mathbb E(I)$;
+\item \emph{normal} if it is both left and right normal.
+\end{enumerate}
+\end{definition}
+
+Using the stability of our derivator $\D$, it is not difficult to verify that a \dfs is left normal if and only if it is right normal, if and only if it is normal.
+
+\begin{theorem}
+Let $\D\colon \fincat^\opp\to \Cat$ be a stable derivator. There is a bijection between the following classes:
+\begin{enumerate}
+\item $t$-structures in $\D(\uno)$; 
+\item normal \textsc{dtth}s on $\D$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+By Theorem \refbf{triang-rosetta} there is a bijective correspondence between $t$-structures and normal {\htth}s in $\D(\uno)$. Using Corollary \refbf{everything_is_maximal} it is not difficult to show that normal {\htth}s in $\D(\uno)$ correspond bijectively to normal \textsc{dtth}s on $\D$.
+\end{proof}
+
+Let now $\iC$ be a stable $\infty$-category. We have seen in Theorem \refbf{infinity_FS_vs_CFS} that \textsc{fs}s on $\iC$ correspond bijectively with maximal {\dfs}s on the associated derivator $\D_\iC\colon \fincat^\opp\to \Cat$ and, by Corollary \refbf{everything_is_maximal}, any \dfs on $\D_\iC$ belongs to this family. Furthermore, it is not difficult to verify that a \textsc{fs} on $\iC$ is a normal torsion theory (see \cite{Fiorenza2014} for the exact definition) if and only if the associated \dfs on $\D_\iC$ is a normal \textsc{dtth}. As a consequence we obtain the following corollary:
+
+\begin{corollary}{\rm \cite{Fiorenza2014}}\label{infinity_rosetta}
+Let $\iC$ be a stable $\infty$-category. There is a bijection between the following classes:
+\begin{enumerate}
+\item $t$-structures in $\ho(\iC)$; 
+\item normal torsion theories in $\iC$.
+\end{enumerate}
+\end{corollary}

@@ -1,0 +1,28 @@
+\newcommand{\htth}{{\scriptsize $\triangle$}\textsc{tth}\@\xspace}
+\newcommand{\hfs}{{\scriptsize $\triangle$}\textsc{fs}\@\xspace}
+\newcommand{\phfs}{{\scriptsize $\triangle$}\textsc{pfs}\@\xspace}
+
+\def\hdisplayed{\mathbin{\ooalign{\hfil\raisebox{.255em}{$\shortmid$}\hfil\cr\raisebox{0em}{\scalebox{1}[.6]{$\approx$}}\cr}}}
+\def\hnormaled{\hdisplayed}
+\def\hscripted{\ooalign{\hfil\raisebox{.18em}{$\scriptstyle\shortmid$}\hfil\cr\raisebox{0em}{\scalebox{1}[.6]{$\scriptstyle\approx$}}\cr}}
+\def\hscriptscripted{\ooalign{\hfil\raisebox{.12em}{$\scriptscriptstyle\shortmid$}\hfil\cr\raisebox{0em}{\scalebox{1}[.6]{$\scriptscriptstyle\approx$}}\cr}}
+%
+%
+%
+\def\cdisplayed{\mathbin{\ooalign{\hfil\raisebox{.225em}{$\shortmid$}\hfil\cr\raisebox{-.12em}{\scalebox{1}[1]{$=$}}\cr}}}
+\def\cnormaled{\cdisplayed}
+\def\cscripted{\ooalign{\hfil\raisebox{.14em}{$\scriptstyle\shortmid$}\hfil\cr\raisebox{-.12em}{\scalebox{1}[1]{$\scriptstyle =$}}\cr}}
+\def\cscriptscripted{\ooalign{\hfil\raisebox{.05em}{$\scriptscriptstyle\shortmid$}\hfil\cr\raisebox{-.12em}{\scalebox{1}[1]{$\scriptscriptstyle =$}}\cr}}
+%
+\def\horth{\mathchoice{\hdisplayed}{\hnormaled}{\hscripted}{\hscriptscripted}}%
+\def\corth{\mathchoice{\cdisplayed}{\cnormaled}{\cscripted}{\cscriptscripted}}%
+
+\newcommand{\var}[2]{\left[ \begin{smallmatrix} #1 \\ \downarrow \\ #2 \end{smallmatrix}\right]}
+\newcommand{\smat}[1]{\left[ \begin{smallmatrix} #1 \end{smallmatrix}\right]}
+
+% famola sporchissima
+
+\def\lhorth#1{\leftidx{^{\horth}}{#1}{}}
+\def\prescript#1#2#3{\leftidx{^{#1}}{_{#2}}{#3}}
+
+\def\orth{\boxslash}
