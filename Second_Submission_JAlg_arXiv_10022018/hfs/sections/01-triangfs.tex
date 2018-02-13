@@ -1,0 +1,221 @@
+\section{Triangulated factorization systems}\label{section_homo_FS}
+Throughout this section we let $\cD$ be a (fixed but arbitrary) triangulated category, with shift functor $\Sigma\colon \cD \xto{\simeq} \cD$. For a general background and notation on triangulated categories we refer to \cite{Neeman} and \cite[Appendix \textbf{A}]{hps:axiomatic}. 
+
+Even though this assumption is not requested, as we will state and prove our theorems for fully general triangulated categories (assuming only, from time to time, the existence of countable (co)products), the reader should keep in mind that in Section \refbf{sec:squaring} will be clear how our motivating example for $\cD$ is the underlying category $\D(\uno)$ of a stable derivator.
+\subsection{Homotopy orthogonality of morphisms}\label{horth_subs}
+Our first task is to build a notion of orthogonality of morphisms mindful of the triangulated structure on $\cD$.
+\begin{definition}[homotopy orthogonality]\label{wobbly}
+Let $E_0 \xto{e} E_1$ and $M_0 \xto{m} M_1$ be two maps in $\cD$, and complete them to triangles
+\begin{equation}\label{triangles}
+E_0 \xto{e}  E_1 \xto{\alpha_e} C_e \xto{\beta_e} \Sigma E_0
+\qquad \text{and}\qquad 
+M_0 \xto{m}  M_1 \xto{\alpha_m} C_m \xto{\beta_m} \Sigma M_0.
+\end{equation}
+We say that $e$ is \emph{left homotopy orthogonal} to $m$ (while $m$ is \emph{right homotopy orthogonal} to $e$), in symbols $e \horth m$, if the following conditions are satisfied:
+\begin{enumerate}[label=\textsc{ho}\arabic*.]
+\item \label{fst}the following map is trivial:
+$$\xymatrix@R=0pt{\cD(C_e,\Sigma^{-1}C_m)\ar[r]& \cD(E_1,M_0)\\
+(C_e\overset{\varphi}{\longrightarrow}\Sigma^{-1}C_m)\ar@{|->}[r]&(E_1\overset{\alpha_e}{\longrightarrow}C_e\overset{\varphi}{\longrightarrow}\Sigma^{-1}C_m\overset{\Sigma^{-1}\beta_m}{\longrightarrow}M_0)\,;}$$
+\item \label{snd}the following map is injective:
+$$\xymatrix@R=0pt{\cD(C_e,C_m)\ar[r]& \cD(E_1,\Sigma M_0)\\
+(C_e\overset{\varphi}{\longrightarrow}C_m)\ar@{|->}[r]&(E_1\overset{\alpha_e}{\longrightarrow}C_e\overset{\varphi}{\longrightarrow}C_m\overset{\beta_m}{\longrightarrow}\Sigma M_0)\,.}$$
+\end{enumerate}
+\end{definition}
+
+The concept of homotopy orthogonality seems quite artificial, but this notion arises naturally in the setting of stable derivators (see Section \refbf{sec:squaring}). Notice also that one can prove by standard arguments that homotopy orthogonality does not depend on the choice of triangles in \eqref{triangles}.
+\begin{remark}
+Condition \refbf{wobbly}\textbf{.}\textsc{ho2} can be substituted by the following one:
+\begin{enumerate}%[label=\textsc{ho}2'.]
+\item[\textsc{ho}2'.] The unique morphism $\varphi$ completing a morphism $(a,b)\colon e\to m$ in $\cD^\due$ to a morphism of triangles, as in the following diagram, is $\varphi=0$:
+$$\xymatrix{
+E_0\ar[r]^{e}\ar[d]_a&E_1\ar[r]^{\alpha_e}\ar[d]^b&C_e\ar[r]^{\beta_e}\ar@{.>}[d]|\varphi&\Sigma E_0\ar[d]\\
+M_0\ar[r]^m&M_1\ar[r]^{\alpha_m}&C_m\ar[r]^{\beta_m}&\Sigma M_0.
+}$$ 
+\end{enumerate}
+To see this equivalence, suppose that condition \refbf{wobbly}\textbf{.}\textsc{ho2} is satisfied. Then, the map $\cD(C_e,C_m)\to \cD(E_1,\Sigma M_0)$ sends $\varphi$ to $\beta_m\varphi\alpha_e=\beta_m\alpha_m b=0$; so by the injectivity of this map, we deduce that $\varphi=0$. On the other hand, suppose \textsc{ho}2' is satisfied and consider a morphism $\psi\in \cD(C_e,C_m)$ such that $\beta_m\psi\alpha_e=0$; we have to show that $\psi=0$. Indeed, since $\beta_m\psi\alpha_e=0$ we can construct a morphism of triangles as follows:
+$$\xymatrix{
+0\ar[r]\ar[d]&E_1\ar@{=}[r]\ar@{.>}[d]|{\exists b}&E_1\ar[r]^{}\ar[d]|{\psi\alpha_e}&0\ar[d]\\
+M_0\ar[r]^m&M_1\ar[r]^{\alpha_m}&C_m\ar[r]^{\beta_m}&\Sigma M_0.
+}$$ 
+Now one can complete the central square in the following diagram to a morphism of triangles:
+$$\xymatrix{
+E_0\ar[r]^{e}\ar@{.>}[d]_{\exists a}&E_1\ar[r]^{\alpha_e}\ar[d]^b&C_e\ar[r]^{\beta_e}\ar[d]^\psi&\Sigma E_0\ar@{.>}[d]\\
+M_0\ar[r]^m&M_1\ar[r]^{\alpha_m}&C_m\ar[r]^{\beta_m}&\Sigma M_0.
+}$$ 
+Then, by \textsc{ho}2', $\psi=0$ as desired.
+\end{remark}
+In what follows we verify some properties that one should expect from any well-behaved notion of orthogonality. 
+Let us start with the following property, whose proof is an easy exercise:
+\begin{lemma}\label{is_an_iso_if_horth_to_all}
+The following are equivalent for $f\in\cD^\due$
+\begin{enumerate}[label=(\roman*)]
+	\item $f$ is an isomorphism;
+	\item $f\horth \cD^\due$;
+	\item $\cD^\due\horth f$;
+	\item $f\horth f$.
+\end{enumerate}
+\end{lemma}
+The above proposition adopted an harmless abuse of notation, that is, it denoted $\mathcal{H}\horth \mathcal{K}$ the fact that each $h\in\mathcal{H}$ is left $\horth$-orthogonal to every morphism of $\mathcal{K}$. To make this statement precise we introduce the following definitions.
+
+\begin{notat}[$\horth$-orthogonal of a class]
+We denote $\lhorth{(\firstblank)} \dashv (\firstblank)^{\horth}$ the (antitone) Galois connection induced by the relation $\horth$ on full subcategories of $\cD^\due$;
+more explicitly, we denote
+\begin{gather}
+\mathcal{X}^{\horth} \coloneqq \{f\in \cD^\due \mid x \horth f, \ \forall x\in \mathcal{X}\}\notag\\
+\lhorth{\mathcal{X}} \coloneqq \{f\in \cD^\due \mid f \horth x, \ \forall x\in \mathcal{X}\}.
+\end{gather}
+\end{notat}
+\begin{remark}[$\horth$-locality]\label{object.ortho}
+There is a related notion of orthogonality between an object $X$ and a morphism $f\in\cD^\due$, based on the fact that we can blur the distinction between objects and their initial or terminal arrows; given these data, we say that $X$ is \emph{right-orthogonal} to $f$ (or that $X$ is an \emph{$f$-local} object) if the hom functor $\cD(-,X)$ inverts $f$; in fact, the map $\cD(f,X)$ is injective if and only if the pair $(f,\var{X}{0})$ satisfies condition  \refbf{wobbly}\textbf{.}\textsc{ho1}, while it is surjective if and only if $(f,\var{X}{0})$ satisfies condition \refbf{wobbly}\textbf{.}\textsc{ho2}. (Obviously, there is a dual notion of left orthogonality between $f$ and $B\in\cD$, or a notion of a \emph{$f$-colocal} object $B$ which reduces to left orthogonality with respect to $0\to B$).
+\end{remark}
+
+By the above remark, it is natural to say that two objects $B$ and $X$ are homotopy orthogonal if $\var{0}{B}\horth\var{X}{0}$. In fact, it is not difficult to show that this happens if and only if $\cD(B,X)=0$, that is, $B\perp X$ in the usual sense.
+
+The following lemma can be easily verified by hand:
+
+\begin{lemma}\label{horth_coprod}
+Let $\{f_i\}_{i\in I},\, g\in \cD^\due$. If $f_i\horth g$ for all $i\in I$,  then $\coprod_if_i\horth g$. On the other hand, if $g\horth f_i$ for all $i\in I$, then $g\horth \prod_i f_i$. 
+\end{lemma}
+\begin{lemma}
+Let $f,\, g\in \cD^\due$ and let $f'$ be a retract of $f$, that is, there is a commutative diagram
+\[
+\xymatrix{F_0'\ar[r]|{i_0}\ar[d]_{f'} \ar@/^15pt/[rr]|{\id} & F_0\ar[r]|{p_0}\ar[d]^f & F_0'\ar[d]^{f'}\\ 
+F_1'\ar[r]|{i_1}\ar@/_15pt/[rr]|{\id} &F_1 \ar[r]|{p_1} &F_1'}
+\]
+If $f\horth g$, then $f'\horth g$.
+\end{lemma}
+\begin{proof}
+Let $(a,b)\colon f'\to g$ be a morphism in $\cD^\due$ and consider the following commutative diagram, whose columns are triangles:
+$$
+\xymatrix{
+F'_0\ar[r]^{i_0}\ar[d]_{f'}&F_0\ar[r]^{p_0}\ar[d]_{f}&F'_0\ar[r]^a\ar[d]_{f'}&G_0\ar[d]^g\\
+F'_1\ar[r]^{i_1}\ar[d]_{\alpha_{f'}}&F_1\ar[r]^{p_1}\ar[d]_{\alpha_{f}}&F'_1\ar[r]^b\ar[d]_{\alpha_{f'}}&G_1\ar[d]^{\alpha_g}\\
+C_{f'}\ar[r]^i\ar[d]_{\beta_{f'}}&C_{f}\ar[r]^p\ar[d]_{\beta_{f}}&C_{f'}\ar[r]^{\varphi}\ar[d]_{\beta_{f'}}&C_{g}\ar[d]_{\beta_{g}}\\
+\Sigma F'_0\ar[r]&\Sigma F_0\ar[r]&\Sigma F'_0\ar[r]^{\Sigma a}&\Sigma G_0
+}
+$$
+and notice that the composition $p\circ i$ is  an isomorphism. To verify \refbf{wobbly}\textbf{.}\textsc{ho1} we should prove that $\varphi=0$, but in fact, $\varphi p=0$ for the same condition applied to the pair $(f,g)$, so that $\varphi\cong \varphi p\, i=0$. On the other hand, to verify \refbf{wobbly}\textbf{.}\textsc{ho2}, consider a morphism $\psi\colon C_{f'}\to \Sigma^{-1}C_g$, then $\Sigma^{-1}(\beta_g)\psi\alpha_{f'}\cong \Sigma^{-1}(\beta_g)\psi p\, i \alpha_{f'}=\Sigma^{-1}(\beta_g)\psi p\alpha_{f} i_{1}=0\circ i_1=0$, where $\Sigma^{-1}(\beta_g)\psi p\alpha_{f}=0$ by the same condition applied to the pair $(f,g)$. 
+\end{proof}
+\begin{remark}\label{recall_hocart}
+To simplify the formulation of some of our forthcoming observations, let us recall that a \emph{homotopy cartesian square} in $\cD$ is a commutative diagram
+\begin{equation}\label{cartesian_diagram}
+\begin{matrix}\xymatrix{
+X\ar@{}[dr]|\boxvoid\ar[r]^{\phi}\ar[d]_{\alpha}&Y\ar[d]^{\beta}\\
+X'\ar[r]_{\phi'}&Y'
+}\end{matrix}
+\end{equation}
+such that there exists a distinguished triangle $X\to X'\oplus Y\to Y'{\to}\Sigma X$, where the map $X\to X'\oplus Y$ is $\binom{\alpha}{-\phi}$, while the map $X'\oplus Y\to Y'$ is $(\phi', \beta)$. We call $\beta$ the {\em homotopy pushout} of $\alpha$, and $\alpha$ the {\em homotopy pullback} of $\beta$. We refer to \cite[\achap\textbf{1}]{Neeman} for more details on this construction.
+\end{remark}
+\begin{lemma}\label{closure_homo_ho2}
+Let $(\psi\colon Y_0 \to  Y_1 )\in \cD^\due$ and consider a homotopy cartesian square:
+$$\xymatrix{
+ X_0 \ar@{}[dr]|\boxvoid\ar[r]^{s}\ar[d]_{\phi}& X_0' \ar[d]^{\phi'}\\
+ X_1 \ar[r]_{t}& X_1 '
+}$$
+Then the following statements hold true:
+\begin{enumerate}
+\item[\rm (1)] if the pair $(\phi,\psi)$ satisfies \refbf{wobbly}\textbf{.}\textsc{ho2}, so does the pair $(\phi',\psi)$;
+\item[\rm (2)] if the pair $(\phi,\psi)$ satisfies \refbf{wobbly}\textbf{.}\textsc{ho1} and $(\phi,\Sigma^{-1}\psi)$ satisfies \refbf{wobbly}\textbf{.}\textsc{ho2}, then $\cD(C_{\phi'},\Sigma^{-1}C_{\psi})=0$;
+\item[\rm (3)] if $\phi\horth \psi$ and $\phi\horth\Sigma^{-1}\psi$, then $\phi'\horth \psi$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1) Given a morphism $(a,b)\colon \phi'\to \psi$, we get a commutative diagram:
+$$
+\xymatrix{
+ X_0 \ar@{}[rd]|\square\ar[r]^{s}\ar[d]_\phi& X_0' \ar[r]^a\ar[d]^{\phi'}& Y_0 \ar[d]^{\psi}\\
+ X_1 \ar[r]^{t}\ar[d]_\alpha& X_1' \ar[r]^b\ar[d]^{\alpha'}& Y_1 \ar[d]^{\alpha_\psi}\\
+C_\phi\ar[r]|\cong^{\varphi}\ar[d]_{\beta}&C_{\phi'}\ar[r]^{\psi}\ar[d]^{\beta'}&C_\psi\ar[d]^{\beta_\psi}\\
+\Sigma  X_0 \ar[r]&\Sigma  X_0 '\ar[r]&\Sigma  Y_0 }
+$$
+we should prove that $\psi=0$. By \refbf{wobbly}\textbf{.}\textsc{ho2} applied to $(\phi, \psi)$ we get $\psi\varphi=0$, but since $\varphi$ is an isomorphism this allows us to conclude.
+
+(2) Our two assumptions tell us that the  map $\cD(C_\phi,\Sigma^{-1}C_{\psi})\to \cD( X_1 , Y_0 )$ is both trivial and injective, so that $\cD(C_{\phi'},\Sigma^{-1}C_{\psi})\cong \cD(C_\phi,\Sigma^{-1}C_{\psi})=0$. 
+
+(3) By part (1) and $\phi\horth \psi$, the pair $(\phi',\psi)$ satisfies \refbf{wobbly}\textbf{.}\textsc{ho2}. Furthermore, by part (2) and our assumptions, $\cD(C_{\phi'},\Sigma^{-1}C_{\psi})=0$, so the map $\cD(C_{\phi'},\Sigma^{-1}C_{\psi})\to\cD(\phi'_1, Y_0 )$ is clearly trivial.
+\end{proof}
+
+Let us recall from \cite{neeman:new-axioms} that a morphism of triangles
+\begin{equation}\label{morphism_of_tria}\xymatrix{
+A_0\ar[r]^{ \phi_0 }\ar[d]_a&B_0\ar[r]^{ \psi_0 }\ar[d]_b&C_0\ar[r]\ar[d]^c&\Sigma A_0\ar[d]^{\Sigma a}\\
+A_1\ar[r]^{ \phi_1 }&B_1\ar[r]^{ \psi_1 }&C_1\ar[r]&\Sigma A_1}\end{equation}
+is said to be {\em middling good} if it can be completed to a $3\times 3$ diagram whose rows and columns are triangles and where everything commutes but the lower right square, which anti-commutes:
+\begin{equation}\label{3x3}
+\xymatrix{
+A_0\ar[r]^{ \phi_0 }\ar[d]_a&B_0\ar[r]^{ \psi_0 }\ar[d]_b&C_0\ar[r]\ar[d]^c&\Sigma A_0\ar[d]^{\Sigma a}\\
+A_1\ar[d]_{\alpha_a}\ar[r]^{ \phi_1 }&B_1\ar[d]_{\alpha_b}\ar[r]^{ \psi_1 }&C_1\ar[r]\ar[d]^{\alpha_c}&\Sigma A_1\ar[d]\\
+C_a\ar[r]^{\varphi_a}\ar[d]_{\beta_a}&C_b\ar[r]^{\varphi_b}\ar[d]_{\beta_b}&C_c\ar[r]\ar[d]^{\beta_c}&\Sigma C_a\ar[d]^{}\\
+\Sigma A_0\ar[r]&\Sigma B_0\ar[r]_{}&\Sigma C_0\ar[r]&\Sigma^2 C_0
+}
+\end{equation}
+Let us recall that, given a morphism $(a,b)\colon  \phi_0 \to  \phi_1 $ in $\cD^\due$, one can always choose a morphism $c\colon C_0\to C_1$ such that $(a,b,c)$ is a middling good morphism of triangles. 
+\begin{lemma}\label{extension}
+Let $(\chi\colon  Y_0 \to  Y_1 )\in\cD^\due$ and consider a middling good morphism of triangles as in \eqref{morphism_of_tria}. 
+If $a,\, \Sigma a,\, c,\, \Sigma c, \Sigma^{-1}c\horth \chi$, then $b\horth \chi$.
+\end{lemma}
+\begin{proof}
+By Lemma \refbf{closure_homo_ho2}, $a,\, \Sigma a\horth \chi$ implies $\cD(C_a,\Sigma^{-1}C_\chi)=0$, while  $c,\, \Sigma c\horth \chi$ implies $\cD(C_c,\Sigma^{-1}C_\chi)=0$. Hence,  $\cD(C_b,\Sigma^{-1}C_\chi)=0$. On the other hand, for a morphism $(d,e)\colon b\to \chi$, we get a commutative diagram whose columns are triangles:
+$$\xymatrix{
+A_0\ar[r]^{ \phi_0 }\ar[d]_a&B_0\ar[r]^d\ar[d]_b& Y_0 \ar[d]^\chi\\
+A_1\ar[r]^{ \phi_1 }\ar[d]_{\alpha_a}&B_1\ar[r]^e\ar[d]_{\alpha_b}& Y_1 \ar[d]^{\alpha_\chi}\\
+C_a\ar[r]^{\varphi_a}\ar[d]_{\beta_a}&C_b\ar[r]^{\varphi}\ar[d]_{\beta_b}&C_\chi\ar[d]^{\beta_\chi}\\
+\Sigma A_0\ar[r]&\Sigma B_0\ar[r]&\Sigma  Y_0 
+}$$ 
+Since $a\horth \psi$, then $\varphi\varphi_a=0$, which implies that there exists $f\colon C_c\to C_\chi$ such that $f\circ \varphi_b=\varphi$. By $c, \Sigma^{-1}c\horth \chi$ we get $\cD(C_c,C_{\chi})=0$, so $f=0$, which implies $\varphi=0$.
+\end{proof}
+
+\begin{lemma}\label{horth_colimits}
+Let $\psi\in\cD^\due$ and consider two countable chains of morphisms $A_\bullet = \{A_0\xto{j_0}A_1\xto{j_1}A_2\xto{j_2}\dots\}$ and $B_\bullet = \{B_0\xto{k_0}B_1\xto{k_1}B_2\xto{k_2}\dots\}$.  If there is a natural transformation $\alpha\colon A_\bullet \Rightarrow B_\bullet$ such that $\alpha_i,\, \Sigma \alpha_i,\, \Sigma^2 \alpha_i\horth \psi$ for all $i\in\N$, then any map $\varphi\colon  \text{hocolim } A_\bullet\to  \text{hocolim } B_\bullet$ completing the following diagram to a middling good map of triangles is such that $\varphi\horth \psi$
+\[
+\xymatrix{
+	\coprod_{i\in\N} A_i \ar[d]\ar[r] & \coprod_{i\in\N} A_i \ar[d]\ar[r] & \text{hocolim } A_\bullet \ar[r]\ar@{.>}[d]^{\varphi} & +\\
+	\coprod_{i\in\N} B_i \ar[r] & \coprod_{i\in\N} B_i \ar[r] & \text{hocolim } B_\bullet \ar[r] & +
+}
+\]
+\end{lemma}
+\begin{proof}
+By Lemma \refbf{horth_coprod}, $\coprod_{i\in\N} \alpha_i,\, \Sigma\coprod_{i\in\N} \alpha_i,\, \Sigma^2\alpha_i\coprod_{i\in\N}\horth \psi$, so it is enough to apply Lemma \refbf{extension}.
+\end{proof}
+\subsection{Triangulated factorization systems}
+Using the notion of homotopy orthogonality we can define triangulated factorization systems as follows:
+\begin{definition}\label{the_def_of_hfs}
+Let $\F=(\E,\M)$ be a pair of classes of morphisms in $\cD$. 
+\begin{enumerate}
+\item $\F$ is a \emph{triangulated pre-factorization system} (\phfs for short) if 
+\begin{enumerate}
+\item[\rm --] $\E^{ \horth }=\M$ and $\lhorth{\!\M}=\E$;
+\item[\rm --] $\phi\in \E$ implies $\Sigma\phi\in \E$.
+\end{enumerate} 
+\item $\F$ is a \emph{triangulated factorization system} (\hfs for short) if it is a \phfs, and if any morphism in $\cD$ is \emph{$\F$-crumbled}, \ie it can be factored as a composition $\phi=m\circ e$ with $e\in\E, m\in\M$.
+\end{enumerate}
+\end{definition}
+Notice that in the second condition defining a \phfs we could have equivalently asked that $\phi\in\M$ implies $\Sigma^{-1}\phi\in\M$.
+\begin{remark}[left- and right\hyp{}generated $\horth$\hyp{}prefactorization]
+It is evident %(as an easy consequence of adjunction identities) 
+that any class of morphism $\mathcal{X}\subseteq \cD^\due$ induces two {\phfs}s on $\cD$, obtained by sending $\mathcal{X}$ to $({}^{\horth} \mathcal{X}, ({}^{\horth}\mathcal{X})^{\horth})$ and $({}^{\horth}(\mathcal{X}^{\horth}),\mathcal{X}^{\horth})$. %These two prefactorizations are denoted $\mathbb S_{\horth}$ and $\prescript{}{\horth}{\mathbb S}$, respectively, and termed the \emph{right} and \emph{left prefactorization} associated to $\mathcal{X}$.
+\end{remark}
+
+By the properties proved in Section \refbf{horth_subs} we obtain the following closure properties for the classes composing a \phfs:
+
+\begin{proposition}\label{closure_phfs}
+Let $\F=(\E,\M)$ be a \phfs. Then 
+\begin{enumerate}
+\item $\E$ and $\M$ are closed under isomorphisms in $\cD^\due $;
+\item $\E\cap \M$ is the class of all isomorphisms;
+\item $\E$ is closed under arbitrary coproducts and $\M$ is closed under arbitrary products;
+\item $\E$ and $\M$ are closed under retracts;
+\item $\E$ is closed under homotopy pushouts and $\M$ is closed under homotopy pullbacks;
+\item $\E$ is closed under homotopy colimits in the sense that, in the same setting of Lemma \refbf{horth_colimits}, if $\alpha_i\in \E$ for any $i\in \N$, then $\varphi\in \E$. A dual property regarding homotopy limits holds for $\M$.
+\end{enumerate}
+\end{proposition}
+The following two definitions are of capital importance for us, as they determine the class of factorization systems we are interested in:
+\begin{definition}[triangulated torsion theory]\label{hott}
+A \hfs $\F=(\E,\M)$ is said to be a \emph{triangulated torsion theory} (for short, \htth%\footnote{The authors understand the perils to use the acronym \textsc{htt}, or even worse \textsc{HoTT}\dots}
+) if both $\E$ and $\cD$ are $3$-for-$2$ classes.
+\end{definition}
+\begin{definition}[normal triangulated fs]\label{hontt}
+Let $\F=(\E,\M)$ be a \hfs in $\cD$. We say that $\F$ is \emph{normal} if, whenever we have a factorization of a final map $X\to 0$ as follows
+\[
+X \xto{e} T \xto{m}  0\ \ \text{ with }\ \ e\in \E,\ m\in \M\,,
+\] and a triangle of the form $R\to X \xto{e} T\to \Sigma R$, the map $(R\to 0)$ belongs to $\E$.
+\end{definition}

@@ -1,0 +1,132 @@
+% the universe
+\def\mho{\rotatebox[origin=c]{180}{$\Omega$}}
+
+% modification and ancillary 2-cells
+\def\ass{\text{\cjRL{M}}}
+\def\uni{\text{\cjRL{h}}}
+\def\yu{\text{\begin{otherlanguage*}{russian}ю\end{otherlanguage*}}}
+\def\me{\text{\begin{otherlanguage*}{russian}м\end{otherlanguage*}}}
+\def\fe{\text{\begin{otherlanguage*}{russian}ф\end{otherlanguage*}}}
+
+% t-structures
+\def\tee{\mathfrak{t}}
+\def\t{\tee}
+
+% misc mathops
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\psh}{PSh}
+\DeclareMathOperator{\holim}{holim}
+\DeclareMathOperator{\hocolim}{hocolim}
+
+\def\Nat{\textsf{Nat}}
+\def\LNat{\textsf{PsNat}}
+\usepackage{CJKutf8}
+
+% The yoneda embedding: the letter "yo" in hiragana
+\newcommand{\yon}{\text{\begin{CJK}{UTF8}{min}よ\end{CJK}}\!}
+
+\DeclareMathAlphabet\EuScript{U}{eus}{m}{n}
+\SetMathAlphabet\EuScript{bold}{U}{eus}{b}{n}
+\newcommand{\CMcal}{}
+
+% categories
+\def\cate#1{\textbf{#1}}
+	\def\P  {\cate{P}}
+	\def\S  {\cate{S}}
+	\def\C  {\cate{C}}
+	\def\iC{\EuScript{C}}
+		\def\sD  {\cate{D}}
+	\def\T  {\cate{T}}
+	\def\cB {\cate{B}}
+	\def\cD {\cate{D}}
+	\def\cat{\cate{Cat}}
+    \def\Cat{\cate{CAT}}
+	\def\CAT{\cate{CAT}}
+	\def\Set{\cate{Set}}
+	\def\fincat{\cate{fdCat}}
+	\def\PDer{\cate{PDer}}
+	\def\Der{\cate{Der}}
+		\def\Fun{\mathrm{Fun}}
+	\def\bDelta{\boldsymbol{\Delta}}
+
+% factorization systems
+	\def\F {\mathfrak{F}}
+	\def\fF{\F}
+\def\fs#1{\mathbb{#1}}
+	\def\D {\fs{D}}
+	\def\X {\fs{X}}
+	\def\fS{\fs{S}}
+
+% classes of arrows
+\def\class#1{\mathcal{#1}}
+	\def\M{\class{M}}
+	\def\E{\class{E}}
+	\def\A{\cate{A}}
+	\def\B{\class{B}}
+  	\def\K{\class{K}}
+	\def\V{\class{V}}
+
+\newcommand{\xto}[1]{\xrightarrow{#1}}
+\newcommand{\xot}[1]{\xleftarrow{#1}}
+
+\def\Func{\mathrm{Func}}
+\def\Ob{\mathrm{Ob}}
+\def\Dia{\cate{Dia}}
+\def\dia{\text{dia}}
+\def\opp{\text{op}}
+\def\ho{\textsf{Ho}}
+\def\pf{\textsc{pf}}
+\def\ts{\textsc{ts}}
+\def\dfs{\textsc{dfs}\@\xspace}
+\def\pt{\text{pt}}
+\def\tre{\textbf{3}}
+\def\due{\textbf{2}}
+\def\uno{\textbf{1}}
+
+\def\numbers#1{\mathbb{#1}}
+	\def\Z{\numbers{Z}}
+	\def\N{\numbers{N}}
+
+\def\derivator#1{\mathbb{#1}}
+\def\derC{\derivator{C}}
+
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareSymbolFont{symbols2}{LS1}{stixfrak}{m}{n}
+
+\DeclareMathSymbol{\lmark}{\mathalpha}{symbols2}{"C0}
+\DeclareMathSymbol{\rmark}{\mathalpha}{symbols2}{"C1}
+\DeclareMathSymbol{\lrmark}{\mathalpha}{symbols2}{"C2}
+
+
+\newcommand{\rmarkCat}{\rmark\text{-}\Cat}
+\newcommand{\lmarkCat}{\lmark\text{-}\Cat}
+\newcommand{\markCat}{\lrmark\text{-}\Cat}
+\newcommand{\rmarkCAT}{\rmark\text{-}\CAT}
+\newcommand{\lmarkCAT}{\lmark\text{-}\CAT}
+\newcommand{\markCAT}{\lrmark\text{-}\CAT}
+
+\newcommand{\Nearrow}{\rotatebox[origin=c]{45}{$\Rightarrow$}}
+\newcommand{\Nwarrow}{\rotatebox[origin=c]{135}{$\Rightarrow$}}
+\newcommand{\Searrow}{\rotatebox[origin=c]{-45}{$\Rightarrow$}}
+\newcommand{\Swarrow}{\rotatebox[origin=c]{225}{$\Rightarrow$}}
+
+% \def\circledbang{\protect{\tikz{\node[circle,draw,line width=.2pt,inner sep= .5pt,scale=.9*.41] {$\bm!$};}}}
+% \def\circledast {\protect{\tikz{\node[circle,draw,line width=.2pt,inner sep=-.4pt,scale=.9*.65] {$\ast$};}}}
+
+
+\def\restriction{|}
+\def\TT{\textsf{T}}
+
+\usepackage{bm}
+% \def\circledbang{\protect{\tikz{\node[circle,draw,line width=.2pt,inner sep= .5pt,scale=.9*.41] {$\bm!$};}}}
+% \def\circledast {\protect{\tikz{\node[circle,draw,line width=.2pt,inner sep=-.4pt,scale=.9*.65] {$\ast$};}}}
+\def\circledast{\protect{\tiny \oast}}%\protect{\boldsymbol{*}}}
+\def\circledbang{\protect{\rotatebox[origin=c]{90}{\tiny $\ominus$}}}%\protect{\boldsymbol{!}}}
+\def\ee{e}
+\def\mm{m}
+\def\cpfs{\textsc{dpfs}\@\xspace}
+\def\dpfs{\textsc{dpfs}\@\xspace}
+
+\usepackage{turnstile}
+	\newcommand{\adjunct}[2]{\nsststile{#2}{#1}}

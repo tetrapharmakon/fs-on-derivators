@@ -1,0 +1,4 @@
+rm *.pdf
+latexmk -pdf hfs.tex
+mv hfs.pdf HFS.pdf
+latexmk -C

@@ -1,0 +1,1417 @@
+
+
+
+%In the following sections we extend the two main results of \cite{Korostenski199357} to the setting of coherent factorization systems on derivators. 
+%
+%We briefly recall what is the relevant content of \cite{Korostenski199357}: there, the authors consider a factorization functor for morphisms in a category $\C$, that is a section of the composition functor $\C^\tre \to \C^\due$, that sends a morphism $f\colon X \to Y$ to an object $F(f)$ such that the composition $X\xto{e_f}F(f)\xto{m_f}Y$ is $f$.
+%
+%To such a functorial factorization one associates two classes of morphisms:
+%\begin{gather}
+%\E_F \coloneqq \{h\in \C^\due \mid m_h\text{ is an iso}\}\notag\\
+%\M_F \coloneqq \{h\in \C^\due \mid e_h\text{ is an iso}\}.
+%\end{gather}
+%A functorial factorization as above is said to be an \emph{Eilenberg\hyp{}Moore factorization system} provided $e_f\in \E_F$ and $m_f\in \M_F$ for any $f\in \C^\due$. Then, the authors are able to prove the following two theorems that justify this name:
+%\begin{theorem*}\cite[\athm\textbf{A}]{Korostenski199357}
+%Orthogonal factorization systems can be described as weak factorization systems that satisfy the following property:
+%\begin{quote}
+%For each $f \colon X\to Y$ that $(\E,\M)$ factors as the composable pair $(e_f,m_f) \in \E\times \M$, the $\M$-part $m_{e_f}$ of $e_f$, as well as the $\E$-part $e_{m_f}$ of $m_f$, are isomorphisms.
+%\end{quote}
+%\end{theorem*}
+%
+%We reformulate \athm\textbf{A} in the setting of derivators as follows:
+%\begin{theorem}[theorem A for derivators]\label{algebras-in-disguise}
+%Let $\D$ be a derivator. An Eilenberg\hyp{}Moore factorization $F\colon \D^\due\to \D$ (see \adef\refbf{def_EM_algebra}) induces two sub-derivators $\mathbb E_F$ and $\mathbb M_F\subseteq \D^\due$ such that $\mathbb E_F\corth\mathbb M_F$. If $\D$ is either discrete or stable, then $(\mathbb E_F,\mathbb M_F)$ is a \dfs (\adef\refbf{def_hfs}). 
+%\end{theorem}
+%We defer the proof of this statement to the end of §\refbf{sec:thmB}.
+%
+%
+%\subsection{*****************************************
+
+
+%%%%%%%PARTI CHE NON HO USATO%%%%%%%%
+
+%The purpose of this brief subsection is to give an account of the main result of \cite{Fiorenza2014}, of which the present work proposes a version for derivators.
+
+%The present work solves this issue, addressing also a related problem of model\hyp{}dependency for \cite[\athm 1]{Fiorenza2014}. It is in fact easy to transport 
+%\todo[inline]{blah blah blah finire}
+%The scope of this section is to show how \athm\refbf{triang-rosetta} above is the 1\hyp{}dimensional trace left on the underlying category $\D[0]$ of a stable derivator, at least when the category $\T$ is of this type. 
+%
+
+%
+%We borrow from \cite{Fiorenza2014} all the terminology that concerns categories and higher categories, functors, simplicial sets, and in particular the basic theory of quasicategorical factorization systems. As a result, the exposition might appear terse; we refer the reader to \cite{Fiorenza2014} for a detailed version of these results.
+%\begin{proposition*}\cite[Prop. \textbf{2.2}]{CHK}
+%Let $\C$ be a category with a terminal object. There exists an antitone Galois connection between the poset $\text{Rex}(\C)$ of reflective subcategories of $\C$ and the poset $\pf(\C)$ of prefactorization systems on $\C$. The functor $r(\firstblank)/1 \colon \textsc{fs}(\C) \to \text{Rex}(\C)$ sends the factorization system $\fF=(\E,\M)$ to the reflexive subcategory $r(\fF)/1 = \{B\in\C\mid (B\to 1)\in\M\}$ ($r$ is simply the correspondence that picks the right class of a factorization system, so if we denote the typical factorization system as $\fF=(\E,\M)$ we can --and we will-- $r(\firstblank)/1(\fF) = \M/1$), and its left adjoint $(\firstblank)_\orth$ is defined by sending a reflective subcategory $\cB$ of $\cate{C}$ to the prefactorization system $\hom(\cB)_\orth$ \emph{right generated}\footnote{If a prefactorization $\fF$ on $\C$ is such that there exists a class of edges $\mathcal{S}$ such that $\fF=(\prescript{\orth}{}{\mathcal{S}}, (\prescript{\orth}{}{\mathcal{S}})^\orth)$ then $\fF$ is said to be \emph{right generated} by $\mathcal{S}$.} by $\hom(\cB)\subseteq \hom(\C)$. We are then in the following situation:
+%\[
+%\xymatrix{
+%	**[l]\pf(\C) \cong \pf(\C)_R \ar@<6pt>[r]^{r(\firstblank)/1} \ar@{}[r]|\top & \ar@<6pt>[l]^{(\firstblank)_\orth} \text{Rex}(\C) 
+%}
+%\]
+%There is, of course, a dual result about coreflective subcategories and left classes of (pre)factorizations on $\C$:
+%\[
+%\xymatrix{
+%	**[l]\pf(\C) \cong \pf(\C)_L \ar@<6pt>[r]^{0/\ell(\firstblank)} \ar@{}[r]|\top & \ar@<6pt>[l]^{\prescript{}{\orth}{(\firstblank)}} \text{Rex}(\C) 
+%}
+%\]
+%\end{proposition*}
+%We will freely refer to the above theorems as a single result, and we will speak about the `fundamental connection' between co/reflective subcategories and prefactorizations; the following step is to recall \cite[\athm 1]{Fiorenza2014} (see also \cite[§\textbf{3}]{tstructures} for a more lengthy exposition), that specializes the fundamental connection to \emph{normal torsion theories} in the setting of \emph{stable $\infty$-categories}:
+%\begin{theorem*}[Rosetta stone]
+%Let $\C$ be a stable $\infty$-category. There is a bijective correspondence between the class of \emph{normal torsion theories} and the class of $t$\emph{-structures} on its triangulated homotopy category $\ho(\C)$.
+%\end{theorem*}
+%\begin{remark*}
+%The partial order on $\pf(\C)$ is given by $\fF\preceq \fF'$ iff $r(\fF)\subseteq r(\fF')$ (or equivalently, $\ell(\fF')\subseteq \ell(\fF)$). We endow the collection of normal torsion theories (and then the collection of $t$-structures on $\ho(\C)$) with the order induced by this relation.
+%\end{remark*}
+%The proof heavily relies on the following symmetry exhibited by any bireflective factorization system:
+%\begin{lemma*}[Sator Lemma]
+%In a pointed quasicategory $\C$, an initial arrow $0\to A$ lies in a class $\E$ or $\M$ of a bireflective factorization system $\fF$ if and only if the terminal arrow $A\to 0$ lies in the same class.
+%\end{lemma*}
+%For quite a long time since \cite{Fiorenza2014} it remained an open question how to specialize this result to the setting of triangulated categories. Why the theorem, which has a neat proof in the setting of stable $(\infty,1)$-categories, doesn't leave any apparent trace passing to the homotopy category? In fact, a triangulated category can have few interesting factorization systems.\footnote{This is mainly due to the fact that a nice factorization system on a category $\cate{A}$ is induced by the presence of nice co/limits on $\cate{A}$: few triangulated categories have interesting co/limits, hence the fact that (for example) every \emph{proper} factorization system, where the left class is contained in the class of epimorphisms, must be the trivial one.}
+
+
+\medskip
+
+
+
+
+
+
+% \begin{gather}
+%1^?\dashv 1_! \dashv \left[\begin{smallmatrix} \pt_!\\ 1^* \end{smallmatrix}\right]\dashv \left[\begin{smallmatrix} 0_! \\ \pt^*  \\ 1_*\end{smallmatrix}\right] 
+% \dashv \left[\begin{smallmatrix} \pt_* \\ 0^* \end{smallmatrix}\right]\dashv 0_* \dashv 0^! \notag\\
+% \end{gather}
+% \xymatrix@C=45pt{
+% \underset{I\smallsetminus J}{\prod}\D[1]((u_!u^*X)_i,Y_i)\ar@{<-}[d]\ar@{<-}[r]|-\cong& \underset{I\smallsetminus J}{\prod}\D[0](\pt_!(u_!u^*X)_i,\pt_*Y_i)\ar@{<-}[d]\\
+% {\begin{matrix}\underset{I\smallsetminus J}{\prod}\D[1](X_i,Y_i)\times\\
+% \times \D^{[1]}(I\smallsetminus J)(u^*X,u^*Y)\end{matrix}}\ar@{<-}[d]\ar@{<-}[r]|-\cong &{\begin{matrix}\underset{I\smallsetminus J}{\prod}\D[1]((X_i)_1,(Y_i)_0)\times\\
+% \times \D^{[1]}(I\smallsetminus J)((u^*X)_1,(u^*Y)_0)\ar@{<-}[d]\end{matrix}}\\
+% \D^{[1]}(I)(X,Y)\ar@{<-}[r]\ar@{<-}[d]&\D^{[1]}(I)(X_1,Y_0)\ar@{<-}[d]\\
+% \underset{I\smallsetminus J}{\prod}\D[1]((\Sigma u_!u^* X)_i,Y_i)\ar@{<-}[d]\ar@{<-}[r]|-\cong& \underset{I\smallsetminus J}{\prod}\D[0](\pt_!(\Sigma u_!u^* X)_i,\pt_*Y_i)\ar@{<-}[d]\\
+% \cdots&\cdots
+% }
+% {\scriptsize \xymatrix@C=3em{
+% \underset{I\smallsetminus J}{\prod}\D[1]((u_!u^*X)_i,Y_i)\ar@{<-}[d]\ar@{<-}[r]|-\cong& \underset{I\smallsetminus J}{\prod}\D[0](\pt_!(u_!u^*X)_i,\pt_*Y_i)\ar@{<-}[d]\\
+% {\underset{I\smallsetminus J}{\prod}\D[1](X_i,Y_i)
+% \times \D^{[1]}(I\smallsetminus J)(u^*X,u^*Y)}\ar@{<-}[d]\ar@{<-}[r]|-\cong &{\underset{I\smallsetminus J}{\prod}\D[1]((X_i)_1,(Y_i)_0)
+% \times \D^{[1]}(I\smallsetminus J)((u^*X)_1,(u^*Y)_0)\ar@{<-}[d]}\\
+% \D^{[1]}(I)(X,Y)\ar@{<-}[r]\ar@{<-}[d]&\D^{[1]}(I)(X_1,Y_0)\ar@{<-}[d]\\
+% \underset{I\smallsetminus J}{\prod}\D[1]((\Sigma u_!u^* X)_i,Y_i)\ar@{<-}[d]\ar@{<-}[r]|-\cong& \underset{I\smallsetminus J}{\prod}\D[0](\pt_!(\Sigma u_!u^* X)_i,\pt_*Y_i)\ar@{<-}[d]\\
+% \cdots&\cdots
+% }}
+
+
+
+
+
+
+
+
+
+
+Indeed, we start showing that \cite[Lemma 2.2 and Corollary 2.3]{} are general facts that hold in any 2-category.
+
+\begin{lemma}
+Let $\C$ be a 2-category and consider the following diagram of $2$-cells:
+\[\xymatrix@R=2pt{\\
+A\ar@{}[rr]|{\Downarrow\sigma}\ar@/_-15pt/[rr]|f\ar@/_15pt/[rr]|g&&B\ar@/_-15pt/[rr]|s\ar@/_15pt/[rr]|t\ar@{}[rr]|{\Downarrow\tau}&&C\\
+   \
+}\]
+Then the following statements hold true:
+\begin{enumerate}
+\item if $t\sigma$ is invertible, then $\tau f=(t\sigma)^{-1} \cdot \tau g\cdot s\sigma$;
+\item if $s\sigma$ is invertible, then $\tau g=(s\sigma)^{-1} \cdot \tau f\cdot t\sigma$;
+\item if $A=B$, $f=\id_A$, $t\sigma$ is invertible and $g\sigma =\sigma g$, then the following map is bijective:
+\[
+\xymatrix@R=0pt{
+\Phi_g\colon\C(B,C)(s,t)\ar[rr]&&\C(B,C)(sg,tg)\\
+\alpha\ar@{|->}[rr]&& \alpha g.
+}
+\] 
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1-2) Notice that we have a commutative square (both compositions are $\tau\cdot \sigma$)
+\[
+\xymatrix{
+sf\ar[r]^{s\sigma}\ar[d]_{\tau f}&sg\ar[d]^{\tau g}\\
+ts\ar[r]^{t\sigma}&tg
+}
+\]
+so that statements (1) and (2) follow easily.
+
+(3) Define a morphism 
+\[
+\xymatrix@R=0pt{
+\Psi_g\colon\C(B,C)(sg,tg)\ar[rr]&&\C(B,C)(s,t)\\
+\beta\ar@{|->}[rr]&& (t\sigma)^{-1}\cdot \beta \cdot s\sigma.
+}
+\] 
+By part (1), $\Psi_g\Phi_g=\id_{\C(B,C)(s,t)}$. To show that the other composition is the identity, let $\beta\in \C(B,C)(sg,tg)$ and consider the following commutative diagrams
+\[
+\xymatrix{
+sg\ar[r]^{s\sigma g}\ar[d]_{\Phi_g\Psi_g\beta}&sgg\ar[d]^{\beta g}&&sg\ar[r]^{sg\sigma}\ar[d]_{\beta}&sgg\ar[d]^{\beta g}\\
+tg\ar[r]^{t\sigma g}&tgg&&tg\ar[r]^{tg\sigma}&tgg
+}
+\]
+By hypothesis $g\sigma =\sigma g$ and $t\sigma g(=tg\sigma)$ is invertible, so
+$
+\Phi_g\Psi_g\beta=(t\sigma g)^{-1}\cdot \beta g\cdot s\sigma g=(tg\sigma )^{-1}\cdot \beta g\cdot s g\sigma =\beta
+$
+\end{proof}
+
+\begin{lemma}
+Let $\D\colon \Dia^{op}\to \Cat$ be a pre-derivator and let $F\colon \D^\due\to \D$ be a morphism of pre-derivators.% such that $F0_!=\id_\D$. 
+Then there is a bijection
+\[
+\xymatrix@R=0pt{\Phi_{l^*}\colon\PDer(\D^{\due\times\due},\D)(FF^\due,F\Delta^*)\ar[rr]&&\PDer(\D^{\due},\D)(FF^\due l^*,F)\\
+\alpha\ar@{|->}[rr]&&\alpha l^*.}
+\]
+Furthermore, if there is an invertible 2-cell $\alpha\colon FF^\due\to F\Delta^*$, then
+\[
+FF^\due\varphi^*\colon  FF^\due \tilde\longrightarrow FF^\due l^*\Delta^* \text{ and }FF^\due\psi^*\colon FF^\due r^*\Delta^*   \tilde\longrightarrow FF^\due
+\]
+are isomorphisms.
+\end{lemma}
+\begin{proof}
+For the first part consider the following diagram of 2-cells:
+\[
+\xymatrix@R=2pt{\\
+\D^{\due\times \due}\ar@{}[rr]|{\Downarrow\varphi^*}\ar@/_-15pt/[rr]|{\id_{\due\times\due}^*}\ar@/_15pt/[rr]|{l^*\Delta^*}&&\D^{\due\times \due}\ar@/_-15pt/[rr]|{FF^\due}\ar@/_15pt/[rr]|{F\Delta^*}\ar@{}[rr]|{\Downarrow}&&\D\\
+   \
+}\]
+Then we are in the hypotheses of Lemma *** (3), giving us a bijection 
+\[
+\xymatrix@C=10pt@R=0pt{\Phi_{l^*\Delta^*}\colon\PDer(\D^{\due\times\due},\D)(FF^\due,F\Delta^*)\ar[rr]&&\PDer(\D^{\due\times \due},\D)(FF^\due l^*\Delta^*,F\Delta^* l^*\Delta^*)\\
+\alpha\ar@{|->}[rr]&&\alpha l^*\Delta^*.}
+\]
+Now notice that $\Delta^* l^*=(l\Delta)^*=\id_\due^*=\id_{\D^{\due}}$, so $F\Delta^* l^*\Delta^*=F\Delta^*$ and that $\Delta^*$ is cofully faithful, so that 
+\[
+\PDer(\D^{\due\times \due},\D)(FF^\due l^*\Delta^*,F\Delta^*)\cong \PDer(\D^{\due},\D)(FF^\due l^*,F).
+\]
+For the second part, apply $\alpha$ to the composition $r^*\Delta^*\overset{\psi^*}{\longrightarrow}\id_{\due\times\due}^*\overset{\varphi^*}{\longrightarrow}l^*\Delta^*$, obtaining the following commutative diagram:
+\[
+\xymatrix{
+FF^\due r^*\Delta^*\ar[rr]^{FF^\due\psi^*}\ar[d]_{\alpha r^*\Delta^*}&& FF^\due\ar[rr]^{FF^\due\varphi^*}\ar[d]^\alpha&&FF^\due l^*\Delta^*\ar[d]^{\alpha l^*\Delta^*}\\
+F\Delta^* r^*\Delta^*\ar[rr]^{F\Delta^*\psi^*}&& F\Delta^*\ar[rr]^{F\Delta^*\varphi^*}&&F\Delta^* l^*\Delta^*}
+\]
+where the vertical arrows are invertible since $\alpha$ is invertible, while $\Delta^*\psi^*$ is invertible since $\psi^*$ is the unit of the adjunction $r^* \dashv\Delta^*$ whose counit is invertible, and $\Delta^*\varphi^*$ is invertible since $\varphi^*$ is the counit of the adjunction $\Delta^* \dashv l^*$ whose unit is invertible.
+\end{proof}
+
+
+
+%Before going further we need to introduce the following natural transformations (where $d\colon \tre\times \due\to \due$ is defined in Def. *****************):
+%\[
+%\begin{matrix}\xymatrix@C=8pt@R=8pt{
+%&(0,2)d\\
+%(0,1)d\ar@{=>}[ru]^\eta\ar@{=>}[rd]_\theta&\\
+%&\id_\tre\times \pt_\due
+%}\end{matrix}
+%\colon\tre\times \due\to \tre
+%\]
+%where $\eta$ and $\theta$ are defined in the unique possible way. The following lemma will be very important in the rest of this subsection, nevertheless we omit its proof as it just consists in a careful reading of the definitions.
+%
+%\begin{lemma}
+%In the above notation, 
+%\begin{enumerate}
+%\item $(0,2)d((0,2)\times \id_2)=(\id_\tre\times \pt_\due)((0,2)\times \id_2)$;
+%\item $((0,2)\times \id_2)* \eta=((0,2)\times \id_2)* \theta$.
+%\end{enumerate}
+%\end{lemma}
+
+
+
+
+
+
+
+
+
+
+
+
+%\subsection{Monads and their algebras}
+%We collect here a few 
+%fairly technical and lengthy detours, concerning %the category of \emph{marked (pre)\-de\-ri\-va\-tors} and 
+%the peculiar shape of higher-dimensional monad theory needed as a foreground for \athm\refbf{charac-of-fs}. All the terminology left unexplained is believed to be classical, but since the literature on the subject is fairly scattered, we try to mantain the discussion self-contained enough for the reader to follow.
+%
+%One of the most annoying features of higher dimensional monad theory is that% in principle each of the following commutativities can be relaxed:
+%\begin{itemize}
+%	\item The category $\cate{K}$ (\adef\refbf{two-monad}) where the monad acts can be a strict 2-category or a suitable weak version thereof;
+%	\item The endofunctor $T\colon \cate{K}\to \cate{K}$ (\adef\refbf{two-monad}) that forms the monad can be a strict, strong or lax functor;
+%	\item Multiplication and unit can be strict, strong, lax, or colax natural transformations (\textsc{mn} below), and the associativity or unitality properties (\textsc{ma}, \textsc{mu} below) can hold strictly, strongly or up to a non invertible 2-cell;
+%	\item An algebra structure can have strict, strong, lax, or colax constraints (see diagram (\refbf{alg-constr}) in \adef\refbf{two-algebra-morphism}).
+%\end{itemize}
+%Of course, some of these combinations of laxity are quite uncommon: 2-dimensional monad theory often copes with \emph{strict} 2-monads, or with pseudomonads that can be suitably `strictified' (see \cite{lack2002codescent}). According to the existing zoology, what we describe here is a \emph{double category of lax/co\-lax-al\-ge\-bras for a strict pseudomonad $T$ on a strict 2-category $\cate{K}$}. However, having no interest in different flavours, we simply call it the category of ``algebras for a 2-monad $T$''.
+%\begin{definition}[2-monad]\label{two-monad}
+%Let $\cate{K}$ be a strict 2-category. A \emph{2-monad} on $\cate{K}$ consists of a tuple $\TT=(T,\mu,\eta,\ass, \uni)$ where $T$ is a strict endofunctor $T\colon\cate{K}\to\cate{K}$ endowed with a pair $(\mu,\eta)$ of 2-cells $\mu\colon T\circ T \Rightarrow T$, $\eta \colon 1_{\K}\Rightarrow T$ subject to the following relations:
+%\begin{itemize}
+%\item[(\textsc{mn})] the components of $\mu$ and $\eta$ fit into pseudo-commutative diagrams
+%\[
+%\vcenter{\xymatrix{
+%T^2K\ar[r]^{\mu_K}\ar@{}[dr]|{\Swarrow\me_f}\ar[d]_{T^2f} & TK\ar[d]^{Tf} & K\ar[r]^{\eta_K}\ar@{}[dr]|{\Swarrow\yu_f}\ar[d]_f & TK\ar[d]^{Tf}\\
+%T^2K' \ar[r]_{\mu_{K'}} & TK' & K' \ar[r]_{\eta_{K'}}& TK'
+%}}
+%\]
+%for 2-cells $\yu_f$ and $\me_f$ subject to the obvious conditions with respect to composition and unit of 1-cells (we only write them for $\mu$; of course these are ``pseudonaturality'' rules that can be applied to any 2-cell):
+%\[
+%\vcenter{
+%\xymatrix{
+%T^2K \ar[r]^{\mu_K}\ar@{}[dr]|{\Swarrow\me_f}\ar[d]_{T^2f}& TK\ar[d]^{Tf} & T^2K\ar[r]^{\mu_K}\ar@{}[ddr]|{\Swarrow\me_{f'f}}\ar[dd]_{T^2f'f} & TK\ar[dd]^{Tf'f}\\
+%T^2K' \ar[r]^{\mu_{K'}}\ar@{}[dr]|{\Swarrow\me_{f'}}\ar[d]_{T^2f'}& TK' \ar[d]^{Tf'}& &\\
+%T^2K'' \ar[r]_{\mu_{K''}}& TK'' & T^2K'' \ar[r]_{\mu_{K''}} & TK''
+%}}
+%\]
+%\item[(\textsc{ma})] $\mu$ is associative, in that the diagram
+%\[
+%\xymatrix@R=1.5cm@C=1.5cm{
+%T^3K \ar[r]^{\mu_{TK}}\ar@{}[dr]|{\Swarrow\ass_K}\ar[d]_{T\mu_K} & T^2K \ar[d]^{\mu_K} \\
+%T^2K \ar[r]_{\mu_K}& TK
+%}
+%\]
+%commutes when filled by an invertible 2-cell $\ass_K \colon \mu_K\circ (\mu * T)_K \Rightarrow \mu_K \circ (T * \mu)_K$, which is the $K$-component of an invertible 3-cell $\ass \colon \mu\circ (\mu *T) \Rrightarrow \mu\circ (T *\mu)$.
+%\item[(\textsc{mu})] $\eta$ is unital, in that the diagram
+%\[
+%\xymatrix@R=1.5cm@C=1.5cm{
+%TK \ar[r]^{\eta_{TK}}\ar@{-}[dr] \ar[d]_{T\eta_K}& T^2K\ar[d]^{\mu_K} \\
+%T^2K \ar[r]_{\mu_K} \ar@{}[ur]|(.35){\Swarrow\uni_{\textsc{l},K}}\ar@{}[ur]|(.65){\uni_{\textsc{r},K}\Nearrow}& TK
+%}
+%\]
+%commutes when filled with invertible 2-cells $\uni_{\textsc{r},K}\colon 1_{TK}\Rightarrow \mu_K\circ (\eta *T )_K$ and $\uni_{\textsc{l},K}\colon 1_{TK}\Rightarrow \mu_K\circ ( T * \eta )_K$, which are the $K$-components of invertible 3-cells $\uni_\textsc{l} \colon 1_{T}\Rrightarrow \mu\circ ( T * \eta )$ and $\uni_\textsc{r} \colon 1_{T}\Rrightarrow \mu\circ ( \eta *T )$.%\footnote{The letter $\ass$ is an \emph{m} and the letter $\uni$ is an \emph{h}  in Hebrew.}
+%\end{itemize}
+%\end{definition} 
+%\begin{definition}[pseudo-algebras for a 2-monad]\label{two-algebras}
+%Let $\TT=(T,\mu,\eta,\ass,\uni)$ be a 2-monad on $\cate{K}$. A \emph{2-algebra} for $\TT$, or a $\TT$-algebra for short, consists of a tuple $\underline{A}=(a, \alpha_m, \alpha_u)$ where $a\colon TA\to A$ is a 1-cell of $\cate{K}$, and $\alpha_m,\alpha_u$ are invertible 2-cells called respectively the \emph{extended associator} and the \emph{normalizer} of the algebra structure, such that the following diagrams of 2-cells commute:
+%\begin{gather}
+%\vcenter{\xymatrix@C=.4cm{
+%&T^2A \ar[rr]^{Ta} \ar@{}[dd]|{\Downarrow\me_a}\ar[dr]_{\mu_A}&& TA\ar[dr]^a \ar@{}[dl]|{\Swarrow\alpha_m}\\
+%T^3A \ar[ur]^{T^2a}\ar[dr]_{\mu_{TA}}&& TA \ar@{}[dr]|{\Searrow\alpha_m} \ar[rr]_a&& A\\
+%& T^2A \ar[ur]^{Ta}\ar[rr]_{\mu_A}&& TA\ar[ur]_a
+%}}
+%\quad
+%{\Huge =}
+%\quad 
+%\vcenter{\xymatrix@C=.3cm{
+%&T^2A \ar@{}[dr]|{T\alpha_m\Searrow}\ar[rr]^{Ta}&& TA\ar@{}[dd]|{\Downarrow\alpha_m}\ar[dr]^{a} \\
+%T^3A \ar[rr]^{T\mu_A}\ar[ur]^{T^2a}\ar[dr]_{\mu_{TA}}&& T^2A\ar@{}[dl]|{\ass_A\Swarrow}\ar[ur]^{Ta}\ar[dr]_{\mu_A} && A\\
+%& T^2A \ar[rr]_{\mu_A}&& TA\ar[ur]_a
+%}}\notag\\[5mm]
+%\vcenter{\xymatrix@C=.4cm{
+%&A \ar@{}[dd]|{\Downarrow\yu_m}\ar@{-}@/^1.5pc/[drrr]\ar[dr]_{\eta_A}&&\\
+%TA \ar[ur]^a\ar[dr]_{\eta_{TA}}&& TA\ar@{}[ur]|{\Swarrow\alpha_u}\ar@{}[dr]|{\Searrow\alpha_m} \ar[rr]_a&& A\\
+%& T^2A \ar[ur]^{Ta}\ar[rr]_{\mu_A}&& TA\ar[ur]_a
+%}}
+%\quad
+%{\Huge =}
+%\quad 
+%\vcenter{\xymatrix@C=.4cm{
+%&A \ar@{}[rrrdd]|{=}\ar@{-}@/^1.5pc/[drrr]&&\\
+%TA  \ar@{-}@/^1.5pc/[drrr] \ar[dr]_{\eta_{TA}}\ar[ur]^a&& && A\\
+%&T^2A \ar[rr]_{\mu_A} \ar@{}[ur]|{\Swarrow\uni_{\textsc{r},A}}&& TA\ar[ur]_a &
+%}}\notag\\[5mm]
+%\vcenter{\xymatrix@C=.3cm{
+%&& & TA\ar[dr]^a\ar@{}[dd]|{\Downarrow\alpha_m}\\
+%TA\ar[rr]^{T\eta_A} \ar@{-}@/^1.5pc/[urrr]\ar@{-}@/_1.5pc/[drrr]&& T^2A \ar[ur]^{Ta}\ar[dr]_{\mu_A}
+%\ar@{}[ul]|{\Searrow T\alpha_u}\ar@{}[dl]|{\Nearrow \uni_{\textsc{l},A}}&& A\\
+%&& & TA\ar[ur]_a
+%}}
+%\quad
+%{\Huge =}
+%\quad 
+%\vcenter{\xymatrix@C=.4cm{
+%&& & TA\ar[dr]^a\\
+%TA \ar@{}[rrrr]|{||} \ar@/^1.5pc/[urrr]\ar@/_1.5pc/[drrr] && && A\\
+%&& & TA\ar[ur]_a
+%}}
+%\end{gather}
+%\end{definition}
+%We often stick to denote a pseudo-algebra for a monad $\TT$ simply as a \emph{$T$-algebra}; we also call \emph{normal} a $T$-algebra for which the normalizer $\alpha_u$ is the identity map (so $a\circ \eta_A = \id_A$ and the coherence diagrams above obviously simplify). 
+%
+%
+%%We can then define
+%%\begin{definition}[lax morphism of $T$-algebras]\label{two-algebra-morphism}
+%%Let $\underline{A} = (a,\alpha_m,\alpha_u)$ and $\underline{B} = (b, \beta_m,\beta_u)$ be two $T$-algebras for a 2-monad $(T,\mu,\eta,\ass,\uni)$. A morphism of $T$-algebras consists of a pair $(f,\fe)$ where $f\colon A\to B$ is a 1-cell in $\cate{K}$ and $\fe\colon b\circ Tf \Rightarrow f\circ a$ is a 2-cell such that the following two diagrams of 2-cells commute:
+%%\begin{gather}
+%%\vcenter{\xymatrix@C=.35cm{
+%%& T^2B \ar[rr]^{Tb}\ar[dr]_{\mu_B}&& TB\ar[dr]^b\ar@{}[dl]|{\Swarrow\beta_m} \\
+%%T^2A \ar@{}[rr]|{\Downarrow\me_f}\ar[dr]_{\mu_A}\ar[ur]^{T^2f}&& TB \ar[rr]^b \ar@{}[dr]|{\Searrow\fe} && B\\
+%%& TA\ar[ur]^{Tf} \ar[rr]_a && A\ar[ur]_f
+%%}}
+%%\quad
+%%{\Huge =}
+%%\quad 
+%%\vcenter{\xymatrix@C=.35cm{
+%%& T^2B \ar[rr]^{Tb} \ar@{}[dr]|{\Searrow T\fe} && TB\ar[dr]^b \\
+%%T^2A\ar[dr]_{\mu_A}\ar[ur]^{T^2f} \ar[rr]^{Ta} && TA\ar@{}[rr]|{\Downarrow\fe}\ar@{}[dl]|{\Downarrow\alpha_m} \ar[ur]^{Tf}\ar[dr]_a && B\\
+%%& TA  \ar[rr]_a&& A\ar[ur]_f
+%%}}
+%%\notag\\
+%%\vcenter{\xymatrix@C=.5cm{
+%%& B \ar@{-}@/^1.5pc/[drrr]\ar[dr]^{\eta_B} \ar@{}[dd]|{\Downarrow\me_f} &&\\
+%%A \ar[dr]_{\eta_A}\ar[ur]^f&& TB \ar[rr]_b\ar@{}[ur]|{\Swarrow\beta_u} \ar@{}[dr]|{\Searrow\fe} && B\\
+%%&TA\ar[ur]^{Tf} \ar[rr]_a&& A\ar[ur]_f
+%%}}
+%%\quad
+%%{\Huge =}
+%%\quad 
+%%\vcenter{\xymatrix@C=.5cm{
+%%& B \ar@{-}@/^1.5pc/[drrr]\ar@{}[ddrrr]|{=}\\
+%%A \ar@{-}@/^1.5pc/[drrr]\ar[dr]_{\eta_A}\ar[ur]^f&& && B\\
+%%&TA \ar@{}[ur]|{\Swarrow\alpha_u} \ar[rr]_a&& A\ar[ur]_f & 
+%%}}
+%%\label{alg-constr}
+%%\end{gather}
+%%\end{definition}
+%%\begin{remark}
+%%Notice that algebra morphisms are \emph{lax}, in that the 2-cell $\fe$ is not invertible. We need this weakness as we ultimately characterize lax $(\firstblank)^\due$-algebras as functors that preserve the right class $\M$ of a factorization system $(\E,\M)$, and \emph{colax} $(\firstblank)^\due$-algebras as functors that preserve the left class. This follows from a simple argument: for any adjunction $F \dashv U \colon K \leftrightarrows K'$ between objects that are algebras for a 2-monad, $F$ defines a colax morphism of $T$-algebras if and only if $U$ defines a lax morphism of $T$-algebras.%, which explains why lax morphism structure feels natural for right adjoints and colax morphism structure feels natural for left adjoints
+%%\end{remark}
+%%\begin{definition}
+%%\todo[inline]{Colax algebras}
+%%\end{definition}
+%%\begin{definition}
+%%\todo[inline]{The double category of colax/laxes}
+%%\end{definition}
+%%
+%
+
+
+
+\subsection{\textsc{Cfs}s vs factorization algebras}
+The following simple remark is of capital importance in the following discussion:
+\begin{remark}
+Our purpose now is to obtain a more intrinsic description of this exponentiation rule, using the cartesian closed structure on $\PDer$: this is defined in such a way that the internal hom acts on representables in the first component as a shifting, \ie $\D^{\yon(J)} = [\yon(J),\D]\cong \D^J$ with a canonical identification. 
+\end{remark}
+\begin{remark}
+The formalism of pseudo- and co/lax ends of \cite{bozapalides1975fins} gives an alternative characterization of the cartesian closed structure of $\PDer$: the internal hom $[\D,\D'](J)$ can be characterized as the pseudo-end
+\[
+\oint_I\CAT(\yon(J)\times \D(I), \D'(I)).
+\]
+\end{remark}
+\begin{proof}
+It is a formal proof in coend calculus: if we define $[\D,\D'](J)$ as above, we consider the chain of natural identifications
+\begin{align*}
+\LNat(\mathbb{E}, [\D,\D']) &= \oint_J \Set(\mathbb{E}(J), [\D,\D'](J))\\
+&\cong \oint_J \oint_I \CAT(\mathbb{E}(J), \CAT(\hom(I,J)\times \D(I), \D'(I)))\\
+&\cong \oint_I\CAT\Big(\Big(\oint^J \mathbb{E}(J) \times \hom(I,J)\Big)\times \D(I), \D'(I) \Big)\\
+&\cong  \oint_I\CAT\big( \mathbb{E}(I)\times \D(I), \D'(I) \big)\\
+&=\LNat(\mathbb{E}\times \D,\D').\qedhere
+\end{align*}
+\end{proof}
+As an immediate corollary of Remark \refbf{two-comonoid} and of the fact that the Yoneda functor $\yon\colon \cat \to \PDer$ is strong monoidal, we get 
+\begin{proposition}
+The correspondence $T:\D\mapsto \D^\due$ is a monad on $\PDer$, that we call the \emph{squaring monad} on $\PDer$.
+\end{proposition}
+\begin{proof}
+We obtain a monad multiplication and a monad unit
+\begin{gather}
+\mu_\D\colon (\D^\due)^\due \cong \D^{\due\times \due} \xto{\quad\Delta^\circledast\quad}\D^\due\\
+\eta_\D \colon \D \cong \D^\uno \xto{\quad \pt^\circledast\quad} \D^\due 
+\end{gather}
+Even though the laxity cells that define the 2-monad structure for $(\firstblank)^\due$ are pretty tautologically induced by contravariance of the Yoneda embedding, we explicitly record them here:
+\begin{itemize}
+	\item The maps $\me_f$ and $\ass_\D$ for $F\colon \derC \to \D$ a prederivator morphism and $\D\in\PDer$ are induced by the identification $\gamma\colon ((\firstblank)^\due)^\due \cong (\firstblank)^{\due\times \due}$ forgetting the inessential informations in the diagrams of 2-cells
+	\[
+	\vcenter{\xymatrix@R=.5cm@C=.66cm{
+	(\derC^\due)^\due \ar[rr]\ar[ddd]\ar[dr]^\gamma_\sim&& \derC^\due \ar[ddd]\\
+	& \derC^{\due\times\due} \ar[ur]_{\derC^\Delta}\ar[d]& \\
+	& \D^{\due\times\due} \ar[dr]^{\D^\Delta}& \\
+	(\D^\due)^\due \ar[rr]\ar[ur]^\gamma_\sim && \D^\due 
+	}}
+	\]
+	\[
+	\vcenter{\xymatrix@C=1.2cm{
+	((\D^\due)^\due)^\due\ar[ddd]\ar[rrr]\drtwocell^{\quad 1\times\gamma}_{\gamma\times 1\quad} & && (\D^\due)^\due\ar[dl]^\gamma_\sim\ar@/^1pc/[ddl]\\
+	& \D^{\due\times\due\times\due}\ar[r]^{\D^{1\times\Delta}}\ar[d]_{\D^{\Delta\times 1}} & \D^{\due\times\due} \ar[d]^{\D^\Delta}& \\
+	& \D^{\due\times\due}\ar[r]_{\D^\Delta} & \D^\due & \\
+	\D^{\due\times\due}\ar@/_1pc/[urr]\ar[ur]^\gamma_\sim
+	}}\]
+	(pay attention to the fact that in the upper left corner another tautological isomorphism is introduced, namely the symmetry isomorphism telling that $1\times\gamma\cong \gamma\times 1$).
+	\item In a similar fashion, the maps $\yu_F$ and $\uni_\D$ (left and right) are induced by the identification $\nu\colon (\firstblank) \cong (\firstblank)^\uno$ forgetting the inessential informations in the diagram of 2-cells
+	\[\xymatrix@R=.5cm{
+\derC \ar[ddd]_F\ar[rr]\ar[dr]_{\nu_\derC}^\sim&& \derC^\due \ar[ddd]^{F^\due}\\
+& \derC^\uno\ar[d]^{F^\uno} \ar[ur]_{\derC^t}\\
+&\D^\uno \ar[dr]^{\D^t}\\
+\D\ar[ur]^{\nu_\D}_\sim\ar[rr] && \D^\due
+}\qquad
+\xymatrix{
+\D^\due \ar[d]_\wr^{\nu_\D^\due} \ar[r]^{\nu_{\D^\due}}_\sim& (\D^\due)^\uno \ar[r] & (\D^\due)^\due \ar[d]^\wr_\gamma\\
+(\D^\uno)^\due\ar[d] && \D^{\due\times\due}\ar[d]^{\D^\Delta}\\
+(\D^\due)^\due \ar[r]^\sim_\gamma & \D^{\due\times\due} \ar[r]_{\D^\Delta} &  \D^\due
+}
+\]
+\qedhere\end{itemize}
+\end{proof}
+\begin{remark}
+All the above discussion is the result of recasting \cite{Korostenski199357} in the 2-category of prederivators, with the purpose of showing that algebras for the squaring monad on prederivators correspond to prederivators endowed with a coherent factorization system. Coherent factorization systems are defined in \adef\refbf{def_hfs}, and the equivalence with $(\firstblank)^\due$-algebras is proved in \athm\refbf{charac-of-fs}.
+\end{remark}
+We will of course be interested in \emph{derivators} only --and in fact in \emph{stable} derivators, even though the basic theory we are sketching will hold in complete generality. It is an obvious but needed remark that
+\begin{proposition}
+The squaring monad $(\firstblank)^\due\colon \PDer \to \PDer$ restricts to a
+monad $(\firstblank)^\due\colon \Der \to \Der$; in other words, if $\D$ is a
+derivator, the prederivator $\D^\due$ is a derivator.
+\end{proposition}
+\begin{proof}
+It is an immediate consequence of the following proposition: notice that it also shows how a potential clash of notation is avoided, as the exponential notation $\D^{\mathbb{E}}$ for the internal hom $[\mathbb{E},\D]$ coincides with the shifting $\D^J$, as soon as $\mathbb{E}=\yon(J)$.
+\begin{proposition}
+The prederivator $\D^\due$, image of $\D$ via the squaring monad, is canonically isomorphic to $\D^{\due}(\firstblank)$, the prederivator \emph{shifted} by~$\due$. \qedhere
+\end{proposition}
+\end{proof}
+
+
+
+
+
+
+Let us now describe explicitly what are the normal algebras over the squaring monad; indeed, these are couples $\underline{A}=(F, \alpha)$ where $F\colon \D^{[1]}\to \D$ is a morphism of derivators, and $\alpha\colon F\circ F^{[1]}\to F \circ \mu_{\D}$ is an invertible 2-cell. These data have to make the following diagrams commute:
+\begin{gather}
+\vcenter{\xymatrix@C=.15cm{
+&\D^{[1]\times [1]} \ar[rr]^{F^{[1]}} \ar@{}[dd]|{=}\ar[dr]_{\mu_{\D}}&& \D^{[1]}\ar[dr]^F \ar@{}[dl]|{\Swarrow\alpha}\\
+\D^{[1]\times [1]\times [1]} \ar[ur]^{F^{[1]\times [1]}}\ar[dr]_{\mu_{\D^{[1]}}}&& \D^{[1]} \ar@{}[dr]|{\Searrow\alpha} \ar[rr]_F&& \D\\
+& \D^{[1]\times [1]} \ar[ur]^{F^{[1]}}\ar[rr]_{\mu_{\D}}&& \D^{[1]}\ar[ur]_F
+}}
+\quad
+{\Huge =}
+\quad 
+\vcenter{\xymatrix@C=.3cm{
+&\D^{[1]\times [1]} \ar@{}[dr]|{\alpha^{[1]}\Searrow}\ar[rr]^{F^{[1]}}&& \D^{[1]}\ar@{}[dd]|{\Downarrow\alpha}\ar[dr]^{F} \\
+\D^{[1]\times [1]\times [1]} \ar[rr]^{\mu^{[1]}_\D}\ar[ur]^{F^{[1]\times [1]}}\ar[dr]_{\mu_{\D^{[1]}}}&& \D^{[1]\times [1]}\ar@{}[dl]|{=}\ar[ur]^{F^{[1]}}\ar[dr]_{\mu_\D} && \D\\
+& \D^{[1]\times [1]} \ar[rr]_{\mu_\D}&& \D^{[1]}\ar[ur]_F
+}}\notag\\[5mm]
+\vcenter{\xymatrix@C=.4cm{
+&\D \ar@{}[dd]|{=}\ar@{-}@/^1.5pc/[drrr]\ar[dr]_{\eta_\D}&&\\
+\D^{[1]} \ar[ur]^F\ar[dr]_{\eta_{\D^{[1]}}}&& \D^{[1]}\ar@{}[ur]|{=}\ar@{}[dr]|{\Searrow\alpha} \ar[rr]_F&& \D\\
+& \D^{[1]\times [1]} \ar[ur]^{F^{[1]}}\ar[rr]_{\mu_\D}&& \D^{[1]}\ar[ur]_F
+}}
+\quad
+{\Huge =}
+\quad 
+\vcenter{\xymatrix@C=.4cm{
+&\D \ar@{}[rrrdd]|{=}\ar@{-}@/^1.5pc/[drrr]&&\\
+\D^{[1]}  \ar@{-}@/^1.5pc/[drrr] \ar[dr]_{\eta_{\D^{[1]}}}\ar[ur]^F&& && \D\\
+&\D^{[1]\times [1]} \ar[rr]_{\mu_\D} \ar@{}[ur]|{=}&& \D^{[1]}\ar[ur]_F &
+}}\notag\\[5mm]
+\vcenter{\xymatrix@C=.3cm{
+&& & \D^{[1]}\ar[dr]^F\ar@{}[dd]|{\Downarrow\alpha}\\
+\D^{[1]}\ar[rr]^{\eta^{[1]}_\D} \ar@{-}@/^1.5pc/[urrr]\ar@{-}@/_1.5pc/[drrr]&& \D^{[1]\times [1]} \ar[ur]^{F^{[1]}}\ar[dr]_{\mu_\D}
+\ar@{}[ul]|{=}\ar@{}[dl]|{=}&& \D\\
+&& & \D^{[1]}\ar[ur]_F
+}}
+\quad
+{\Huge =}
+\quad 
+\vcenter{\xymatrix@C=.4cm{
+&& & \D^{[1]}\ar[dr]^F\\
+\D^{[1]} \ar@{}[rrrr]|{||} \ar@/^1.5pc/[urrr]\ar@/_1.5pc/[drrr] && && \D\\
+&& & \D^{[1]}\ar[ur]_F
+}}
+\end{gather}
+%For the first diagram above, is it always true that
+%\begin{gather}
+%\vcenter{\xymatrix@C=.15cm{
+%&            && \D^{[1]}\ar[dr]^F \ar@{}[dd]|{\Downarrow\alpha}\\
+%\D^{[1]\times [1]\times [1]} \ar[rr]^{F^{[1]\times [1]}}\ar[dr]_{\mu_{\D^{[1]}}} \ar@{}[drrr]|{=}& &   \D^{[1]\times [1]} \ar[dr]_{\mu_{\D}}  \ar[ru]^{F^{[1]}}   && \D\\
+%& \D^{[1]\times [1]} \ar[rr]_{F^{[1]}}&& \D^{[1]} \ar[ru]_F
+%}}
+%\quad
+%{\Huge =}
+%\quad 
+%\vcenter{\xymatrix@C=.3cm{
+%&\D^{[1]\times [1]} \ar@{}[dd]|{\alpha^{[1]}\Downarrow}\ar[dr]^{F^{[1]}}&& \\
+%\D^{[1]\times [1]\times [1]} \ar[rd]_{\mu^{[1]}_\D}\ar[ur]^{F^{[1]\times [1]}}&& \D^{[1]}\ar[rr]^{F}  && \D\\
+%&\D^{[1]\times [1]}\ar[ur]_{F^{[1]}}&&
+%}}\notag\end{gather}
+%
+The second and the third diagram above give us the following conditions:
+$$\alpha\eta_{\D^{[1]}}=\id_F=\alpha\eta_\D^{[1]}\,.$$
+In the following lemma we show that, in fact, these conditions are always verified for an invertible 2-cell $\alpha$ as above.
+
+\begin{lemma}
+Consider a morphism of derivators $F\colon \D^{[1]}\to \D$ and an invertible 2-cell $\alpha \colon F\circ F^{[1]}\to F \circ \mu_{\D} $. Then, $\alpha\pt^{\boldsymbol *}_{\D^{[1]}}=\id_F=\alpha(\pt^{\boldsymbol *}_\D)^{[1]}$.
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+
+
+%We proceed by steps:
+%
+%{\bf 1. Induced $t$-structures on $\D^I(\drawrdangle)$ and $\D^I(\drawluangle)$.} Consider the following categories:
+%$$\xymatrix@R=5pt@C=5pt{
+%                   &&&&(0,1)\ar[dd]&&&&&&&(0,0)\ar[dd]\ar[rrr]&&&(0,1)\\
+%{\drawrdangle} \coloneqq &&&&&&&&&&{\drawluangle} \coloneqq &&\\
+%          &(1,0)\ar[rrr]&&&(1,1)&&&&&&&(1,0)&&&&
+%}$$
+%The inclusions $(1,0)\colon [0]\to \drawrdangle$ and $(0,1)\colon [0]\to \drawluangle$ are, respectively, a sieve and a cosieve. Let $\iota_{r}\colon [1]\to \drawrdangle$ and $\iota_{l}\colon [1]\to \drawluangle$ be the inclusions of the complementary cosieve and sieve, respectively. By \cite[Example 4.5]{Moritz}, we get the following recollements of triangulated categories:
+%$$\xymatrix@C=18pt{
+%\D^I[1]\ar[rr]|{(\iota_r)_!}&&\D^I(\drawrdangle)\ar[rr]|{(1,0)^*}\ar@/_+12pt/[ll]_{(\iota_r)^?}\ar@/_-12pt/[ll]^{(\iota_r)^*}&&\D^I[0]\ar@/_+12pt/[ll]_{(1,0)_!}\ar@/_-12pt/[ll]^{(1,0)_*} &
+%\D^I[1]\ar[rr]|{(\iota_l)_*}&&\D^I(\drawluangle)\ar[rr]|{(0,1)^*}\ar@/_+12pt/[ll]_{(\iota_l)^*}\ar@/_-12pt/[ll]^{(\iota_l)^!}&&\D^I[0]\ar@/_+12pt/[ll]_{(0,1)_!}\ar@/_-12pt/[ll]^{(0,1)_*}\,.
+%}$$
+%By Lemma \refbf{htt_induces_t_structure}, $\t_{I}=(0/\E_{I\times[1]},\Sigma\M_{I\times[1]}/0)$ is a $t$-structure in $\D^I [1]$. By \cite[Theorem 1.4.10]{BBD}, the following classes are respectively a coaisle in $\D^{I}(\drawrdangle)$ and an aisle in $\D^I(\drawluangle)$:
+%$$\D^{I}(\drawrdangle)^{\geq1} \coloneqq \{Y\in \D^I(\drawrdangle):\iota_r^*Y\in \M_{I\times[1]}/0\}\ \ \text{ and }$$
+%$$\D^I(\drawluangle)^{\leq0} \coloneqq \{X\in \D^I(\drawluangle):\iota_l^*X\in 0/\E_{I\times [1]}\}\,.$$
+%Indeed, in the first case we glueing $\t_{I\times [1]}$ with the trivial $t$-structure in $\D^I[0]$ whose coaisle is $\D^I[0]$, while in the second case we are glueing $\t_{I\times [1]}$ with the other trivial $t$-structure in $\D^I[0]$, that is, the one whose aisle is $\D^I[0]$.
+%
+%
+%
+%{\bf 2. The morphisms $e\colon\D^{[1]}\to \mathbb E$ and $m\colon\D^{[1]}\to \mathbb M$.} Given $I\in \Dia$, define
+%$$m_I\colon \D^{[1]}(I)\to \mathbb M(I)$$
+%as follows: given $X\in \D^{[1]}(I)$, we first take its image $(\iota_r)_!X$ in $\D^I(\drawrdangle)$ and then we consider its reflection $((\iota_r)_!X)^{\geq1}$ into the coaisle $\D^{I}(\drawrdangle)^{\geq1}$ described in the first step. Now, letting $j_r\colon \drawrdangle\to \square$ be the obvious inclusion and $k_l\colon [1]\to \square$ be the inclusion that identifies $[1]$ with the left vertical arrow in $\square$, we define
+%$$m_I(X) \coloneqq k_l^*(j_r)_*((\iota_r)_*X)^{\geq1}\,.$$
+%Notice that the underlying diagram of $(j_r)_*((\iota_r)_*X)^{\geq1}$ in $\D(I)^{\square}$ is a homotopy cartesian square in the triangulated category $\D(I)$, whose vertical right arrow is in $\bar \M_{I}$, so that, by Lemma \refbf{closure_homo}, $m_I(X)\in\M_I$.
+%
+%The definition of $e\colon\D^{[1]}\to \mathbb M$ is completely dual, that is, given $I\in \Dia$, 
+%$$e_I\colon \D^{[1]}(I)\to \mathbb E(I)$$
+%is such that, for any $X\in \D^{[1]}(I)$,
+%$$e_I(X) \coloneqq k_r^*(j_l)_!((\iota_l)_!X)^{\leq0}\,,$$
+%where $j_l\colon \drawluangle\to \square$ is the obvious inclusion, and $k_r\colon [1]\to \square$ classifies the vertical right arrow. Using similar arguments to the above, one shows that $e_I(X)\in \E_I$.
+%
+%{\bf 3. Gluing $e$ and $m$.} By construction, it is not difficult to see that $e_I(X)_0\cong X_0$, while $m_I(X)_1\cong X_1$. Furthermore, one can show by the same constructions as in the proof of Lemma \refbf{all_maps_are_crumbled} that $e_I(X)_1\cong m_I(X)_0$, we will denote by $p_I(X)\in\D^I[0]$ this common object. To conclude the proof we should construct, for any given $X\in \D^I[1]$, an object $\widetilde X\in \D^I[2]$ such that $\widetilde X_{(0,1)}\cong e_I(X)$, $\widetilde X_{(1,2)}\cong m_I(X)$, and $\widetilde X_{(0,2)}\cong X$. For this, define $\widetilde X$ as a cone in $\D^I[2]$ that fits in the following distinguished triangle:
+%\begin{equation*}1_!p_I(X)\longrightarrow (0,1)_!e_I(X)\oplus (1,2)_!m_I(X)\longrightarrow \widetilde X\longrightarrow \Sigma 1_!p_I(X)\,.\qedhere\end{equation*}
+%\begin{proof}
+%The fact that $\ell(I)>\ell(J)$ follows since any maximal path in $I$ ends in a \maximal object that, by definition, does not belong to $J$. Furthermore, a maximal path in $u/i$ is something of the form 
+%$$(u(j_1)\overset{\phi_1}{\to}i)\overset{\psi_1}{\longrightarrow}(u(j_2)\overset{\phi_2}{\to}i)\overset{\psi_2}{\longrightarrow}\cdots\overset{\psi_{k-1}}{\longrightarrow}(u(j_k)\overset{\phi_k}{\to}i)$$
+%where $\psi_s\colon j_s\to j_{s+1}$ and $\phi_{s+1}\psi_s=\phi_s$, for $s=1,\dots,k-1$. Then, 
+%$$j_1\overset{\psi_1}{\longrightarrow}j_2\overset{\psi_2}{\longrightarrow}\cdots \overset{\psi_{k-1}}{\longrightarrow}j_k$$
+%is a path in $J$, so that $\ell(u/i)\leq \ell(J)$.
+%\end{proof}
+%
+%Let $\D\colon \fincat^{op}\to \Cat$ be a stable derivator, $I\in\fincat$ and $j\in I$. Consider the adjunction
+%$$j_!\colon \D({[1]})\rightleftarrows \D(I)\colon j^*$$
+%and fix the following notation for the unit and counit, respectively:
+%$$\eta_j\colon \id_{\D({[1]})}\to j^*j_!\ \ \text{ and }\ \  \varepsilon_j\colon j_!j^*\to \id_{\D(I)}\,.$$
+%Now, if $i$ is a \maximal object of $I$, the functor ${[1]}\overset{i}{\longrightarrow} I$ is a cosieve, so that the functor $i_!\colon \D({[1]})\to \D(I)$ is fully faithful and its image is exactly $\D(I,I\setminus\{i\})$, the full subcategory of those $X\in\D(I)$ such that $X_k=0$ for all $k\neq i$.
+%Abusing notation, let us denote again by $i_!$ and $i^*$ their corestriction and restriction, respectively, that induce the following equivalence of categories:
+%$$i_!\colon \D({[1]})\rightleftarrows \D(I,I\setminus \{i\})\colon i^*\,.$$
+%This means that $\eta_i$ is a natural isomorphism, and that $(\varepsilon_i)_X$ is an isomorphism for any $X\in \D(I,I\setminus \{i\})$. Let us fix the following notation for the inverse for $\eta_i$:
+%\begin{equation}\label{alpha_nat}\alpha_i\colon i^*i_!\overset{\cong}{\longrightarrow} \id_{\D({[1]})}\,.\end{equation}
+%By the triangle identities between unit and counit we  deduce that, given $X\in \D(I)$, 
+%$$i^*(\varepsilon_i)_X=(\eta_i)^{-1}_{i^*X}=(\alpha_i)_{i^*X}\colon i^*i_!i^*X\longrightarrow i^*X\,.$$ 
+%
+%Let us return for a moment to a general (not necessarily \maximal) object $j\in I$. Recall from \cite[Appendix 1]{keller-nicolas} that there is a commutative diagram
+%$$\xymatrix{
+%\D(I)\ar[rrrr]^{\fincat_I}&&&&\D({[1]})^I\\
+%&&\D({[1]})\ar[urr]_{-\otimes j}\ar[llu]^{j_!}
+%}$$
+%where $-\otimes j$ is the left adjoint to the obvious ``evaluation at $j$" functor $(-)\restriction_{j}$. Furthermore, given $X\in \D({[1]})$, there is a natural isomorphism $(X\otimes j)(k)\cong X^{I(j,k)}$, for all $k\in I$.
+%
+%When $i\in I$ is a \maximal object, the restriction $\fincat_I\colon \D(I,I\setminus \{i\})\to \D({[1]})^{(I,I\setminus \{i\})}$ is an equivalence and, abusing notation, we denote again by $\alpha_i$ the natural isomorphism that the natural transformation in \eqref{alpha_nat} induces on the underlying diagrams:
+%$$\alpha_i\colon (-\otimes i)(i)\overset{\cong}{\longrightarrow} \id_{\D({[1]})}\,.$$
+%\begin{proof}
+%(1) Let us start introducing some notation for any given $i\in I\setminus J$:
+%\begin{enumerate}
+%\item[\rm --] $\pr_i\colon u/i\to J$ is the obvious projection from the comma category;
+%\item[\rm --] $pt_{u/i}\colon u/i\to {[1]}$ is the unique possible functor;
+%\item[\rm --] $\Delta_{u/i}\colon \D({[1]})\to \D({[1]})^{u/i}$ is the diagonal functor sending an object to the corresponding constant diagram;
+%\item[\rm --] $(-)\restriction_{u/i}\colon \D({[1]})^I\to \D({[1]})^{u/i}$ is the functor that takes a diagram $X\colon I\to \D({[1]})$ and sends it to the composition $X\restriction_{u/i}\colon u/i \to J\subseteq I\to \D({[1]})$;
+%\item[\rm --] $\widetilde{X_{u/i}} \coloneqq \pr_i^*\widetilde{X_J}$, and $X\restriction_J\otimes J \coloneqq \fincat_{J}(u_!\widetilde{X_J})\in \D({[1]})^J$.
+%\end{enumerate}
+%By (Der.4) there is an isomorphism $i^*u_!\widetilde {X_J}\cong \hocolim_{u/i}\widetilde{X_{u/i}}$, so that
+%\begin{align}\label{compo_surj}\D({[1]})(i^*u_!\widetilde {X_J}, X(i))&\cong \D({[1]})(\hocolim_{u/i}\widetilde{X_{u/i}}, X(i))\\
+%\notag&\cong \D(u/i)(\widetilde{X_{u/i}}, pt_{u/i}^*X(i))\\
+%\notag&\twoheadrightarrow\D({[1]})^{u/i}(X\restriction_{u/i},\Delta_{u/i}X(i))\,,
+%\end{align}
+%where the second isomorphism is given by the adjunction $(\hocolim_{u/i},pt_{u/i}^*)$, while the last map is induced by $\fincat_{u/i}$, and it is surjective by hypothesis. 
+%Now notice that there is an obvious morphism of diagrams 
+%$$\bar\varphi_i\colon X\restriction_{u/i}\longrightarrow \Delta_{u/i}X(i)$$ 
+%whose component corresponding to a given $(j\overset{a}{\to} i)\in u/i$ is just 
+%$$\bar\varphi_i(a)=X(a)\colon X\restriction_{u/i}(a)(=X(j))\longrightarrow X(i)\,.$$ 
+%Then there exists a morphism $\widetilde\varphi_i\colon \widetilde{X_{u/i}}\to pt_{u/i}^*X(i)$ such that $\fincat_{u/i}\widetilde\varphi_i=\bar\varphi_i$. In this way we obtain a map $\varphi_i\colon i^*u_!\widetilde {X_J}\to X(i)$, given by the following composition:
+%$$\xymatrix{\varphi_i\colon i^*u_!\widetilde {X_J}\cong  \hocolim_{u/i}\widetilde{X_{u/i}}\ar[rr]^{\hocolim_{u/i}\widetilde\varphi_i}&&\hocolim_{u/i}pt_{u/i}^*X(i)\cong X(i)}\,.$$
+%Now, $ X\restriction_J\otimes J(j)= X(j)$ for any $j\in J$, so we can define a morphism of diagrams as follows:
+%$$\varphi\colon X\restriction_J\otimes J\longrightarrow X\ \ \text{ such that }\ \ \varphi(k)=\begin{cases}\varphi_k&\text{if $k\in I\setminus J$}\\
+%\id_{j}&\text{if $k\in J$}\end{cases}$$
+%For any $i\in I\setminus J$ we obtain the following commutative square:
+%$$
+%\xymatrix{
+%(X\restriction_J\otimes J)(i)\otimes i\ar[rr]^{\varphi_i\otimes i}\ar[d]_{\varepsilon_i}&&X(i)\otimes i\ar[d]^{\varepsilon_i}\\
+%X\restriction_J\otimes J\ar[rr]^{\varphi}&&X
+%}
+%$$
+%where, with an abuse of notation, we denoted by $\varepsilon_i$ the counit of the adjunction $(-\otimes i,(-)\restriction_i)$. We obtain a pointwise split short exact sequence in $\D({[1]})^{I}$:
+%$$0\to \bigoplus_{i\in I\setminus J}(X\restriction_J\otimes J)(i)\otimes i\overset{f}{\longrightarrow} \left(\bigoplus_{i\in I\setminus J}X(i)\otimes i\right)\oplus (X\restriction_J\otimes J)\overset{g}{\longrightarrow} X\to 0\,,$$
+%where, given $j\in J$
+%$$\xymatrix{0\ar[r]& 0\ar[r]^(.25){f_j}& 0\oplus (X\restriction_J\otimes J)(j)\ar@{=}[r]^(.7){g_j}& X(j)\ar[r]& 0\,;}$$
+%while, for $i\in I\setminus J$, we have
+%$$0\to ((X\restriction_J\otimes J)(i)\otimes i)(i)\overset{f_i}{\longrightarrow} (X(i)\otimes i)(i)\oplus (X\restriction_J\otimes J)(i)\overset{g_i}{\longrightarrow} X(i)\to 0\,,$$
+%where $f_i=((\varphi_i\otimes i)(i), -\alpha_i)^{t}$ and $g_i=(\alpha_i,\varphi_i)$. 
+%Consider now a triangle in $\D(I)$
+%$$\bigoplus_{i\in I\setminus J}i_!i^*u_!\widetilde {X_J}\overset{\widetilde f}{\longrightarrow} \bigoplus_{i\in I\setminus J}i_!X_i\oplus u_!\widetilde {X_J}\overset{\widetilde g}{\longrightarrow} \widetilde X\to \Sigma \bigoplus_{i\in I\setminus J}i_!i^*u_!\widetilde {X_J}$$
+%where $\widetilde X\in \D(I)$ is  chosen to complete the first map to a triangle, while $f=(f_i)_i$ and $f_i=(i^*i_!\varphi_i,-\varepsilon_i)^t$. To show that $\fincat_{I}\widetilde X\cong X$ it is enough to notice that $\fincat_{I}\widetilde X$ is the cokernel in $\D({[1]})^{I}$ of the underlying diagram of $\widetilde f$, which is precisely $f$. But $X$ is the cokernel in $\D({[1]})^{I}$ of $f$.
+%
+%(2) Similarly to the proof of part (1), we can construct a distinguished triangle:
+%$$\xymatrix{\underset{i\in I\setminus J}{\bigoplus}i_!i^*u_!u^*X\ar[rr]^{((i_!i^*\varepsilon_u)_i,-(\varepsilon_i)_i)^t}&& \underset{i\in I\setminus J}{\bigoplus}i_!X_i\oplus u_!u^*X\ar[r]^(.75){g}&\widetilde X\ar[r]& \Sigma \underset{i\in I\setminus J}{\bigoplus}i_!i^*u_!u^*X}$$
+%which is constructed just completing the first map to a triangle. For any $i\in I\setminus J$, the following square commutes:
+%$$
+%\xymatrix{
+%i_!i^*u_!u^*X\ar[rr]^{i_!i^*\varepsilon_u}\ar[d]_{\varepsilon_i}&&i_!X_i\ar[d]^{\varepsilon_i}\\
+%u_!u^*X\ar[rr]^{\varepsilon_u}&&X
+%}
+%$$
+%so that the composition $((\varepsilon_i)_i,\varepsilon_u)\circ ((i_!i^*\varepsilon_u)_i,-(\varepsilon_i)_i)^t$ is trivial. Hence,  there is a natural map $\psi\colon \widetilde X\to X$ that makes the following diagram commutative:
+%$$\xymatrix{
+%\underset{i\in I\setminus J}{\bigoplus}i_!i^*u_!u^*X\ar[rr]^{((i_!i^*\varepsilon_u)_i,-(\varepsilon_i)_i)^t}\ar[d]&& \underset{i\in I\setminus J}{\bigoplus}i_!X_i\oplus u_!u^*X\ar[r]^(.7){g}\ar[d]_(.6){((\varepsilon_i)_i,\varepsilon_u)}&\widetilde X\ar[r]\ar[d]^\psi&\Sigma \underset{i\in I\setminus J}{\bigoplus}i_!i^*u_!u^*X\ar[d] \\
+%0\ar[rr]&&X\ar@{=}[r]&X\ar[r]&0
+%}$$
+%To complete the proof, it is enough to show that $\psi$ is an isomorphism and, for that, it is enough to show that $\psi_k$ is an isomorphism for all $k\in I$. For $k\in J$, $k^*(\bigoplus_{i\in I\setminus J}i_!i^*u_!u^*X)=0$ and so it is clear that $\widetilde X_k\cong X_k$. On the other hand, if $k\in I\setminus J$, applying $k^*$ to the above diagram we get:
+%$$\xymatrix{
+%k^*u_!u^*X\ar[rr]\ar[d]&& X_k\oplus k^*u_!u^*X\ar[rr]\ar[d]&&\widetilde X_k\ar[rr]\ar[d]^\varphi&&\Sigma k^*u_!u^*X\ar[d]\\
+%0\ar[rr]&&X_k\ar@{=}[rr]&&X_k\ar[rr]&&0
+%}$$
+%where the first map in the first row is clearly a split monomorphism whose cokernel is isomorphic to $X_k$. Thus, $\widetilde X_k\cong X_k$.
+%\end{proof}
+%\begin{proof}
+%We proceed by induction on $\ell(I)$. If $\ell(I)=1$, then $I$ is a disjoint union of a finite number of points and, by (Der.1), there is nothing to prove. For the inductive step, let us prove the two statements separately:
+%
+%\medskip\noindent
+%(1) Let $u\colon J\to I$ be the inclusion of the non-\maximal objects in $I$. By inductive hypothesis, $\fincat_J$ and $\fincat_{u/i}$ are full and essentially surjective for any $i\in I\setminus J$, so the hypotheses of Lemma \refbf{lifting_inductive_step} are satisfied. As a direct consequence, $\fincat_I$ is essentially surjective. 
+%Let us show that it is also full. Indeed, let $\phi\colon X\to Y$ be a morphism in $\D(\bbone)^I$, and consider the following diagram in $\D(I)$:
+%\begin{equation}\label{lifting_morphisms_pic}
+%\xymatrix{
+%\underset{i\in I\setminus J}{\bigoplus}i_!i^*u_!\widetilde {X_J}\ar[rr]^{\widetilde f}\ar[d]^{\Phi_0}&&\underset{i\in I\setminus J}{\bigoplus}i_!X_i\oplus u_!\widetilde {X_J}\ar[d]^{\Phi_1}\ar[r]^(.7){\widetilde g}&\widetilde X\ar@{.>}[d]^{\Phi}\ar[r]&\Sigma \underset{i\in I\setminus J}{\bigoplus}i_!i^*u_!\widetilde {X_J}\ar[d]\\ 
+%\underset{i\in I\setminus J}{\bigoplus}i_!i^*u_!\widetilde {Y_J}\ar[rr]^{\widetilde f}&&\underset{i\in I\setminus J}{\bigoplus}i_!Y_i\oplus u_!\widetilde {Y_J}\ar[r]^(.7){\widetilde g}&\widetilde Y\ar[r]&\Sigma \underset{i\in I\setminus J}{\bigoplus}i_!i^*u_!\widetilde {Y_J}
+%}
+%\end{equation}
+%where $\Phi_0$ lifts the diagonal morphism  
+%$$\phi_0\colon \bigoplus_{i\in I\setminus J}(X\restriction_J\otimes J)(i)\otimes i\to \bigoplus_{i\in I\setminus J}(Y\restriction_J\otimes J)(i)\otimes i\,,$$ 
+%where the component $(X\restriction_J\otimes J)(i)\otimes i\to (Y\restriction_J\otimes J)(i)\otimes i$ is constructed as follows: first we restrict $\phi$ to a morphism $\phi\restriction_J\colon X\restriction_J\to Y\restriction_J$ in $\D(\bbone)^J$ and, using the inductive hypothesis, we lift this map to a morphism $\widetilde{\phi_J}\colon \widetilde{X_J}\to \widetilde{Y_J}$; at this point we define $(\Phi_0)_i \coloneqq i_!i^*u_!\widetilde{\phi_J}$. Similarly, $\Phi_1$ lifts the obvious diagonal map
+%$$\phi_1\colon \bigoplus_{i\in I\setminus J}(X(i)\otimes i)\oplus (X\restriction_J\otimes J)\to\bigoplus_{i\in I\setminus J}(Y(i)\otimes i)\oplus (Y\restriction_J\otimes J)\,.$$
+%As shown in the proof of Lemma \refbf{lifting_inductive_step}, the underlying diagrams of the rows in the diagram \eqref{lifting_morphisms_pic} are pointwise split short exact sequences, so $\fincat_I(\Phi)$ is conjugated to $\phi$, as both maps can be used to complete such underline diagrams.
+%
+%(2) Apply the contravariant functor $(-,Y) \coloneqq \D(I)(-,Y)$ to the triangle given by Lemma \refbf{lifting_inductive_step}(2)  to get the following exact sequence:
+%\begin{align*}\prod_{i\in I\setminus J} &\D(u/i)(\Sigma \pr_i^* u^*X,pt_{u/i}^*Y_i)\to (X,Y)\to\\
+%&\to \prod_{i\in I\setminus J}\D(\bbone)(X_i,Y_i)\times \D(J)(u^*X,u^*Y)\to\prod_{i\in I\setminus J} \D(u/i)(\pr_i^*u^*X,pt_{u/i}^*Y_i) \,,\end{align*}
+%where the first term on the left is trivial by inductive hypothesis, while the kernel of the last map on the right-hand side is, again by inductive hypothesis, exactly $\D(\bbone)^I(\fincat_IX,\fincat_IY)$.
+%\end{proof}
+%
+%\begin{proof}
+%We prove our statement for coreflective colocalizations using Lemma \refbf{lifting_inductive_step}. The proof for reflective localizations is similar but it requires a dual version of Lemma \refbf{lifting_inductive_step}. We proceed by induction on $\ell (I)$. For categories of length $1$ there is nothing to prove. In general, given $X\in \D(I)$, consider the following triangle given by Lemma \refbf{lifting_inductive_step}:
+%$$\bigoplus_{I\setminus J}i_!i^*u_!u^*X\to \bigoplus_{I\setminus J}i_!X_i\oplus u_!u^*X\to X\to \Sigma \bigoplus_{I\setminus J}i_!i^*u_!u^*X\,.$$
+%Now, by inductive hypothesis $\bigoplus_{I\setminus J}i_!i^*u_!u^*X\in \C(I)$, $\bigoplus_{I\setminus J}i_!X_i\oplus u_!u^*X\in \C(I)$ and, since $\C\to \D$ is a left adjoint, it is a right exact morphism of pointed derivators, so it commutes with suspensions. In particular, also  $\Sigma \bigoplus_{I\setminus J}i_!i^*u_!u^*X\in \C(I)$. Thus, $X\in \C(I)$ as desired. 
+%\end{proof}
+%\begin{proof}
+%Let us describe the bijection between $t$-structures in $\D[0]$ and coreflective colocalizations of $\D$; the bijection between $t$-structures and localizations can be verified similarly. Indeed, given a $t$-structure $\t=(D^{\leq0},D^{\geq 0})$ one defines a pre-derivator
+%$$\D^{\leq0}\colon \fincat^{\op}\to \Cat,$$ 
+%such that $\D^{\leq0}(I) \coloneqq D^{\leq0}_I$ (see Lemma \refbf{lift_t_struc}). The canonical morphisms of pre-derivators $\D^{\leq0}\to \D$ preserves left Kan extensions, and it admits right adjoints pointwise. Thus, $\D^{\leq0}\to \D$ is a coreflective colocalization of $\D$. On the other hand, given a coreflective colocalization $\C\to \D$, it is clear that $\C[0]$ is an aisle in $\D[0]$. We need to show that these correspondences are bijections. In fact it follows directly from the construction  that, given a $t$-structure $\t=(D^{\leq0},D^{\geq 0})$, $D^{\leq 0}=\D^{\leq0}[0]$. On the other hand, by Proposition \refbf{pointwise_loc_fin}, given a coreflective colocalization $\C\to \D$, for any $I\in\fincat$, the category $\C(I)$ consists exactly of the objects that belong pointwise to the associated aisle $\C[0]$.
+%\end{proof}
+%Let $\D\colon \fincat^{op}\to \Cat$ be a stable derivator. Consider the following maps
+%$$
+%\xymatrix@R=2pt{{\left\{\begin{matrix}\text{coh. normal ctts $\F=(\E,\M)$ on $\D$,}\\
+%\text{with $\E$ closed under homo. pushouts}\\
+%\text{and $\M$ closed under homo. pullbacks}\end{matrix}\right\}}\ar@<-3pt>[rr]_(.6){\Phi}&&\{\text{$t$-structures in $\D[0]$}\}\ar@<-3pt>[ll]_(.4){\Psi}
+%}
+%$$
+%defined as follows
+%\begin{enumerate}
+%\item[\rm --] given a coherently normal ctt $\F=(\E,\M)$ on $\D$, we let $\Phi\F=\t_\F=(D_\F^{\leq0},D_{\F}^{\geq0})$, where $x\in D_\F^{\leq0}$ if and only if $1_!x\in \E$, while $x\in D_\F^{\geq1}$ if and only if $0^*x\in \M$;
+%\item[\rm --] given a $t$-structure $\t=(D^{\leq0},D^{\geq0})$, we let $\Psi\t=\F_\t=(\E_\t,\M_\t)$, where $X\in \E_\t$ if and only if $C(X^{\geq1})=0$, while $Y\in \M_\t$ if and only if $C(X^{\leq0})=0$.
+%\end{enumerate}
+%Then, $\Phi$ and $\Psi$ are inverse bijections.
+%\end{corollary}
+\begin{remark
+
+}
+Recall that the $\CAT$-categorical Yoneda lemma entails that if $\D$ is a derivator, then
+\[
+\textsf{Nat}^\text{s}(\yon(J), \D) \cong \D(J)
+\]
+and this isomorphism is induced by sending $Y\colon \yon(J)\to \D$ into $Y_J(\id_J) \in \D(J)$.
+This motivates the tentative definition for the internal hom $[\X,\D]$ (often denoted as an exponential $\D^\X$) in the 2-category $\PDer$ of prederivators, since the appropriate form of Yoneda lemma gives
+\[
+\D^\X(J) \cong \textsf{Nat}^\text{s}(\yon(J), \D^\X) \cong \textsf{Nat}^\text{s}(\yon(J)\times \X, \D)
+\]
+and now the right hand side depends only on $\D,\X$, and it does so naturally in both arguments.
+\end{remark}
+It is easy to show that in case the (pre)\-de\-ri\-va\-tor $\X$ lies in the essential image of $\yon(\firstblank)$, then there is a canonical isomorphism $\D^\X = \D^{\yon(J)}\cong \D(J|\firstblank)$ (the $J$-shifted prederivator, defined by $I\mapsto D(J\times I)$).
+% \begin{definition}
+
+The following proposition \refbf{isclosed} shows how the above intuition is in fact correct. It is not an immediate task to determine whether the cartesian structure of $\PDer$ is closed, since the 1-cells aren't strict transformations, and the standard argument sketched below does not apply immediately. Nevertheless, a useful reformulation of this classical result based on coend calculus allows to be easily generalized characterizing co/lax- and pseudo-natural transformations between functors as (weak) universal objects.
+\begin{lemma}
+Let $\A$ be a small $\V$-category, and $\psh(\A)=\V^{\A^\opp}$ be the category of $\V$-presheaves on $\A$. Then $\psh(\A)$ is cartesian closed, \ie
+\[
+\V^{\A^\opp}(F\otimes G, H)\cong \V^{\A^\opp}(F, H^G)
+\]
+where $H^G\in \psh(\A)$ sends $a\in\A$ to $\Nat(\yon(A)\otimes G, H)$.
+\end{lemma}
+\begin{proof}
+It is a classical result, valid to establish, for example, that the category of presheaves on a space/site is cartesian closed. We offer a formal proof relying on coend calculus. Define $H^G$ as above, and notice that
+\begin{align*}
+\Nat(F, H^G) &= \int_x \V(Fx, \Nat(\yon(x)\otimes G, H))\\
+&\cong \int_x \int_y \V(Fx, \V(\hom(y,x)\otimes Gy, Hy))\\
+&\cong \int_y\V\Big(\int^x Fx \otimes \hom(y,x)\otimes Gy, Hy \Big)\\
+&\cong  \int_y\V\big( Fy\otimes Gy, Hy \big)\\
+&=\Nat(F\otimes G,H).\qedhere
+\end{align*}
+\end{proof}
+Now, the above argument seems to only apply to \emph{strict} functors and transformations, whereas 1-cells in $\PDer$ are, by definition, pseudonatural.
+
+Coend-calculus is nevertheless still available, in a laxified form that mantains all its expressive power; it is this flexibility that provides a weak analogue of the lemma above: with a slight modification of the classical proof, we have
+\begin{proposition}
+Let $\LNat(U,V)$ denote the category of lax natural transformations between two 2-functors $U,V$. Then we have a natural isomorphism
+\[
+\LNat(F\times G,H)\cong \LNat(F, H^G).
+\]
+\end{proposition}
+\begin{proof}
+It is another proof in coend calculus, this time exploiting the formalism of \emph{lax} coends exposed in \cite{bozapalides1975fins,bozapalides1977finsgen,bozapalides1980some}:
+\begin{align*}
+\LNat(F, H^G) &= \oint_x \Set(Fx, \LNat(\yon(A)\times G, H))\\
+&\cong \oint_x \oint_y \Set(Fx, \Set(\hom(y,x)\times Gy, Hy))\\
+&\cong \oint_y\Set\Big(\Big(\oint^x Fx \times \hom(y,x)\Big)\times Gy, Hy \Big)\\
+&\cong  \oint_y\Set\big( Fy\times Gy, Hy \big)\\
+&=\LNat(F\times G,H).\qedhere
+\end{align*}
+\end{proof}
+\hrulefill
+
+
+%
+%
+%
+%\item \label{fst}$\T(C_e,\Sigma^{-1}C_m)=0$;
+%At the end of this subsection we will be able to show that, if two maps are homotopy orthogonal, then they are weakly orthogonal (see \cite[Section 2]{riehl2008factorization}).\\
+%In fact, one should think about condition \refbf{snd} as a form of weak orthogonality (that is, mere existence of liftings), while \refbf{fst} should be interpreted as some form of uniqueness for liftings. 
+%\footnote{Recall that if $R\subseteq A\times B$ is a relation, it induces a Galois connection \[
+%\prescript{R}{}{(\firstblank)} \colon P(A)\leftrightarrows P(B)\colon (\firstblank)^{R};
+%\] ``negative thinking'' tells us that this is simply the nerve-realization adjunction generated by $R$ regarded as a $\{0,1\}$-profunctor. This remark has, however, minor importance in the ongoing discussion.} 
+%
+%
+%
+%
+%For this reason, we always refer to \emph{object-orthogonality} as orthogonality with respect to terminal arrows. (Obviously, there is a dual notion of left orthogonality between $f$ and $B\in\T$, or a notion of a \emph{$f$-colocal} object $B$ which reduces to left orthogonality with respect to $0\to B$, that we will state and use, if needed, without further mention).
+%\end{remark}
+%\begin{notat}\label{orth.between.classes}
+%Extending this notation a bit more, we can speak about orthogonality between two objects, without introducing new definitions:
+%\begin{itemize}
+%\item Two objects $B$ and $X$ are orthogonal if $\var{0}{B}\horth\var{X}{0}$; we denote this (non-symmetric) relation as $B\horth X$.
+%\item Two classes of object $\mathcal{H}$ and $\mathcal{K}$ in $\T$ are orthogonal if each object $H\in\mathcal{H}$ is orthogonal to each object $K\in\mathcal{K}$; we denote this situation by $\mathcal{H} \horth \mathcal{K}$.
+%\end{itemize}
+%\end{notat}
+%\begin{remark}
+%This choice might cause an ambiguity as it may be that $\mathcal{H}\horth\mathcal{K}$ means that every arrow in $\T$ with domain and codomain in $\mathcal{H}$ is left\hyp{}$\horth$\hyp{}orthogonal to every arrow in $\T$ with domain and codomain in $\mathcal{K}$. We never consider this situation.
+%
+%
+%like consider the following diagram whose row and columns are triangles and where everything commutes but the lower right square:
+%$$
+%\xymatrix{
+%a_0\ar[r]^{\phi_0}\ar[d]_a&b_0\ar[r]^{\psi_0}\ar[d]_b&c_0\ar[r]\ar[d]^c&\Sigma a_0\ar[d]^{\Sigma a}\\
+%a_1\ar[d]_{\alpha_a}\ar[r]^{\phi_1}&b_1\ar[d]_{\alpha_b}\ar[r]^{\psi_1}&c_1\ar[r]\ar[d]^{\alpha_c}&\Sigma a_1\ar[d]\\
+%C_a\ar[r]^{\varphi_a}\ar[d]_{\beta_a}&C_b\ar[r]^{\varphi_b}\ar[d]_{\beta_b}&C_c\ar[r]\ar[d]^{\beta_c}&\Sigma C_a\ar[d]^{}\\
+%\Sigma a_0\ar[r]&\Sigma b_0\ar[r]_{}&\Sigma c_0\ar[r]&\Sigma^2 c_0
+%}
+%$$
+%We are now ready to prove that homotopy orthogonality implies weak orthogonality:
+%
+%\begin{proposition}
+%Given $f,\, g\in \hom(\T)$, if $f\horth g$, then $f$ is weakly left orthogonal to $g$, that is, given a morphism $(a,b)\colon f\to g$ there exists a morphism $d\colon F_1\to G_0$ making the following diagram commutative:
+%$$\xymatrix{
+%F_0\ar[r]^a\ar[d]_f&G_0\ar[d]^g\\
+%F_1\ar[r]^b\ar@{.>}[ur]|d&G_1\,.}$$
+%\end{proposition}
+%\begin{proof}
+%Let $(e\colon E_0\to E_1)\in \E$ and $(m\colon M_0\to M_1)\in \M$, and let us show that $e$ is weakly left orthogonal to $m$. Indeed, consider a morphism in $\hom(\T)$
+%$$\xymatrix{
+%E_0\ar[d]_{e}\ar[r]^{\phi_0}&M_0\ar[d]^{m}\\
+%E_1\ar[r]^{\phi_1}&M_1
+%}$$ 
+%and complete $E_1\leftarrow E_0\to M_0$ to a homotopy cartesian square as follows
+%$$\xymatrix{
+%E_0\ar[d]_{e}\ar[r]^{\phi_0}\ar@{}[dr]|{\square}&M_0\ar[d]^{e'}\\
+%E_1\ar[r]^{\phi_0'}&P
+%}$$ 
+%By the above proposition, $e'\in \E$. By the observations in \cite[page 54]{Neeman}, we can find a morphism $\psi\colon P\to M_1$ such that the following square commutes:
+%$$\xymatrix{
+%M_0\ar[d]_{e'}\ar@{=}[r]&M_0\ar[d]^{m}\\
+%P\ar[r]^{\psi}&M_1
+%}$$ 
+%Thus, we can complete the above commutative square to a morphism of triangles:
+%$$\xymatrix{
+%\Sigma^{-1}C_e\ar[r]|0\ar[d]&\Sigma^{-1}C_m\ar[d]\\
+%M_0\ar[d]_{e'}\ar@{=}[r]&M_0\ar[d]^{m}\\
+%P\ar[r]^{\psi}\ar[d]&M_1\ar[d]\\
+%C_e\ar[r]|0&C_m
+%}$$ 
+%where the map $C_e\to C_m$ is trivial since $e'$ is left homotopy orthogonal to $m$. Now notice that the top square in the above morphism of triangles shows that the map $\Sigma^{-1}C_e\to M_0$ is trivial, thus there exists a map $f\colon P\to M_0$ such that $fe'=\id_{M_{0}}$. We obtain that the above diagram is isomorphic to the following one:
+%$$\xymatrix{
+%\Sigma^{-1}C_e\ar[r]|0\ar[d]&\Sigma^{-1}C_m\ar[d]\\
+%M_0\ar[d]_{(\id_{M_0},0)}\ar@{=}[r]&M_0\ar[d]^{m}\\
+%M_0\oplus C_e\ar[r]^{(m,0)}\ar[d]&M_1\ar[d]\\
+%C_e\ar[r]|0&C_m
+%}$$ 
+%Finally consider the following commutative diagram:
+%$$
+%\xymatrix{
+%E_0\ar[dd]_{e}\ar[rr]^{\phi_0}&&M_0\ar[dd]^{m}\\
+%&P\ar[ur]|f\\
+%E_1\ar[ur]|{\phi_0'}\ar[rr]^{\phi_1}&&M_1
+%}
+%$$
+%showing that the original square admits a, possibly non-unique, lifting.
+%\end{proof}
+%
+%\begin{proof}
+%(1) is clear since the notion of orthogonality is invariant under isomorphisms. For (2), it is clear that any isomorphism is contained in $\E\cap \M$ since the isomorphisms in $\T$ are exactly the morphisms with trivial cone. For the other inclusion, let $(\phi\colon x\to y)\in\E\cap \M$, so that $\phi \horth \phi$. Consider a morphism of triangles as follows:
+%$$\xymatrix{
+%x\ar[r]^{\phi}\ar@{=}[d]&y\ar[r]\ar@{=}[d]&C_\phi\ar[r]\ar[d]^{\psi}&\Sigma x\ar[d]\\
+%x\ar[r]^{\phi}&y\ar[r]&C_\phi\ar[r]&\Sigma x
+%}$$ 
+%Then $\psi$ is an isomorphism, but also $\psi=0$ by \refbf{snd2} so that $C_\phi=0$, showing that $\phi$ is an isomorphism. 
+%\end{proof}
+%
+%
+%\begin{proposition}\label{closure_homo}
+%Let $\F=(\E,\M)$ be a \phfs: then $\E$ is closed under cobase change, and $\M$ is closed under base change. In other words, consider a homotopy cartesian square
+%$$\xymatrix{
+%x\ar@{}[dr]|\boxvoid\ar[r]^{s}\ar[d]_{\phi}&x'\ar[d]^{\phi'}\\
+%y\ar[r]_{t}&y'
+%}$$
+%If $\phi\in \E$ then $\phi'\in \E$, while if $\phi'\in \M$ then $\phi\in \M$.
+%\end{proposition}
+%\begin{proof}
+%Let $(m\colon M_0\to M_1)\in \M$ and let us show that $\phi'$ is left homotopy orthogonal to $m$. Condition (\refbf{wobbly}.\refbf{fst} is easy to verify since the cone of $\phi'$ is isomorphic to the cone of $\phi$, so this follows by our assumption that $\phi$ is left homotopy orthogonal to $\M$. 
+%To verify condition (\refbf{wobbly}.\refbf{snd}, consider a morphism $(a,b)\colon \phi'\to m$. We obtain the following commutative diagram:
+%$$
+%\xymatrix{
+%x\ar@{}[rd]|\square\ar[r]^{s}\ar[d]_\phi&x'\ar[r]^a\ar[d]^{\phi'}&M_0\ar[d]^{m}\\
+%y\ar[r]^{t}\ar[d]_\alpha&y'\ar[r]^b\ar[d]^{\alpha'}&M_1\ar[d]^{\alpha_m}\\
+%C_\phi\ar[r]|\cong^{\varphi}\ar[d]_{\beta}&C_{\phi'}\ar[r]^{\psi}\ar[d]^{\beta'}&C_m\ar[d]^{\beta_m}\\
+%\Sigma x\ar[r]&\Sigma x'\ar[r]&\Sigma M_0}
+%$$
+%we should prove that $\psi=0$. By (\refbf{wobbly}.\refbf{snd} applied to $\phi \horth  m$ we get $\psi\phi=0$, but since $\varphi$ is an isomorphism this allows us to conclude.
+%\end{proof}
+%
+%
+%
+%\begin{proposition}
+%Let $\F=(\E,\M)$ be a \hfs in $\T$ admitting all $\lambda$-coproducts. Let $A_\bullet = \{A_0\xto{j_0}A_1\xto{j_1}A_2\xto{j_2}\dots\}$ and $B_\bullet = \{B_0\xto{k_0}B_1\xto{k_1}B_2\xto{k_2}\dots\}$ be two $\lambda$-chains of morphisms. If there is a natural transformation $\alpha\colon A_\bullet \Rightarrow B_\bullet$ which is objectwise in $\E$, then the induced map
+%\[
+%\xymatrix{
+%	\coprod_{i\in\lambda} A_i \ar[d]\ar[r] & \coprod_{i\in\lambda} A_i \ar[d]\ar[r] & \text{hocolim } A_\bullet \ar[r]\ar@{.>}[d] & +\\
+%	\coprod_{i\in\lambda} B_i \ar[r] & \coprod_{i\in\lambda} B_i \ar[r] & \text{hocolim } B_\bullet \ar[r] & +
+%}
+%\]
+%defined between the homotopy colimits is in $\E$.
+%\end{proposition}
+%
+%
+%\begin{proposition}
+%Let $\F=(\E,\M)$ be a \phfs on $\T$, and let $f\in\E$ or $\M$; if there exists a commutative diagram
+%\[
+%\xymatrix{\ar[r]\ar[d]_{f'} \ar@{-}@/^1pc/[rr]_{\text{id}} & \ar[r]\ar[d]^f & \ar[d]^{f'}\\ \ar[r]\ar@{-}@/_1pc/[rr]^{\text{id}} & \ar[r] &}
+%\]
+%called a \emph{retract} of $f$ in $\T^{[1]}$, then also $f'\in\E$ or $\M$;
+%\end{proposition}
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+%\begin{proposition}
+%\end{proposition}
+% Recall also that, given a $t$-structure $\t = (\T^{\leq  0}, \T^{\geq 0} )$ in $\T$, one obtains two functors
+% \[
+% \tau^{\leq0}\colon \T\to \T^{\leq  0} \ \ \text{ and }\ \ \tau^{\geq1}\colon \T\to  \T^{\geq  1} \,,
+% \]
+% % that are respectively the right adjoint to the inclusion $\T^{\leq  0}\to \T$ and the left adjoint to the inclusion $ \T^{\geq  1} \to \T$. For an object $x\in\T$ we will generally write $x^{\leq0}$ for $\tau^{\leq0}x$ and $x^{\geq1}$ for $\tau^{\geq1}x$. Furthermore, we will generally denote the unit of the co-reflection $\tau^{\leq0}$ and the co-unit of the reflection $\tau^{\geq1}$ by the following symbols: 
+% \[
+% x^{\leq0} \xto{\sigma_x} x \xto{\rho_x} x^{\geq1}\,.
+% \]
+% For any $n\in\Z$, we let $\tau^{\leq n} \coloneqq \Sigma^{-n}\tau^{\leq0}\Sigma^n$ and $\tau^{\geq n} \coloneqq \Sigma^{-n}\tau^{\geq0}\Sigma^n$. We adopt similar notational conventions for these shifted functors.
+% \medskip
+% \subsection{The induced \hfs}
+%\begin{lemma}\label{lemma_final_initial_normal}
+%Let $\t$ be a $t$-structure in $\T$. Then, the initial map $0\to x$ belongs to $\E_\t$ if and only if the final map $x\to 0$ belongs to $\E_\t$, if and only if $x\in  \T^{\leq  0} $. Dually, the initial map $0\to y$ belongs to $\M_\t$ if and only if the final map $y\to 0$ belongs to $\M_\t$, if and only if $y\in  \T^{\geq  1} $. Furthermore, the \hfs $\F_\t=(\E_\t,\M_\t)$ is homotopically normal.
+%\end{lemma}
+%\begin{proof}
+%For the first part of the statement, suppose that $0\to x$ belongs to $\E_\t$. By definition, this happens if and only if $0\to x^{\geq1}$ is an isomorphism, that is, if and only if $x\in  \T^{\leq  0} $. But this happens if and only if $x^{\geq1}\to 0$ is an isomorphism that, by definition of $\E_\t$, means that $x\to 0$ belongs to $\E_\t$. The dual statements for $\M_\t$ are proved similarly.
+%\\
+%Consider now a factorization of a final map $x\to 0$ as follows
+%\[
+%x \xto{e_x} T_x \xto{m_x}  0\ \ \text{ with }\ \ e_x\in \E_\t,\ m_x\in \M_\t\,,
+%\] 
+%and a triangle of the form $R_x\to x \xto{e_x} T_x\to \Sigma R_x$. We should prove that the map $(R_x\to 0)$ belongs to $\E_\t$, that is, that $R_x\in  \T^{\leq 0} $. By the first part, we know that $T_x\in  \T^{\geq 1} $. On the other hand, since $e_x\in \E_\t$ and using Lemma \refbf{classes_via_cartesian}, we can construct a commutative diagram as follows:
+%$$
+%\xymatrix{
+%x^{\leq0}\ar@{}[dr]|\square\ar[r]\ar[d]&x\ar[r]\ar[d]^{\phi_e}&x^{\geq1}\ar[r]\ar[d]|\cong&\Sigma x^{\leq0}\ar[d]\\
+%T_x^{\leq0}\ar[r]&T_x\ar[r]&T_x^{\geq1}\ar[r]&\Sigma T_x^{\leq0}}
+%$$
+%Since $T_x\in  \T^{\geq 1} $, we get $T_x^{\leq0}=0$ and $T_x\cong T_x^{\geq 1}\cong x^{\geq1}$, so the fact that the square on the left-hand-side in the above diagram is homotopy cartesian provides us with a distinguished triangle of the form
+%\[
+%x^{\leq0}\to x\to T_x\to \Sigma x^{\leq0}\,.
+%\]
+%In particular, $R_x\cong x^{\leq0}\in  \T^{\leq 0} $ as desired.
+%\end{proof}
+% \xymatrix@R=0pt@C=2cm{
+% 	\textsc{hntth}(\T) \ar@<5pt>[r] & \ar@<5pt>[l] \textsc{ts}(\T)\\
+% 	 & \\
+% 	\F=(\E,\M)\ar@{|->}[r]&\t_\F=(0/\E,\Sigma(\M/0))\\
+% 	\F_\t=(\E_\t,\M_\t)\ar@{<-|}[r]&\t=( \T^{\leq 0} , \T^{\geq 0} )
+% }
+% \xymatrix@R=0pt{
+% **[l]\{\text{homo. normal {\htth}s in $\T$}\}\ar@<-3pt>[r]_{\Phi}&\{\text{$t$-structures in $\T$}\}\ar@<-3pt>[l]_\Psi\\
+% \F=(\E,\M)\ar@{|->}[r]&\t_\F=(0/\E,\Sigma(\M/0))\\
+% \F_\t=(\E_\t,\M_\t)\ar@{<-|}[r]&\t=( \T^{\leq 0} , \T^{\geq 0} )\\
+% }
+
+%{\beta'}{\alpha'}
+%Notice that, by the long exact sequence \eqref{ort_ses}, two objects $X,Y\in\D[1]$ are coherently orthogonal provided their underlying diagrams are homotopy orthogonal. In fact, condition \refbf{fst} applied to $\dia_{[1]}X$ and $\dia_{[1]}Y$ tells us that 
+%\[
+%\D[0](C(X),\Sigma^{-1}C(Y))=0
+%\] 
+%(so the morphism $\widetilde{\varphi_{X,Y}}$ is injective), while condition \refbf{snd} tells us that the map 
+%\[
+%\D[0](C(X),C(Y))\to \D[0](X_1,\Sigma Y_0)
+%\]
+%is injective (so the morphism $\widetilde{\varphi_{X,Y}}$ is surjective). 
+% with two inclusions (\ie, two pseudonatural transformations with fully faithful components)
+%\[
+%\iota_e\colon \mathbb E\to \D^{[1]} \quad\text{and}\quad \iota_m\colon \mathbb M\to \D^{[1]}
+%\]
+%\begin{proposition}
+%Let $\C$ be a category endowed with a factorization system $\F=(\E,\M)$ and let $I\in\cat$ be a small category. Then 
+%\begin{itemize}
+%	\item every diagram category $\C^I$ (whose objects are functors $I\to \C$) is endowed with a canonically chosen factorization system;
+%	\item this factorization system satisfies a universal property (in $\Cat$);
+%	\item the triple of adjoints $u_!\dashv u^*\dashv u_*$ are respectively a left
+%    map, a map and a right map of categories with factorization systems in the
+%    sense of \adef\refbf{landr}.
+%\end{itemize}
+%\end{proposition}
+%\begin{proof}
+%  Let $\F = (\E,\M)$ be the factorization system. Define the two classes of natural transformations pointwise as follows:\footnote{The notation is chosen to distinguish $\E^{(I)}$, as defined below, from the category of functors $I\to \E$, when $\E$ is regarded as the nonfull subcategory of $\C$ on the arrows of $\E$; the latter category is much smaller, and it doesn't define a factorization system on $\C^I$.}
+%  \begin{gather}
+%    \E^{(I)} = \{\eta \mid \eta_i \colon Fi \xto{e} Gi\}\\
+%    \M^{(I)} = \{\alpha\mid \alpha_i \colon Ai \xto{m}Bi\}
+%  \end{gather}
+%  this defines two classes of arrows and we shall prove that the pair $\F^{(I)}=(\E^{(I)},\M^{(I)})$ is a factorization system on $\C^I$. Indeed
+%  \begin{itemize}
+%  \item \emph{the two classes are orthogonal}: this is true componentwise, so for each commutative square
+%  \[
+%  \xymatrix{
+%  F \ar[d]_e\ar[r]^u& A\ar[d]^m \\
+%  G \ar[r]_v& B
+%  }
+%  \]
+%  in $\C^I$ we can find a family of arrows $\{\theta_i\colon G_i \to A_i\}_{i\in I}$ that solves a lifting problem on each component-square; now uniqueness of the lifting gives the desired naturality since given a morphism $i\to j$ in $I$, we can form the square
+%    \[
+%      \xymatrix{
+%        F_i \ar[r]^{u_i}\ar[d]_{e_i} & A_i \ar[r]^{A(i\to j)}& A_j\ar[d]^{m_j}\\
+%        G_i \ar[r]_{v_i}& B_i \ar[r]_{B(i\to j)} & B_j
+%      }
+%    \]
+%    admits as fillers both the arrow $G_i\xto{\theta_i}A_i\to A_j$ and the arrow $G_i \to G_j\xto{\theta_j}A_j$.
+%  \item \emph{every morphism can be factored by $\F^I$}: this is true
+%    componentwise, as there is a factorization
+%    \[
+%      \xymatrix{
+%        Xi \ar[dr]_{e_i(f)}\ar[rr]^{f_i} && Yi \\
+%        &Ei\ar[ur]_{m_i(f)}
+%      }
+%    \]
+%    and again, uniqueness for solutions to well-chosen lifting problems gives
+%    that
+%    \begin{itemize}
+%    \item $i\mapsto Ei$ is a functor;
+%    \item the two families of maps $e_i(f)\colon Xi\to Ei$ and $m_i(f)\colon Ei\to Yi$ are natural in
+%      $i\in I$, and thus form a factorization of $f$ in $\C^I$.
+%    \end{itemize}
+%  \end{itemize}
+%  There are still two points to prove:
+%  \begin{itemize}
+%  \item the adjoint triple $u_!\dashv u^*\dashv u_*$ is a triple of ``maps'':
+%    the fact that $u^*$ preserves both classes is a direct consequence of its
+%    definition as a suitable whiskering of 2- and 1-cells; a standard fact about
+%    orthogonality now yields that $u_!$ is automatically a left map, and $u_*$ a
+%    right map.
+%  \item The factorization system $\F^{(I)}$ satisfies a universal property: take the functor
+%    $k\colon |I|\hookrightarrow I$ that includes the discrete subcategory of $I$
+%    into $I$. Then we can consider the pullback of
+%    \[
+%      \xymatrix{
+%            & \E^{|I|}\ar[d]\\
+%        \C^I \ar[r]_{k^*} & **[r] \C^{|I|}\cong \prod_{i\in I} \C
+%      }
+%    \]
+%    A rapid inspection of the universal property of this (strict) pullback in
+%    $\Cat$ gives that it is isomorphic to $\E^I$ as defined above.
+%  \end{itemize}
+%This concludes the proof.  
+%\end{proof}
+%A quasicategorical proof is even more formal. Let's recall a few definitions.
+%\begin{definition}[Orthogonality and Fillers]\label{def:joyortho}
+%Let $\C$ be an $\infty$-category, and $u\colon A\to B, f\colon X\to Y$ two edges of $\C$. We define the space $\text{Sq}(u,f)$ of commutative squares associated to $(u,f)$ to be the space of simplicial maps $s\colon \Delta^{1}\times\Delta^{1}\to \C$ such that $s|_{\Delta^0\times \Delta^{1}}=u, s|_{\Delta^{1}\times\Delta^0}=f$.
+%
+%A \emph{diagonal filler} for $s\in\text{Sq}(u,f)$ consists of an extension $\bar s\colon \Delta^{1}\star\Delta^{1}\to \C$ (where $\star$ denotes the \emph{join} of simplicial sets, see \cite[§\textbf{3.1} and \textbf{3.2}]{Joy}) of $s$ along the natural inclusion $\Delta^{1}\times\Delta^{1}\subset\Delta^{1}\star \Delta^{1}$.
+%\end{definition}
+%\begin{remark}
+%Denote by $\text{Fill}(s)$ the top-left corner of the fiber sequence
+%\[
+%\begin{kodi}
+%\obj{
+%	|(fill)| \text{Fill}(s) & [3em] |(X1s1)| X^{\Delta^{1}\star\Delta^{1}} \\
+%	|(d0)| \Delta^{0} & |(X1x1)| X^{\Delta^{1}\times\Delta^{1}}.\\
+%};
+%\mor fill -> X1s1 q:-> X1x1;
+%\mor * -> d0 s:-> *;
+%\end{kodi}
+%\]
+%The simplicial set $\text{Fill}(s)$ is a Kan complex, since $q$ is a Kan fibration (as a consequence of \cite[Prop. \textbf{2.18}]{Joy}).
+%\end{remark}
+%This leads us to the following
+%\begin{definition}
+%\index{.boxslash@$\boxslash$}
+%We say that the edge $u$ is \emph{left orthogonal} to the edge $f$ in the $\infty$-category $\C$ (or $f$ is \emph{right orthogonal} to $u$) if $\text{Fill}(s)$ is a \emph{contractible} Kan complex for any $s\in \text{Sq}(u,f)$. We denote this relation between $u$ and $f$ as $u\boxslash f$.
+%\end{definition}
+%Now, as a consequence of the fact that the square
+%\[
+%\begin{kodi}
+%\obj{
+%  |(fill)| \text{Fill}(s)^I & [3em] |(X1s1)| (X^{\Delta^{1}\star\Delta^{1}})^I \\
+%  |(d0)| \Delta^{0} & |(X1x1)| (X^{\Delta^{1}\times\Delta^{1}})^I\\
+%};
+%\mor fill -> X1s1 q:-> X1x1;
+%\mor * -> d0 s:-> *;
+%\end{kodi}
+%\]
+%is again a pullback (as $(\firstblank)^I$ commutes with limits), we get that the contractibility of $\text{Fill}(s)$ entails the contractibility of $\text{Fill}(s)^I$ for any $I$.
+%\begin{proposition}
+%Let $\mathbb{D}$ be the represented derivator $J\mapsto \D^J = [J, \D]$ for $\D$ a category. Then, if $\D$ has a factorization system, the derivator $\mathbb{D}$ has a coherent factorization system in the sense of \adef\refbf{}.
+%\end{proposition}
+%\begin{proof}
+%
+%\end{proof}
+%
+%\begin{lemma}
+%Let $\C$ be a quasicategory; then every quasicategorical factorization system on $\C$ induces a 1-categorical factorization system on $\tau_1\C$.
+%\end{lemma}
+%\begin{proposition}
+%Let $\C$ be a quasicategory, and let $\derC$ be the associated derivator
+%\[
+%J \longmapsto \C^{NJ} \longmapsto \tau_1(\C^{NJ}) = \derC(J).
+%\]
+%Then every quasicategorical factorization system on $\C$ induces a coherent factorization system on $\derC$.
+%\end{proposition}
+%
+%\item given $X,\ Y\in \D(I)$, the canonical map 
+%\[
+%\D(I)(X,Y)\to \D([0])^I(\dia_IX,\dia_IY)
+%\] is an isomorphism if $\D([0])(\Sigma^n X_i,Y_j)=0$ for all $i,j\in I$, $n>0$;
+
+
+%\subsection{The 2-category of marked categories}
+%Intuitively, a \emph{marked (pre)\-de\-ri\-va\-tor} is a (pre)\-de\-ri\-va\-tor $\D$ such that each $\D(J)$ has a factorization system `canonically assigned'. This notion is a slight specialization of the classical notion of a derivator, and results in a refinement of the codomain of $\D$ to a 2-category of `marked categories', that is categories endowed with a factorization system. There is some confusion in this last definition, since several choices are possible for the 1- and 2-cells.
+%
+%We begin this section fixing this notation.
+%\begin{definition}[the double category $\markCat$]
+%Let $\markCat$ be the double category whose typical 2-cell is
+%\[
+%\xymatrix{
+%	(\C, \F) \ar[r]\ar[d]& (\C', \F') \ar[d] \ar@{=>}[dl]\\
+%	(\D,\fS) \ar[r] & (\D',\fS')
+%}
+%\]
+%In such a picture,
+%\begin{itemize}
+%\item 0-cells are the pairs $(\C, \F)$ where $\F$ is a factorization system $(\E,\M)$ on the category $\C$;
+%\item vertical 1-cells are the functors $F\colon \C \to \D$ that preserve the left classes
+%\item horizontal 1-cells $G$ are the functors that preserve the right class.
+%\item a 2-cell $\alpha$ is a natural transformation $KF \Rightarrow GH$ (with no additional request on its components).
+%\end{itemize}
+%Horizontal and vertical 1-cells, as well as 2-cells, can be composed accordingly. There is an evident choice for the identity horizontal and vertical 1-cells, and for 2-cells.
+%\end{definition}
+%\begin{definition}[left and right marked categories]\label{landr}
+%We consider the sub-2-categories of $\markCat$ $\lmarkCat$ and $\rmarkCat$, that arise from the restriction of $\markCat$ to morphisms having vertical or horizontal identity 1-cells:
+%\begin{itemize}
+%\item $\lmarkCat$ is the 2-category having 1-cells the functors $L\colon \C\to\D$ that send $\E_\F$ into $\E_\fS$; these are called \emph{left maps} or \emph{left functors}.
+%\item $\rmarkCat$ is the 2-category having 1-cells the functors $R\colon \C\to\C'$ that send $\M_\F$ into $\M_{\F'}$; these are called \emph{right maps} or \emph{right functors}.
+%\end{itemize}
+%\end{definition}
+%These 2-categories are the main object of interest in our discussion; formally, they can be regarded as suitable categories of elements, in the sense of the following
+%\begin{remark}[$\lmarkCat$ as a category of elements]
+%There is a `fibrational' approach to the construction of $\lmarkCAT$; consider the functor $\wp\colon \CAT \to \mho^+\text{-}\Set$ that sends each $\C$ into the powerset of $\hom(\C)$. This functor has a `category of elements' $U\colon \text{Elts}(\wp)\to \CAT$, universal with respect to a ($\CAT$-categorical, hence 2-dimensional) property. The obvious forgetful functor $\lmarkCAT \to \CAT$ consists of a suitable restriction of $U$ (but we still denote this restriction again as $U$).
+%\end{remark}
+%A completely analogous statement is valid for $\rmarkCat$ (in fact, there are equivalence-on-object functors $\rmarkCat\leftrightarrows\lmarkCat$ induced by the Galois connection of \cite[???]{} (every left (right) class $\E_\F$ ($\M_\F$) in a factorization system determines the right (left) class since $\M_\F = \E_\F^\perp$ ($\E_\F = {}^\perp\M_\F$)).
+%\begin{remark}
+%As a consequence of the following well-known result on the way orthogonality is preserved by adjoint functors:
+%\begin{quote}
+%Let $F\dashv G\colon \C\leftrightarrows \D$ be an adjunction. Then $F(f)\perp g$ in $\D$ if and only if $f\perp G(g)$ in $\C$.
+%\end{quote}
+%we have that the following two situations are equivalent
+%\begin{itemize}
+%\item The left adjoint $F\colon \C\to \D$ is (=can be identified with) a map on $\lmarkCat$;
+%\item The right adjoint $G\colon \D\to \C$ is (=can be identified with) a map on $\rmarkCat$.
+%\end{itemize}
+%In particular, as it will be useful later on, if $\D$ is a derivator, such that each $\D(u) = u^*$ sits in the middle of a triple of adjoints $u_!\dashv u^*\dashv u_*$, then $u^*\colon \D(J)\to \D(I)$ is a left map if and only if $u_*$ is a right map, and $u^*$ is a right map if and only if $u_!$ is a left map.
+%\end{remark}
+%\begin{remark}
+%The previous result can in fact be sensibly improved and clarified. See (contaccio inutile di Hirschhorn) for more on this.
+%\end{remark}
+%\begin{remark}
+%condizioni sulle 2-celle
+%\end{remark}
+%\begin{remark}
+%???
+%\end{remark}
+%\begin{definition}[marked prederivator]
+%A \emph{left-marked prederivator} is a strict 2-functor
+%\[
+%\D\colon \cat^\opp \to \lmarkCAT
+%\]
+%There is a 2-category $\lmark\text{-}\cate{PDer}$ whose objects are left-marked prederivators, 1-cells are pseudonatural transformations, and 2-cells modifications between these functors.
+%\end{definition}
+%\begin{remark}
+%We unravel the definition of a left-marked prederivator:
+%\begin{itemize}
+%\item To each $J\in\cat$ is associated a possibly large category $\D(J)$, and an induced functor $u^*\colon \D(J)\to\D(I)$ for each $u\colon I\to J$; on both $\D(J)$ and $\D(I)$ there are orthogonal factorization systems $\F(J)=(\E(J), \M(J))$ and $\F(I) = (\E(I), \M(I))$.
+%\item The functor $u^*$ is such that $u^*(\E(J))\subseteq \E(I)$.
+%\end{itemize}
+%We also unravel the definition of a morphism of left-marked prederivators as follows: a pseudonatural transformation $F\colon \D\to\D'$ is a componentwise left map, in that $F_J\colon \D(J) \to \D'(J)$ preserves the left class.
+%\end{remark}
+%\begin{remark}
+%A prederivator can be enhanced to a marked prederivator by assigning a coherent (in the sense above) choice of a FS on each $\D(J)$. This will be referred to as the \emph{choice of a marking} on the prederivator.
+%
+%This is equivalent to the following `injectivity property': a marking for the prederivator $\D$ is a choice for a lifting in the diagram
+%\[
+%\xymatrix{
+%	& \markCAT \ar[d]^U \\
+%\cat^\opp \ar[r]_{\D} \ar@{.>}[ur]^{\widetilde{\D}}	& \CAT
+%}
+%\]
+%(the functor $U$ is the universal fibration described above).
+%\end{remark}
+% \subsection{Factorization systems as monads}
+%The purpose of this section is to avoid burdening the discussion above with 
+% \begin{notat}
+% Let $l$ and $r$ be, respectively, the left and right adjoints of the diagonal functor $\Delta$ (they respectively select the initial and terminal object of $\due\times\due$). Then the morphism of derivators $\Delta^\circledast\colon \D^{\square}\to \D^{[1]}$ has a right adjoint $L \coloneqq l^\circledast$ and a left adjoint $R \coloneqq r^\circledast$.
+% \end{notat}
+% \end{definition}
+% \subsection{The main theorem}
+% One of the main theorems proved in \cite{Korostenski199357} is that the 2-category $\lmarkCAT$ and $\rmarkCAT$ are the categories of \emph{lax pseudoalgebras} of a 2-monad on $\CAT$; we recall this result proved in \cite{Fiorenza2014} where it characterizes $t$-structures on stable quasicategories as \cite{CHK}'s \emph{normal torsion theories}.
+% \begin{proposition}\label{rosetta}
+% \todo{citare!}
+% \end{proposition}
+% This result is deeply rooted in one of the main theorems in 
+% \item There exists a lifting $\hat{\D}\colon \Dia^\opp \to \markCAT$.
+% \item There is a (coherent choice of) a factorization system $\F(J) = (\E(J), \M(J))$ on each $\D(J)$.
+% \item There is a (coherent choice of) a factorization system $\F(e) = (\E(e), \M(e))$ on each $\D(e)$.
+% \begin{remark}
+% Given a functor $u\colon I\to J$ in $\Dia$, the functors $(u\times \id_K)^*\colon \D^{J}(K)\to \D^I(K)$ assemble into a strict precomposition morphism of derivators 
+% \[
+% u^*\colon \D^{J}\longrightarrow \D^{I}
+% \] 
+% and similarly for natural transformations. In this way one obtains a $2$-functor:
+% \[
+% (-)^{(-)}\colon \Dia^\opp\times \Der\longrightarrow \Der\quad\text{such that}\quad(I,\D)\mapsto \D^{I}
+% \]
+% see \cite[Example 2.1 (ii)]{Moritz} for this construction.
+% \end{remark}
+% \todo[inline]{removed 2}
+%
+
+
+
+
+=============================================
+
+
+% \vcenter{\xymatrix{
+% &v\ar@{=>}[dr]^{\nu}\\
+% r\ar@{=>}[dr]_{\mu'}\ar@{=>}[ur]^{\mu}&&l\\
+% &h\ar@{=>}[ur]_{\nu'}
+% }}
+% \colon \due\times \due\longrightarrow  \due
+%More formally, $d(a,b)=0$ if $a+b \leq 1$ while $d(a,b)=1$ if $a+b\geq 2$.
+% \[
+% \varphi \colon \id_{\due\times\due}\to \Delta l \qquad\text{and}\qquad \psi\colon \Delta r\to \id_{\due\times \due}
+% \] 
+% respectively the unit of $l\dashv \Delta$ and the counit $\Delta\dashv r$ 
+%\begin{definition}
+%Let $l$ and $r\colon \due\times \due \to \due$ be, respectively, the left and right adjoints to the diagonal functor $\Delta\colon \due\to \due\times \due$:
+%\[
+%\begin{kodi}[xscale=2,yscale=1.5]
+%\foreach \x in {0,1} {
+%\foreach \y in {0,1}
+%  \node at (\y,-\x) (\x\y) {$(\x,\y)$};
+%}
+%\node at (2,-0.5) (label1) {$r$};
+%\draw[densely dotted] (00.north west) -- 
+%					  (10.south west) -- 
+%					  (10.south east) -- 
+%					  (00.south east) -- 
+%					  (01.south east) -- 
+%					  (01.north east) -- cycle;
+%\draw[densely dotted] (11.north west) -- 
+%					  (11.north east) -- 
+%					  (11.south east) -- 
+%					  (11.south west) -- 
+%					  (11.north west) -- cycle;
+%\node at (3,0) (zero) {$0$};
+%\node at (3,-1) (uno) {$1$};
+%\draw[->] (01) to[bend left] (zero);
+%\draw[->] (11) to[bend right] (uno);
+%\mor 00 -> 01 -> 11 ;
+%\mor 00 -> 10 -> 11 ;
+%\mor zero -> uno;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\node at (5,-0) (05) {$(0,0)$};
+%\node at (6,-1) (16) {$(1,1)$};
+%\node at (5,-1) (15) {$(1,0)$};
+%\node at (6,-0) (06) {$(0,1)$};
+%\node at (4,-0.5) (label1) {$l$};
+%\draw[densely dotted] (06.north west) -- 
+%					(16.north west) --
+%					(15.north west) --
+%					(15.south west) --
+%					(16.south east) -- 
+%					(06.north east) -- 
+%					(06.north west) -- cycle;
+%\draw[densely dotted] (05.north west) -- 
+%					  (05.north east) -- 
+%					  (05.south east) -- 
+%					  (05.south west) -- 
+%					  (05.north west) -- cycle;
+%\mor 05 -> 06 -> 16 ;
+%\mor 05 -> 15 -> 16 ;
+%\draw[->] (05) to[bend right] (zero);
+%\draw[->] (15) to[bend left] (uno);
+%\end{kodi}
+%\]
+%More precisely, $r(a,b)=0$ if $a+b\leq 1$ and $r(1,1)=1$,  while $l(a,b)=1$ if $a+b\geq 1$ and $r(0,0)=0$.
+%\\
+%\end{definition}
+%
+%Consider the following (pseudo)commutative diagram:
+%\[
+%\xymatrix{
+%\D^{\due}\ar@/_10pt/[rrd]_{(\id_2\times \pt_\due)^\circledast\ }\ar[rr]^{d^\circledast}&&\D^{\tre\times \due}\ar[d]|{((0,2)\times \id_{\due})^\circledast}\ar[rr]^{F^{\tre}}&&\D^{\tre}\ar[d]^{(0,2)^\circledast}\\
+%&&\D^{\due\times \due}\ar[rr]_{F^{\due}}&&\D^{\due}
+%}
+%\]
+%where the square on the right commutes (up to a natural equivalence) by the definition of morphism of derivators while the triangle on the left commutes (strictly) by \eqref{d_components}. Since $F\pt_\due^\circledast=\id_\D$, it is clear that $F^\due(\id_2\times \pt_\due)^\circledast=\id_{\due}^\circledast$. Hence, the above diagram shows that 
+%$(0,2)^\circledast \Phi_F=(0,2)^\circledast F^\tre d^\circledast\cong F^\due(\id_2\times \pt_\due)^\circledast=\id_{\due}^\circledast$.
+%Similarly, $1^\circledast\Phi_F\cong F(1\times \id_\due)^\circledast d^\circledast=F(d\circ(1\times \id_\due))^\circledast=F\id_{\due}^\circledast=F$.
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%\begin{lemma}
+%The factorization cell $(F,\gamma)$ can be recovered from either one of $F_L$ or $F_R$.
+%\end{lemma}
+%\begin{proof}
+%A coherent factorization cell $(F,\gamma)$ satisfies the following properties:
+%\begin{itemize}
+%	\item The equations $0^\circledast F_L = 0^\circledast$, $1^\circledast F_L = 0^\circledast F_R$, and $1^\circledast F_R = 1^\circledast$ hold. Once again, they follow directly from adjunction rules of the involved adjunctions.
+%	\item As a consequence, it turns out that the factorization cell $F$ and the action of $\mm$ and $\ee$ on those objects in the essential image of $0_\circledbang$ completely determine $\ee$ and $\mm$; indeed, it can be showed that these modifications fit into the diagram of 2-cells
+%	\[
+%		\xymatrix{
+%		0^\circledast \ar@{=}[r]\ar[d]& 0^\circledast \ar[r]^\kappa\ar[d]_{\ee}& 1^\circledast \ar[d]\\
+%		F\circ 0_\circledbang 0^\circledast \ar[r]\ar[d]& F \ar[r]\ar[d]_{\mm}& F\circ 0_\circledbang 1^\circledast\ar[d]\\
+%		0^\circledast \ar[r]_\kappa& 1^\circledast \ar@{=}[r]& 1^\circledast 
+%		}
+%	\]
+%\end{itemize}
+%
+%
+%
+%
+%An immediate consequence of the identities
+%\begin{gather*}
+%0^\circledast \circ F_L=0^\circledast\circ F^\due \circ l^\circledast \cong F \circ (0^\circledast)^\due \circ l^\circledast \cong F\\
+%0^\circledast \circ F_R=1^\circledast \circ F^\due \circ r^\circledast \cong F \circ (1^\circledast)^\due \circ r^\circledast \cong F.\qedhere
+%\end{gather*}
+%\end{proof}
+%
+%
+%
+%
+%
+%
+%%
+%%
+%%
+%%\begin{definition}
+%%Consider the ``slit'' functor $D\colon [2]\times [1]\to  [1]$:
+%%\[
+%%\begin{kodi}[xscale=2,yscale=1.5]
+%%\foreach \x in {0,1,2} {
+%%\foreach \y in {0,1}
+%%  \node at (\y,-\x) (\x\y) {$(\x,\y)$};
+%%}
+%%\draw[densely dotted] (00.north west) -- 
+%%					  (10.south west) -- 
+%%					  (10.south east) -- 
+%%					  (00.south east) -- 
+%%					  (01.south east) -- 
+%%					  (01.north east) -- cycle;
+%%\draw[densely dotted] (11.north west) -- 
+%%					  (11.north east) -- 
+%%					  (21.south east) -- 
+%%					  (20.south west) -- 
+%%					  (20.north west) -- 
+%%					  (21.north west) -- cycle;
+%%\node at (3,0) (zero) {$0$};
+%%\node at (3,-2) (uno) {$1$};
+%%\draw[->] (01) to[bend left] (zero);
+%%\draw[->] (21) to[bend right] (uno);
+%%\mor 00 -> 01 -> 11 -> 21;
+%%\mor * -> 10 -> 20 -> *;
+%%\mor 10 -> 11;
+%%\mor zero -> uno;
+%%\end{kodi}
+%%\]
+%%(more formally, $D^\leftarrow(0) = \{(i,j)\mid i+j < 2\}$, $D^\leftarrow(1) = \{(i,j)\mid i+j \ge 2\}$ and acts on arrows accordingly). 
+%%\end{definition}
+%%
+%%
+%%\begin{remark}\label{el-and-ar}
+%%
+%%\begin{definition}[coherent factorization cell]\label{factfun}
+%%Suppose that $\D$ is endowed with a morphism of derivators $F\colon \D^{[1]}\to \D$, and that there is an isomorphism $\gamma\colon F\circ 0_!\to \id_{\D}$. Such a pair $(F,\gamma)$ will be called a \emph{(coherent) factorization cell} for $\D$.
+%%\end{definition}
+%
+%
+%We now prove that a coherent factorization cell for $\D$ amounts to a structure of $(\firstblank)^\due$-algebra for $\D$. To do this, we show how the extended associator of \adef\refbf{two-algebras} can be constructed from the pair $(F,\gamma)$.
+%
+%Consider the composition $\alpha_m$ of 2-cells
+%\[
+%F\circ\Delta^\circledast = 1^\circledast \circ F_R \circ \Delta^\circledast \xto{\mm F_R \Delta^\circledast} F F_R \Delta^\circledast = F F^\due M_R \xto{FF^\due\varrho} FF^\due
+%\]
+%where $\varrho \colon (\Delta^\circledast)^\due \circ R_{\D^\due}$ is defined by the 2-cell
+%\[
+%\vcenter{
+%	\xymatrix@R=1.4cm@C=1.4cm{
+%	\square & \ar[l]_{r\times\due} \square\times \due \\
+%	\due \ar@{}[ur]|{\Nearrow}\ar[u]^\Delta & \square\ar[u]_{\Delta\times \due}\ar[l]^r
+%	}
+%}
+%\quad \overset{\D}{\mapsto} \quad
+%\vcenter{\xymatrix@R=1.4cm@C=1.4cm{
+%\D^\square \ar@{=}[dr] \ar[r]^{R_{\D^\due}}\ar[d]_{\Delta^\circledast} & (\D^\square)^\due \ar[d]^{(\Delta^\circledast)^\due} \ar@{}[dl]|(.65){\alpha\Nearrow}\ar@{}[dl]|(.35){=}\\
+%\D^\due \ar[r]_{R_\D} & \D^\square
+%}}
+%\]
+%induced by functoriality of $\D$ from the lax commutative square on the left, keeping in mind that the composition $r\circ\Delta$ is the identity.
+%
+%We have to verify that the pair $(F,\alpha_m,\gamma)$ endows $F$ with a $(\firstblank)^\due$-algebra structure. To do this we put the 2-cell 
+%\[
+%\xymatrix@R=1.2cm@C=2cm{
+%	\D^\square \ar[r]^{\Delta^\circledast}\ar[d]_{F^\due} \ar[dr]& \D^\due \ar[d]^F \ar@{}[dl]|(.3){\Swarrow\mm F_R \Delta^\circledast} \\
+%	\D^\due \ar[r]_F \ar@{}[ur]|(.3){FF^\due\varrho\Swarrow} & \D
+%}
+%\]
+%and the 2-cell $\alpha_u=\gamma$ into the diagrams of \adef\refbf{two-algebras}. A slick verification of the algebra axioms
+%\todo[inline]{}
+%
+% \xymatrix{
+% &FX\ar[dr]^(.6){e_{m_{X}}}\ar[rrrd]^{\alpha v^\circledast}\\
+% FF_rX\ar[rrrd]^(.7){\alpha r^\circledast}\ar[ur]^{m_{e_{X}}}\ar[dr]_{FF^\due(\mu')^*}&&FF_lX\ar[rrrd]|(0.514){\hole\hole}^(.35){\alpha l^\circledast}&&FX\ar@{=}[dr]\\
+% &FX\ar[rrrd]^{\alpha h^\circledast}\ar[ur]|{\hole}_(.38){FF^\due(\nu')^*}&&FX\ar@{=}[ur]\ar@{=}[dr]&&FX\\
+% &&&&FX\ar@{=}[ur]
+% }

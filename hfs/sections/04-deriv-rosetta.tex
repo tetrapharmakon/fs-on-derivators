@@ -1,0 +1,232 @@
+\color{blue}
+\section{The Rosetta stone for derivators}
+We have seen in Theorem \refbf{triang-rosetta} that, given a triangulated category $\cD$, there is a bijection between $t$-structures and normal {\htth}s on $\cD$. In this section we are going to prove a similar bijection for derivators. More precisely, we fix a stable derivator $\D$ of type $\Dia$, and we show in \athm\refbf{derrosetta} that there is a bijection between $t$-structures on the triangulated category $\D(\uno)$ and \emph{normal derivator torsion theories} on $\D$. As a consequence we recover one of the main results of \cite{Fiorenza2014} (see Corollary \refbf{infinity_rosetta}). 
+\subsection{Lifting {\hfs}s}
+\begin{notat}\label{notation_rosetta}
+Given a finite directed category $I$, we define its \emph{length} $\ell(I)\in \N$ as the maximal length of a path of non-identity arrows in $I$. An object $i$ in $I$ is \emph{minimal}, if there is no non-identity morphism starting in $i$. We denote by $\fincat$ the full sub-2-category of $\Cat$ whose $0$-cells are the finite directed categories. If $I\in\fincat$ we denote $I^\circ$ the subcategory of $I$ spanned by the non-minimal objects. Note that for any minimal object $i\in I$ of a finite directed category, if $u\colon I^\circ\hookrightarrow I$ denotes the inclusion, we have the inequalities
+\[
+\ell(I)>\ell(J)\geq \ell(u/i).
+\] 
+Finally, we denote $\partial I \coloneqq I\setminus I^\circ$ (\ie the subcategory spanned by all minimal objects).
+\end{notat}
+\begin{lemma}{\rm \cite{SSV}}\label{lemma_approximation_SSV}
+Let $I$ be a category of finite length and let $u\colon I^\circ\hookrightarrow I$. Furthermore, given a stable derivator $\D\colon \Dia^\opp\to \Cat$ and $X\in \D(I)$, there is a distinguished, pointwise split triangle
+\[
+\bigoplus_{i\in\partial I}i_!i^*u_!u^*X\to \bigoplus_{i\in\partial I}i_!X_i\oplus u_!u^*X\to X\to \Sigma \bigoplus_{i\in\partial I}i_!i^*u_!u^*X
+\]
+induced by the counit maps $\epsilon_i : i_!i^*\to 1$ and $\epsilon_u : u_!u^* \to 1$.
+\end{lemma}
+In what follows, we start with a \hfs on the base $\D(\uno)$ of a stable derivator $\D$ and we want to show that this lifts point-wise to a \hfs on $\D(I)$ for all $I\in \fincat$. In the following lemma we start proving that the liftings give homotopy orthogonal classes.
+\begin{lemma}\label{lifting_orthogonality}
+Let $\D\colon \fincat^{op}\to \CAT$ be a stable derivator and let $\bar\F=(\bar\E,\bar\M)$ be a \phfs on the triangulated category $\D(\uno)$.  Let $\F=(\E,\M)$ be the pair of full subcategories of $\D(\due)$ of those objects whose underlying diagrams are, respectively, in $\bar \E$ and $\bar \M$. 
+Given $I\in \fincat$, define
+\[
+\E_I \coloneqq \{X\in \D^{\due}(I):X_i\in \E, \, \forall i\in I\} \qquad \M_I \coloneqq \{Y\in \D^{\due}(I):Y_i\in \M, \, \forall i\in I\}.
+\] 
+Then, $\bar\E_I\horth\bar\M_I$ in $\D(I)$.
+\end{lemma}
+\begin{proof}
+We proceed by induction on $\ell(I)$. The case $\ell(I)=0$ being trivial (in that case $\D(I)$ is a finite product of copies of $\D(\uno)$), let us suppose $\ell (I)\geq 1$ and that our statement is verified for any finite directed category of shorter length. 
+Let $X\in \E_I$ and $Y\in \M_I$. 
+By Lemma \refbf{lemma_approximation_SSV} we have a morphism of triangles as follows:
+\[
+\xymatrix@C=15pt{
+\bigoplus_{i\in\partial I}i_!i^*u_!u^*X\ar[r]\ar[d]& \bigoplus_{i\in\partial I}i_!X_i\oplus u_!u^*X\ar[r]\ar[d]& X\ar[rr]^(.8)+\ar[d]&&\\
+\pt^*\pt_!\bigoplus_{i\in\partial I}i_!i^*u_!u^*X\ar[r]& \pt^*\pt_!\left(\bigoplus_{i\in\partial I}i_!X_i\oplus u_!u^*X\right)\ar[r]& \pt^*\pt_!X\ar[rr]^(.8)+&&
+}
+\]
+Applying the contravariant functor $\D^{\due}(I)(-,Y)$ to the above diagram we obtain
+{\footnotesize \[
+\xymatrix{
+\underset{i\in\partial I}\prod \D(\due)((u_!u^*X)_i, Y_i) & \underset{i\in\partial I}\prod\D(\uno)(\pt_!(u_!u^*X)_i, \pt_*Y_i)\ar[l]_\cong\\
+\ar[u]\underset{i\in\partial I}\prod\D(\due)(X_i, Y_i)\times \D^\due(\partial I)(u^*X, u^*Y) & \underset{i\in\partial I}\prod\D(\due)((X_i)_1, (Y_i)_0)\times \D^\due(\partial I)((u^*X)_1, (u^*Y)_0)\ar[u]\ar[l]_(.55)\cong\\
+\ar[u]\D^\due(I)(X,Y) & \D^\due(I)(X_1, Y_0)\ar[u]\ar[l]\\
+\ar[u]\underset{i\in\partial I}\prod\D(\due)((\Sigma u_!u^*X)_i, Y_i) & \underset{i\in\partial I}\prod\D(\uno)(\pt_!(\Sigma u_!u^*X)_i, \pt_* Y_i)\ar[u]\ar[l]_\cong\\
+\vdots \ar[u]\ar@{<-}[r]^{\cong}& \vdots\ar[u] 
+}
+\]}\noindent
+(we used that left Kan extensions commute with left Kan extensions and that functors of the form $v^*$ commute with both left and right Kan extensions). The isomorphisms in the above diagram come from our inductive hypothesis and so, by the 5-lemma, we can conclude that $\D^{\due}(I)(X_1,Y_0)\cong \D^{\due}(I)(X,Y)$, which means that $X\corth Y$.
+\end{proof}
+
+It remains to verify that, for a given $I\in\fincat$, the pointwise \phfs we found in the above lemma is also a \hfs. In the following lemma we reformulate this requirement in a way that will be easier to verify via Lemma \refbf{lemma_approximation_SSV}:
+\begin{lemma}\label{fs_are_corefs}
+For all $I\in \Dia$, there is a bijection between the following classes:
+\begin{enumerate}
+\item {\hfs}s in the triangulated category $\D(\uno)$;
+\item co-reflections $S\dashv R: \E\leftrightarrows\D(\due)$ with counit $\rho\colon SR\to \id_{\D(\due)}$, such that $\rho_0\colon 0^*SR\to 0^*$ is a natural isomorphism.
+\end{enumerate}
+Given a {\hfs} $\F=(\E,\M)$ on $\D(\uno)$, let $S\dashv R$ be the associated co-reflection. For a morphism $\varphi\colon SE\to X$ in $\D(\due)$, with $E\in \widetilde\E$,  the map
+\[
+\D(\due)(SE',\varphi)\colon \D(\due)(SE',X)\to \D(\due)(SE',SE)\cong\E(E',E) 
+\]
+is an isomorphism if and only if $\varphi_0$ is an iso and $\varphi_1\in \M$.
+\end{lemma}
+\begin{proof}
+Given a \hfs $\F=( \E, \M)$ in $\D(\uno)$, we have shown in Lemma \refbf{lifting_orthogonality} that $\E{\corth}\M$. Hence, the functor $\Psi\colon \D_{\F}(\uno)\to \D(\due)$ is an equivalence (see Lemmas \refbf{coherent_orth_is_wobbly} and \refbf{level_wise_ff}), so we can choose a quasi-inverse $\Phi\colon \D(\due)\to \D_\F(\uno)$. The desired co-reflection is constructed as the following composition:
+\[
+R_\F:=(0,1)^*\Phi\colon \D(\due)\to \D_\F(\uno)\to \E.
+\]
+This is clearly a right adjoint to the inclusion $S_\F\colon \E\to \D(\due)$, and it is not difficult to verify that the pair $(S_\F,R_\F)$ has the desired properties. 
+
+On the other hand, given a reflection $R: \D(\due)\rightleftarrows\E :S$ as in the statement, we define 
+\begin{align*}
+\E_{(S,R)}\subseteq \D(\due), \quad \E_{(S,R)}&\coloneqq \{E\in \D(\due) \mid \rho_E \text{ is invertible}\}\\
+\M_{(S,R)}\subseteq \D(\due), \quad \M_{(S,R)}&\coloneqq \{E\in \D(\due) \mid \dia_\due(RM) \text{ is invertible}\}
+\end{align*}
+% $\E_{(S,R)}\subseteq \D(\due)$ to be the class of those $E\in \D(\due)$ such that $\rho_E$ is an isomorphism, that is, such that $(\rho_E)_1$ is an iso (so, clearly, $R\E=\E_{(S,R)}$). We also let $\M_{(S,R)}\subseteq \D(\due)$ be the class of those $M\in \D(\due)$ such that (the underlying diagram of) $R(M)$ is an iso. 
+We shall prove that $\F_{(S,R)}:=(\bar\E_{(S,R)},\bar\M_{(S,R)})$ is a \hfs in $\D(\uno)$. 
+Let $E\in \E_{(S,R)}$ and $M\in \M_{(S,R)}$, then
+\[
+\D(\due)(E,M)\cong \D(\due)(E,SRM)\overset{(*)}{\cong} \D(\due)(E,1_*M_0)\cong \D(\uno)(E_1,M_0)
+\]
+where the isomorphism marked by $(*)$ is true since $RM$ is an iso, so $SRM\cong 1_*(SRM)_0$ and $(\rho_M)_0\cong(SRM)_0\to M_0$ is an iso. By the above isomorphisms one deduces that $E\corth M$, so that $\E_{(S,R)}\corth \M_{(S,R)}$, which is equivalent to say that $\bar \E_{(S,R)}\horth \bar \M_{(S,R)}$. These classes are also closed under taking isomorphisms, so it is enough to show that any morphism in $\D(\uno)$ is  $\F_{(S,R)}$-crumbled. Indeed, let $X\in \D(\due)$ and consider $\rho_X\colon SRX\to X$. Since $(\rho_X)_0$ is an iso, $\dia_\due(X)\cong (\rho_X)_1\circ \dia_\due(SRX)$ and notice that $(\rho_X)_1\in \bar\M_{(S,R)}$ while $\dia_\due(SRX)\in \bar\E_{(S,R)}$.
+
+For the last part of the statement, consider a morphism $\rho\colon E\to X$ with $E\in \E$ and $X\in \D(\due)$, such that $\rho_0$ is an iso and $\rho_1\in\bar\M$. Then, for any given $E'\in\E$
+\begin{align*}
+\D(\due)(E',X)&\cong \D(\tre)(\Phi E',\Phi X)\\
+&\cong \D(\tre)((0,1)_!E',\Phi X)\\
+&\cong \D(\due)(E',(0,1)^*\Phi X)\cong \E(E',E).
+\end{align*}
+where the second isomorphism is true since $\Phi(E')\cong (0,1)_!E'$, that is, the factorization of a coherent morphism $E'$ in $\E$ is given by $E'$ followed by an isomorphism. Furthermore, the last isomorphism is true since our hypotheses on $\rho$ imply that $\dia_\due(X)\cong \rho_1\dia_\due(E)$, where $\rho_1\in \bar \M$, so this factorization is the $\F$-factorization of $\dia_\due(X)$.
+\end{proof}
+
+\begin{theorem}\label{everything_is_maximal}
+Let $\D\colon \fincat^\opp\to \Cat$ be a stable derivator and let $\bar\F=(\bar\E,\bar\M)$ be {\hfs} on $\D(\uno)$. Then there is a pointwise induced \dfs $\F=(\mathbb E,\mathbb M)$ on $\D$ such that $(\bar\E,\bar\M)=(\bar{\mathbb E}(\uno),\bar{\mathbb M}(\uno))$.
+\end{theorem}
+\begin{proof}
+Let $\E$ and $\M$ be the full subcategories of $\D(\due)$ of those objects whose underlying diagrams are, respectively, in $\bar \E$ and $\bar \M$. For any $I\in \fincat$, let
+\begin{align*}
+\E_I & \coloneqq \{E\in\D^\due(I):E_i\in\E,\, \forall i\in I\}\\ 
+\M_I & \coloneqq \{M\in\D^\due(I):M_i\in\M,\, \forall i\in I\}.
+\end{align*}
+We want to show that $\F:=(\mathbb E,\mathbb M)$, where $\mathbb E(I):=\E_I$ and $\mathbb M(I):=\M_I$, is a {\dfs}.
+By Lemmas \refbf{lifting_orthogonality} and \refbf{level_wise_ff}, the functor
+\[
+\Psi_\F\colon \D_\F\to \D^\due
+\] 
+is fully faithful and so, by \athm \refbf{stable_equv_orth}, it is enough to verify that $\Psi_\F$ is essentially surjective. By Lemma \refbf{fs_are_corefs}, we know that there is a co-reflection
+\[
+S: \E\leftrightarrows \D(\due): R
+\]
+where $S$ is the inclusion, and the co-unit $\rho_X\colon RX\to X$ has the property that $(\rho_X)_0$ is an isomorphism for all $X$.  It is enough to verify that, for any $I\in \fincat$, the inclusion $S_I\colon \E_I\to \D^\due(I)$ is co-reflective, with co-reflection $R_I\colon \D^\due(I)\to \E_I$, and that the co-unit $\rho^I\colon R^I\to \id_{\D^\due(I)}$ is such that $(\rho^I)_0$ is an isomorphism. 
+We proceed by induction on $\ell(I)$. If $\ell(I)=1$, then $I$ is a disjoint union of copies of $ \uno$ and there is nothing to prove.% Let $u\colon J=I^\circ \hookrightarrow I$ be the inclusion of the non-minimal objects in $I$.
+
+By the inductive assumption, and given the inequalities noted in \refbf{notation_rosetta} there is an adjunction $S_J: \E_J\leftrightarrows \D^\due(J):R_J$, with co-unit $\rho^J\colon R_J\to \id_{\D^\due(J)}$ such that $1^*\rho^J$ is an iso. Given an object $X\in \D(I)$, let us construct a coreflection $\rho\colon E\to X$. We start considering the following triangle, constructed in Lemma \refbf{lemma_approximation_SSV}:
+\[
+\bigoplus_{i\in\partial I}i_!i^*u_!u^*{X}\to \left(\bigoplus_{i\in\partial I}i_!{X}_i\right)\oplus u_!u^*{X}\to {X}\to \Sigma \bigoplus_{i\in\partial I}i_!i^*u_!u^*{X}.
+\]
+For any minimal object $i\in I$, we consider the following commutative squares:
+\[
+\xymatrix@C=18pt{
+i_!i^*u_!R_J(u^*X)\ar@{}[drr]|{(\mathrm{a})}\ar[d]\ar[rr]^{\varepsilon_i}&&u_!R_J(u^*X)\ar[d]&&i_!i^*u_!R_J(u^*X)\ar@{}[drr]|{(\mathrm{b})}\ar[d]\ar[rr]&&i_!R(X_i)\ar[d]\\
+i_!i^*u_!u^*X\ar[rr]_{\varepsilon_i}&&u_!u^*X&&i_!i^*u_!u^*X\ar[rr]&&i_!i^*X
+}
+\]
+where these squares are constructed as follows:
+\begin{enumerate}
+\item[(a)] the first square is the easiest: we start with the co-unit $\rho^J_{u^*X}\colon R_J(u^*X)\to u^*X$, then the left column is $i_!i^*u_!(\rho^J_{u^*X})$, while the right column is $u_!(\rho^J_{u^*X})$. The horizontal maps are the appropriate components of the co-unit $\varepsilon_i$ of the adjunction $(i_!,i^*)$. Hence, the square commutes by naturality of $\varepsilon_i$;
+\item[(b)] as for the second square, we construct first a commutative square
+\[
+\xymatrix{
+i^*u_!R_J(u^*X)\ar[d]_{i^*u_!(\rho^J_{u^*X})}\ar[rr]&&R(X_i)\ar[d]^{\rho_{X_i}}\\
+i^*u_!u^*X\ar[rr]_{i^*(\varepsilon_u)_{X}}&&X_i
+}
+\]
+and then apply $i_!$. To construct this square, take $\rho_{X_i}\colon R(X_i)\to X_i$ as the vertical map on the right. The horizontal map at the base of the square is $i^*(\varepsilon_u)_{X}$, where $\varepsilon_u$ is the co-unit of the adjunction $(u_!,u^*)$. The vertical map on the left is $i^*u_!(\rho^J_{u^*X})$, as in the first square. Notice that $i^*u_!R_J(u^*X)\in \E$, in fact, $i^*u_!R_J(u^*X)\cong\hocolim_{u/i}\mathrm{pr}_i^* R_J(u^*X)$ and this belongs in $\E$ since the left class of a \hfs is always closed under taking homotopy colimits (this is a consequence of our Lemma \refbf{extension} and \cite[Theorem 7.1]{Ponto-Schulman}). To conclude, notice that, by adjointness, there is a unique morphism $i^*u_!R_J(u^*X)\to R(X_i)$ that makes the above square commutative. 
+\end{enumerate}
+Putting together the above squares, with $i$ varying in $i\in\partial I$, we get a commutative square as on the left of
+\[
+\xymatrix{
+\underset{i\in\partial I}{\bigoplus}i_!i^*u_!R_J(u^*X)\ar[rr]\ar[d]&&\left(\underset{i\in\partial I}{\bigoplus}i_!R(X_i)\right)\oplus u_!R_J(u^*X)\ar[d] \ar[r]& E\ar@{.>}[d]\ar[r]^(.7){+}&\\ 
+\underset{i\in\partial I}{\bigoplus}i_!i^*u_!u^*X\ar[rr]&&\left(\underset{i\in\partial I}{\bigoplus}i_!X_i\right)\oplus u_!u^*X \ar[r]& X\ar[r]^(.7){+}&.
+}
+\]
+Of course the rows are triangles and, letting $E$ be the cone of the first row, we obtain a morphism $\rho\colon E\to X$. To conclude we have to show that $E\in \E_I$ and that $\rho$ is the co-reflection of $X$.  In fact, it is easy to show that the objects in the first row 
+%${\bigoplus}_{i\in\partial I}i_!i^*u_!R_J(u^*X)$ and $({\bigoplus}_{i\in\partial I}i_!R(X_i))\oplus u_!R_J(u^*X)$ 
+belong to $\E_I$, so $E$, which is the cone of a map between these two objects, still belongs to $\E_I$. Furthermore, to show that $\rho\colon E\to X$ it is enough to show that $\rho_1\in\bar\M_I$ and $\rho_0$ is an iso. Consider the following diagram where all the rows and columns are triangles and everything commutes:
+\[
+\xymatrix@R=15pt@C=10pt{
+\underset{i\in\partial I}{\bigoplus}i_!i^*u_!R_J(u^*X)\ar[rr]\ar[d]&&\left(\underset{i\in\partial I}{\bigoplus}i_!R(X_i)\right)\oplus u_!R_J(u^*X)\ar[d]\ar[rr]&&E\ar[rr]^(.7){+}\ar[d]&&\\ 
+\underset{i\in\partial I}{\bigoplus}i_!i^*u_!u^*X\ar[rr]\ar[d]&&\left(\underset{i\in\partial I}{\bigoplus}i_!X_i\right)\oplus u_!u^*X\ar[d]\ar[rr]&&X\ar[rr]^(.7){+}\ar[d]&&\\
+A\ar[d]^(.7){+}\ar[rr]&&B\ar[rr]\ar[d]^(.7){+}&&M\ar[rr]^(.7){+}\ar[d]^(.7){+}&&\\
+&&&&&}
+\]
+We will have concluded if we can prove that $E\in\E_I$ and that $M\cong 1_*M_1\in \M_I$, that is, $k^*E\in \E$ and $k^*M\cong 1_*(k^*M)_1\in \M$ for any $k\in I$. We start from the case when $k\in I^\circ$, and apply $k^*$  to the above $3\times 3$ diagram, obtaining the following commutative diagram in $\D(\uno)$:
+\[
+\xymatrix{
+0\ar[rr]\ar[d]&&0\oplus k^*u_!R_J(u^*X)\ar[d]\ar[rr]&&E_k\ar[d]\ar[r]^(.65)+&\\ 
+0\ar[rr]\ar[d]&&0\oplus X_k\ar[rr]\ar[d]&&X_k\ar[d]\ar[r]^(.65)+&\\
+A_k\ar[d]^(.65)+\ar[rr]&&B_k\ar[d]^(.65)+\ar[rr]&&M_k\ar[d]^(.65)+\ar[r]^(.65)+&\\
+&&&&&
+}
+\]
+%
+%Using the fact that $k^*$ sends triangles to triangles we get that $k^*u_!{  U}_{u^*Y}$ is the coreflection of ${  Y}_k$ into $\U$, that is, 
+% $k^*u_!{  U}_{u^*{  Y}}\cong {  U}_{{  Y}_k}$, thus ${  U}_k\cong k^*u_!{  U}_{u^*{  Y}}\cong {  U}_{{  Y}_k}\in \U$. Similarly, $k^*{  V}^1=0$, so $k^*{  V}\cong k^*{  V}^2\cong {  V}_{{  Y}_k}\in \V$.
+%
+Using the fact that $k^*$ sends triangles to triangles, we get that $A_k=0$ and that $k^*u_!R_J(u^*X)\to X_k$ is the co-reflection of $X_k$ onto $\E$. As a consequence $M_k\in \M$ and $(M_k)_0=0$.
+
+On the other hand, if $k$ is a minimal object, applying $k^*$ to the above $3\times 3$ diagram we get the following commutative diagram in $\D(\uno)$, where all the rows and columns are distinguished triangles:
+\[
+\xymatrix{
+k^*u_!R_J(u^*X)\ar[rr]\ar[d]&&R(X_k)\oplus k^*u_!R_J(u^*X)\ar[d]\ar[rr]&&R(X_k)\ar[d]\ar[r]^(.65)+&\\ 
+k^*u_!u^*X\ar[rr]\ar[d]&&X_k\oplus k^*u_!u^*X\ar[rr]\ar[d]&&X_k\ar[d]\ar[r]^(.65)+&\\
+A_k\ar[d]^(.65)+\ar[rr]&&B_k\ar[d]^(.65)+\ar[rr]&&M_k\ar[d]^(.65)+\ar[r]^(.65)+&\\
+&&&&&
+}
+\]
+%The map $k^*u_!{  U}_{u^*{  Y}}\to k^*u_!{  U}_{u^*{  Y}}$ in the first row is clearly an isomorphism by the construction of square~(a) in~\eqref{squares_for_lifting_t-str}, so the first row is a split triangle, showing that $U_{{  Y}_k}\cong {  U}_k$. Also the second row is split, showing that the first arrow in the triangle ${  U}_k\to {  Y}_k\to {  V}_k\to \Sigma {  U}_k$ is the coreflection of ${  Y}_k$ in $\U$ and, as a consequence, ${  V}_k\in \V$ as desired.
+The maps $k^*u_!R_J(u^*X)\to k^*u_!R_J(u^*X)$ and $k^*u_!u^*X\to k^*u_!u^*X$ in the first two rows are clearly isomorphisms by the construction of square (a).
+In particular, the first two rows are split triangles and the first arrow in the triangle 
+\[
+R(X_k)\to X_k\to M_k\to \Sigma R(X_k)
+\] 
+is the cokernel of the first maps in the first two columns. Since $R(X_k)\to X_k$ is the co-reflection of $X_k$ in $\E$ by the construction of square~(b), we get that $M_k\in \M$  and $(M_k)_0\cong 0$ as desired.
+\end{proof}
+
+As a consequence of the above theorem we can deduce that a \dfs on a stable derivator of type $\fincat$ is completely determined by the \hfs it induces on the base:
+
+\begin{corollary}\label{everything_is_maximal}
+Let $\D\colon \fincat^\opp\to \Cat$ be a stable derivator and let $\F=(\mathbb E,\mathbb M)$ be a \dfs on $\D$. Given $I\in\fincat$, an object $X\in \D^\due(I)$ belongs to $\mathbb E(I)$ (resp., $\mathbb M(I)$) if and only if $X_i\in \mathbb E(\uno)$ (resp., $\mathbb M(\uno)$), for all $i\in I$. 
+\end{corollary}
+\begin{proof}
+Let $\bar\E:=\bar {\mathbb E}(\uno)$, $\bar\M:=\bar {\mathbb M}(\uno)$, and $\bar \F=(\bar \E,\bar \M)$. Then, $\bar\F$ is a \hfs on $\D(\uno)$ and, by the above theorem there is a second \dfs $\F'=(\mathbb E',\mathbb M')$, where $\mathbb E'(I)$ and $\mathbb M'(I)\subseteq \D^\due(I)$ are the full subcategories of those objects that are pointwise in $\mathbb E(\uno)$ and $\mathbb M(\uno)$, respectively. But now $\mathbb E\subseteq \mathbb E'$ and $\mathbb M\subseteq \mathbb M'$, and these two inclusions imply that $\F=\F'$.
+\end{proof}
+
+\color{black}
+
+\subsection{The Rosetta stone theorem}\label{higher_rosetta_subs}
+To prove that $t$-structures on $\D(\uno)$ correspond bijectively to normal derivator torsion theories on $\D$,  we should say what it means for a \dfs $\F=(\mathbb E,\mathbb M)$ on $\D$ to be a normal derivator torsion theory. One easy way to say this is to ask that, for any $I\in \fincat$, the {\hfs} $\overline\F_I=(\overline{\mathbb E(I)},\overline{\mathbb M(I)})$ is a normal \htth. In the following definition we give a different (but equivalent) formulation that better fits into the language of derivators. Notice that the following definition makes sense in any pointed derivator $\D$, not just for stable ones.
+
+\begin{definition}[normal derivator torsion theories]
+A sub pre-derivator $\mathbb X$ of $\D$ is said to have the $3$-for-$2$ property if, for any $I\in \fincat$, given $X\in \D^\tre(I)$ such that $2$ objects in the set $\{X_{(0,1)},X_{0,2},X_{1,2}\}$ belong to $\mathbb X^{\due}(I)$, so does the third. A \dfs $\F=(\mathbb E,\mathbb M)$ on $\D$ is said to be
+\begin{enumerate}
+\item a \emph{derivator torsion theory} (for short, \textsc{dtth}) provided $\mathbb E$ and $\mathbb M$ have the $3$-for-$2$ property;
+\item \emph{left normal} if, given $I\in \fincat$, $X\in \D(I)$ and $F\in \D^\tre({I})$ such that $F_{(0,2)}\cong 0_*X$, then $0_*0^!F_{(0,1)}\in \mathbb E(I)$;
+\item \emph{right normal} if, given $I\in \fincat$, $X\in \D(I)$ and $F\in \D^\tre({I})$ such that $F_{(0,2)}\cong 1_!X$, then $1_!1^?F_{(1,2)}\in \mathbb E(I)$;
+\item \emph{normal} if it is both left and right normal.
+\end{enumerate}
+\end{definition}
+
+Using the stability of our derivator $\D$, it is not difficult to verify that a \dfs is left normal if and only if it is right normal, if and only if it is normal.
+
+\begin{theorem}\label{derrosetta}
+Let $\D\colon \fincat^\opp\to \Cat$ be a stable derivator. There is a bijection between the following classes:
+\begin{enumerate}
+\item $t$-structures in $\D(\uno)$; 
+\item normal \textsc{dtth}s on $\D$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+By Theorem \refbf{triang-rosetta} there is a bijective correspondence between $t$-structures and normal {\htth}s in $\D(\uno)$. Using Corollary \refbf{everything_is_maximal} it is not difficult to show that normal {\htth}s in $\D(\uno)$ correspond bijectively to normal \textsc{dtth}s on $\D$.
+\end{proof}
+
+Let now $\iC$ be a stable $\infty$-category. We have seen in Theorem \refbf{infinity_FS_vs_CFS} that \textsc{fs}s on $\iC$ correspond bijectively with maximal {\dfs}s on the associated derivator $\D_\iC\colon \fincat^\opp\to \Cat$ and, by Corollary \refbf{everything_is_maximal}, any \dfs on $\D_\iC$ belongs to this family. Furthermore, it is not difficult to verify that a \textsc{fs} on $\iC$ is a normal torsion theory (see \cite{Fiorenza2014} for the exact definition) if and only if the associated \dfs on $\D_\iC$ is a normal \textsc{dtth}. As a consequence we obtain the following corollary:
+
+\begin{corollary}{\rm \cite{Fiorenza2014}}\label{infinity_rosetta}
+Let $\iC$ be a stable $\infty$-category. There is a bijection between the following classes:
+\begin{enumerate}
+\item $t$-structures in $\ho(\iC)$; 
+\item normal torsion theories in $\iC$.
+\end{enumerate}
+\end{corollary}

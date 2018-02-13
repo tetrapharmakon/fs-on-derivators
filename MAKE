@@ -1,5 +1,0 @@
-tex -v | head -n 1 > version.tex
-latexmk -pdf bigdiag.tex
-latexmk -pdf hfs.tex
-mv hfs.pdf build/FSs-on-stable-derivators.pdf
-latexmk -C
