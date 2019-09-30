@@ -1,4 +1,9 @@
 rm *.pdf
-latexmk -pdf hfs.tex
-mv hfs.pdf HFS.pdf
+latexmk -pdf hfs_I.tex
+mv hfs_I.pdf t-structures-are-tntt.pdf
+
+###
+
+latexmk -pdf hfs_II.tex
+mv hfs_II.pdf derivator-fs.pdf
 latexmk -C
