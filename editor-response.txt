@@ -1,0 +1,13 @@
+* Notation and terminology: Some conventions are introduced and then seemingly never used again. (Universes? Yoneda embedding?)
+
+All the tricky points on notation involved handling the correct hierarchy of universes on chapters 3-6; now all notation relies on common sense, or in well-established tradition in triangulated category theory, thus the paragraph has been removed.
+
+* proof of 1.7: Conditions HO1 and HO2 are swapped.
+
+True: this has been edited.
+
+* p.12: Given a square in D viewed as a morphism f in D^2, does the orthogonal complement of cone(f) depend on the choice of the cone?
+
+* 1.13: why is the "left class" closed under suspension?
+
+* proof of 2.11: reference to part of proof of Lemma 2.10 could be avoided by stating that as a separate Lemma, thereby making the proof more reader-friendly.
