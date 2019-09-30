@@ -1,39 +1,12 @@
 \documentclass[a4paper,10pt]{amsart}
 
-\input{pream/prambolo} 
+\input{pream/prambolo}
 
 %======================[ autr & title ]
 
-\title{Factorization systems on (stable) derivators}
-%=====
-\author{Fosco Loregian}
-\address{%
-\textsf{Fosco Loregian}: \newline
-Department of Mathematics and Statistics             \newline
-Masaryk University, Faculty of Sciences              \newline
-Kotl\'{a}\v{r}sk\'{a} 2, 611 37 Brno, Czech Republic \newline
-\href{mailto:loregianf@math.muni.cz}
-     {\sf loregianf@math.muni.cz}}
-\thanks{The first-named author is supported by the Grant Agency of the 
-        Czech Republic under the grant \textsc{P}201/12/\textsc{G}028.}
-%=====
-
-\author[Simone Virili]{Simone Virili}
-\address{
-\textsf{Simone Virili}: \newline
-Facultad de Matem\'aticas, Universidad de Murcia \newline
-Campus Espinardo, \oldstylenums{30100}, Murcia.  \newline
-\href{mailto:virili.simone@gmail.com}
-     {\sf virili.simone@gmail.com}}
-\thanks{The second-named author is supported by the Ministerio de Econom\'ia y Competitividad of Spain via a grant `Juan de la Cierva-formaci\'on'. He is also supported by a research project from the Ministerio de Econom\'ia y Competitividad of Spain (MTM2014-53644-P) and from the Fundaci\'on `S\'eneca' of Murcia (19880/GERM/15), both with a part of FEDER funds.}
-\subjclass[2010]{18E30, 18E35, 18C15 (primary), and 18C20, 13D09, 18G99(secondary)} 
-\keywords{Factorization system, normal torsion theory, triangulated category, stable derivator, factorization algebra, squaring monad}
-
-
-%======================================
+\input{pream/title-addr}
 
 \begin{document}
-
 \maketitle
 \begin{abstract}
 We define \emph{triangulated factorization systems} on triangulated categories, and prove that a suitable subclass thereof (the \emph{normal triangulated torsion theories}) corresponds bijectively to $t$-structures on the same category.
@@ -41,12 +14,25 @@ This result is then placed in the framework of derivators regarding a triangulat
 These two result can be regarded as the triangulated- and derivator- analogues, respectively, of the theorem that says that `$t$-structures are normal torsion theories' in the setting of stable $\infty$-categories, showing how the result remains true whatever the chosen model for stable homotopy theory is.
 \end{abstract}
 
-
+{\color{red} Cose da fare:
+\begin{itemize}
+\item titolo per il primo paper: \emph{Triangulated factorization systems and/as/are $t$-structures}
+\item titolo per il secondo paper: quello di adesso
+\item rileggere la prima parte riferendosi ai cap. 3-4-5-6 come ad un altro lavoro
+\item rileggere la seconda riferendosi ai cap 1-2 come a un lavoro precedente
+\item (per quest'ultima parte basta tagliare e cambiare tutti i \verb|\ref| in \verb|\cite|)
+\end{itemize}
+}
 
 \tableofcontents
 \input{sections/00-intro}
 \input{sections/01-triangfs}
 \input{sections/02-triangros}
+
+\begin{center}
+  \hrulefill \Huge {\color{red} CUT HERE } \hrulefill
+\end{center}
+
 \input{sections/03-squaring}
 \input{sections/04-deriv-rosetta}
 \input{sections/05-thmA}
